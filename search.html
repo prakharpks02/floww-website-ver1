@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" href="img/floww-logo-favicon.ico">
+
+    <link rel="stylesheet" type="text/css" href="css/search.css">
+
+    <!-- Importing Major 3rd Party File links -->
+
+    <link rel="stylesheet" type="text/css" href="css/fontawesome.css">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+
+    <link rel="stylesheet" type="text/css" href="css/bulma.css">
+    <!--   Calling Bulma from local file   -->
+
+    <script type="text/javascript" src="js/vue.js"></script>
+    <!--   Calling Vue from local file   -->
+    <script type="text/javascript" src="js/axios.min.js"></script>
+    <!--   Calling Axios from local file   -->
+
+    <!-- <script type="text/javascript" src="{% static 'platform_app/js/aws.s3.js' %}"></script> -->
+    <!--   Calling AWS S3 from local file   -->
+
+    <!-- Add the entire Firebase JavaScript SDK -->
+    <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase.js"></script>
+
+    <title>floww Search</title>
+</head>
+
+<body>
+
+    <div class="full-page-container">
+
+        <div class="header-container">
+            <div class="header-left-container">
+                <a href="/">
+                    <img src="img/floww-logo-full-blue.png" alt="floww Logo, Biggest API marketplace for 3PL"
+                        class="desktop-view-toggle">
+                    <img src="img/floww-logo-small.png" class="mobile-view-toggle">
+                </a>
+            </div>
+
+            <div class="header-right-container">
+                <div class="columns">
+                    <div class="column">
+                        <button class="button">
+                            My Orders
+                        </button>
+                    </div>
+
+                    <div class="column">
+                        <button class="button">
+                            Login
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="search-container">
+            <div class="search-body-container">
+
+                <div class="search-bar-container">
+                    <div class="location-filter-container">
+                        <div class="select is-rounded location-filter-body">
+                            <select>
+                                <option>Select City</option>
+                                <option>With options</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Better Select Option at https://codepen.io/THEORLAN2/pen/Kaewmw -->
+
+                    <div class="tag-filter-container">
+                        <div class="select is-rounded tag-filter-body">
+                            <select>
+                                <option>Select Tag</option>
+                                <option>With options</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <br>
+                    <br>
+
+                    <div class="filter-text-container">
+                        <span>Showing <span class="tag is-medium">12</span> 3PL providers in <span
+                                class="tag is-medium">Mumbai <button class="delete is-small"></button></span> with <span
+                                class="tag is-medium">Same Day Delivery <button
+                                    class="delete is-small"></button></span></span>
+                    </div>
+                </div>
+
+                <div class="search-list-container">
+
+                    <!-- Card Starts -->
+                    <div class="card-container box has-text-centered">
+                        <div class="card-main-container columns">
+                            <div class="column">
+                                <div class="card-element-container">
+                                    <span>JS Transport</span>
+                                </div>
+                                <div class="card-element-container starting-from-box">
+                                    <span>starting ₹49</span>
+                                </div>
+                            </div>
+
+                            <div class="column">
+                                <div class="card-element-container">
+                                    <span><i class="fa fa-star"></i> 4.5/5</span>
+                                </div>
+                                <div class="card-element-container">
+                                    <div class="copy-button-tooltip">
+                                        <button onclick="CopyButton('+91 9910530300', this)"
+                                            onmouseout="CleanCopyButton(this)">
+                                            <span class="copy-button-tooltiptext">Click to Copy</span>+91 9910530300
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="column">
+                                <div class="card-element-container">
+                                    <div class="copy-button-tooltip">
+                                        <button onclick="CopyButton('VEN21432', this)"
+                                            onmouseout="CleanCopyButton(this)">
+                                            <span class="copy-button-tooltiptext">Click to Copy</span>Get Vendor Key
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="card-element-container">
+                                    <a href="#"><span>API Docs</span></a>
+                                </div>
+                            </div>
+
+                            <div class="column">
+                                <div class="card-element-container">
+                                    <a href="#" class="website-link-button"><span>Open Website</span></a>
+                                </div>
+                                <div class="card-element-container">
+                                    <a class="website-link-button"><span>Request Delivery</span></a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card-second-container">
+
+                            <div class="card-view-more-container">
+                                <button class="button is-small is-rounded is-link" onclick="ToggleCardView(this)">View More</button>
+                            </div>
+
+                            <div class="card-expand-container columns is-multiline is-gapless">
+
+                                <div class="column is-full columns">
+                                    <div class="column">
+                                        <span>Founded in 1994</span>
+                                    </div>
+                                    <div class="column">
+                                        <span>BKC, Mumbai</span>
+                                    </div>
+                                    <div class="column">
+                                        <span>1-10 Riders</span>
+                                    </div>
+                                </div>
+                                <div class="column is-full columns has-text-left">
+                                    <div class="column is-2">
+                                        <span>Services :</span>
+                                    </div>
+                                    <div class="column">
+                                        <span>Same Day Delivery, OTP Verification</span>
+                                    </div>
+                                </div>
+                                <div class="column is-full columns has-text-left">
+                                    <div class="column is-2">
+                                        <span>Badges :</span>
+                                    </div>
+                                    <div class="column">
+                                        <span>Same Day Delivery, OTP Verification</span>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <!-- Card Ends -->
+
+                </div>
+            </div>
+        </div>
+
+        <div class="documentation-container">
+            <div class="documentation-body-container">
+
+            </div>
+        </div>
+
+        <div class="documentation-toggle-container">
+
+        </div>
+
+    </div>
+
+
+
+    <!-- All JS files start here -->
+
+    <script
+        src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyAVcyVFjXhbFtR3dqbfoFWtHx0doqT7leE"></script>
+    <!-- Google Address Autocomplete Places -->
+
+    <script src="js/countryCode.js"></script>
+    <!-- Country Code JS file -->
+
+    <script src="js/flowwVariables.js"></script>
+    <!-- Floww custom Dictionaries JS file -->
+
+    <script src="js/search.js"></script>
+
+    <!-- <script type="text/javascript">
+        const globalUserStatus = JSON.parse(document.getElementById('userStatus').textContent);
+
+        if (globalUserStatus != 'active')
+        {
+            document.getElementById('disable-overlay-id').classList.remove('hide');
+        }
+
+        function getCookie(name) {
+            let cookieValue = null;
+
+            if (document.cookie && document.cookie !== '')
+            {
+                const cookies = document.cookie.split(';');
+                for (let i = 0; i < cookies.length; i++)
+                {
+                    const cookie = cookies[i].trim();
+
+                    // Does this cookie string begin with the name we want?
+                    if (cookie.substring(0, name.length + 1) === (name + '='))
+                    {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+
+                        break;
+                    }
+                }
+            }
+
+            return cookieValue;
+        }
+
+        axios.defaults.headers.common['X-CSRFToken'] = getCookie('csrftoken');
+    </script> -->
+
+</body>
+
+</html>

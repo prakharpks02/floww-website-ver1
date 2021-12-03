@@ -1,0 +1,230 @@
+/* custom scrollbar */
+::-webkit-scrollbar {
+    width: 20px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #d6dee1;
+    border-radius: 20px;
+    border: 6px solid transparent;
+    background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #a8bbbf;
+}
+
+html {
+    overflow: hidden;
+}
+
+.desktop-view-toggle {
+    display: block;
+}
+
+.mobile-view-toggle {
+    display: none;
+}
+
+/* Tooltip Copy Button Starts */
+
+.copy-button-tooltip {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.copy-button-tooltip button {
+    cursor: pointer;
+}
+
+.copy-button-tooltip .copy-button-tooltiptext {
+    visibility: hidden;
+    width: 140px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px;
+    position: absolute;
+    z-index: 2;
+    bottom: 150%;
+    left: 50%;
+    margin-left: -75px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.copy-button-tooltip .copy-button-tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+}
+
+.copy-button-tooltip:hover .copy-button-tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Tooltip Copy Button Ends */
+
+.full-page-container {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    margin: 0;
+    padding: 0;
+}
+
+.header-container {
+    background-color: rgb(197, 44, 184);
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.header-left-container {
+    width: 200px;
+    height: 100%;
+    padding-top: 10px;
+    padding-left: 5px;
+}
+
+.header-right-container {
+    height: 100%;
+    padding-top: 15px;
+    padding-right: 5px;
+}
+
+.search-container {
+    width: 80%;
+    height: 80%;
+    background-color: brown;
+    margin: auto;
+}
+
+.search-body-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.search-bar-container {
+    width: 100%;
+    padding-right: 15%;
+    padding-left: 15%;
+    padding-top: 20px;
+    position: absolute;
+    top: 0;
+    height: 25%;
+}
+
+.location-filter-container {
+    width: 50%;
+    float: left;
+    padding-right: 5px;
+}
+
+.location-filter-body {
+    float: right;
+}
+
+.tag-filter-container {
+    width: 50%;
+    float: right;
+    padding-left: 5px;
+}
+
+.filter-text-container {
+    width: 100%;
+}
+
+.search-list-container {
+    width: 100%;
+    height: 75%;
+    background-color: cornflowerblue;
+    position: absolute;
+    bottom: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.card-container {
+    width: 90%;
+    padding: 10px !important;
+    margin: auto;
+}
+
+/* Card Main Section */
+
+.card-element-container {
+    font-size: large;
+    font-weight: 600;
+}
+
+.starting-from-box {
+    background-color: cadetblue;
+    font-size: small;
+    color: white;
+    width: fit-content;
+    margin: auto;
+    border-radius: 2px;
+}
+
+/* Card Second Section */
+
+.card-second-container {
+    max-height: 40px;
+    overflow-y: hidden;
+    transition: max-height 0.3s ease-in;
+}
+
+.card-expanded-container {
+    max-height: 300px;
+    transition: max-height 0.7s ease-out;
+}
+
+.card-view-more-container {
+    width: 100%;
+    height: 50px;
+    padding-right: 20px;
+}
+
+.card-view-more-container button {
+    float: right;
+}
+
+.card-expand-container {
+    border-top: solid 1px black;
+    width: 100%;
+}
+
+
+
+@media (max-width: 768px) {
+
+    .desktop-view-toggle {
+        display: none;
+    }
+
+    .mobile-view-toggle {
+        display: block;
+    }
+
+    .header-left-container {
+        width: 80px;
+    }
+
+}
