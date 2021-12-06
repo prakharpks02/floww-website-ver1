@@ -18,8 +18,17 @@
     background-color: #a8bbbf;
 }
 
+/* Removing Select option z-index bug in Bulma */
+.select:not(.is-multiple):not(.is-loading)::after {
+    z-index: 2 !important;
+}
+
 html {
     overflow: hidden;
+}
+
+.hide {
+    display: none;
 }
 
 .desktop-view-toggle {
@@ -51,7 +60,7 @@ html {
     border-radius: 6px;
     padding: 5px;
     position: absolute;
-    z-index: 2;
+    z-index: 1;
     bottom: 150%;
     left: 50%;
     margin-left: -75px;
@@ -75,6 +84,10 @@ html {
     opacity: 1;
 }
 
+.copy-button-tooltiptext-bottom {
+    bottom: -150% !important;
+}
+
 /* Tooltip Copy Button Ends */
 
 .full-page-container {
@@ -88,9 +101,8 @@ html {
 }
 
 .header-container {
-    background-color: rgb(197, 44, 184);
     width: 100%;
-    height: 100px;
+    height: 70px;
     display: flex;
     justify-content: space-between;
 }
@@ -108,10 +120,51 @@ html {
     padding-right: 5px;
 }
 
+.down-arrow {
+    border: solid black;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    margin-left: 5px;
+    margin-bottom: 5px;
+}
+
+.profile-dropdown-container {
+    position: relative;
+    display: inline-block;
+}
+
+.profile-dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    width: 100%;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.profile-dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.profile-dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+.profile-dropdown-container:hover .profile-dropdown-content {
+    display: block;
+}
+
+/* Header Styling Ends And Search Starts */
+
 .search-container {
     width: 80%;
     height: 80%;
-    background-color: brown;
     margin: auto;
 }
 
@@ -154,11 +207,68 @@ html {
 .search-list-container {
     width: 100%;
     height: 75%;
-    background-color: cornflowerblue;
     position: absolute;
     bottom: 0;
     overflow-y: auto;
     overflow-x: hidden;
+    padding-bottom: 5px;
+    padding-top: 5px;
+
+    -moz-box-shadow: inset 0px 11px 8px -10px #CCC, inset 0px -11px 8px -10px #CCC;
+    -webkit-box-shadow: inset 0px 11px 8px -10px #CCC, inset 0px -11px 8px -10px #CCC;
+    box-shadow: inset 0px 5px 3px -5px #CCC, inset 0px -5px 3px -5px #CCC;
+}
+
+
+/* ---------------------------------------- Adding Search Loading Animation */
+
+.search-load-container {
+    background-color: rgb(212, 212, 212);
+    opacity: 0.8;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.search-load-content {
+    width: 130px;
+    height: 50%;
+    margin: auto;
+    margin-top: 27%;
+}
+
+.search-load-element {
+    border: 16px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 16px solid blue;
+    border-bottom: 16px solid blue;
+    width: 120px;
+    height: 120px;
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+}
+
+@-webkit-keyframes spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+    }
+
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 .card-container {
@@ -169,36 +279,57 @@ html {
 
 /* Card Main Section */
 
+.card-main-container {
+    margin-bottom: 0 !important;
+}
+
 .card-element-container {
     font-size: large;
     font-weight: 600;
+    padding: 10px;
 }
 
-.starting-from-box {
-    background-color: cadetblue;
-    font-size: small;
+.vendor-number-container {
+    font-size: 15px;
+    font-weight: normal;
+}
+
+.rating-container {
+    color: #ffcd3c;
+}
+
+.website-link-button {
     color: white;
-    width: fit-content;
-    margin: auto;
-    border-radius: 2px;
+    padding: 10px;
+    border-radius: 4px;
+
+    box-shadow: 0 0 20px #eee;
+    transition: 0.5s;
+    background: linear-gradient(90deg, #f6d365, #fda085 51%, #f6d365) var(--website_button_var, 0)/ 200%;
+
+}
+
+.website-link-button:hover {
+    color: yellow;
+    --website_button_var: 100%;
 }
 
 /* Card Second Section */
 
 .card-second-container {
-    max-height: 40px;
+    max-height: 30px;
     overflow-y: hidden;
     transition: max-height 0.3s ease-in;
 }
 
 .card-expanded-container {
-    max-height: 300px;
+    max-height: 200px;
     transition: max-height 0.7s ease-out;
 }
 
 .card-view-more-container {
     width: 100%;
-    height: 50px;
+    height: 45px;
     padding-right: 20px;
 }
 
@@ -211,6 +342,189 @@ html {
     width: 100%;
 }
 
+.services-list-container li {
+    display: inline;
+    margin-right: 10px;
+}
+
+/* ----------------------------------------------- Overlay form Container */
+
+.content-overlay {
+    background-color: rgb(209, 209, 209);
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.overlay-cross-container {
+    position: fixed;
+    top: 0;
+    right: 0;
+    margin-top: 3%;
+    margin-right: 3%;
+    cursor: pointer;
+    color: rgb(117, 117, 117);
+}
+
+/* Login Form */
+
+.login-box-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    height: 60vh;
+    border-radius: 10px;
+    background-color: white;
+    padding: 15px;
+    overflow-x: hidden;
+}
+
+.login-heading-container {
+    font-size: 30px;
+    font-weight: 800;
+    width: fit-content;
+    margin: auto;
+    margin-top: 40px;
+}
+
+.login-form-container {
+    padding-top: 20px;
+    width: 80%;
+    margin: auto;
+}
+
+.form-field-outer-container {
+    display: flex;
+}
+
+.form-content-container {
+    color: rgb(212, 212, 212);
+    padding-top: 30px;
+    font-size: 20px;
+    width: 100%;
+    border-bottom: 2px solid rgb(212, 212, 212);
+    transition: all 0.5s;
+}
+
+.form-label-container {
+    color: rgb(146, 146, 146);
+    font-size: 10px;
+    padding-bottom: 5px;
+    font-weight: 700;
+}
+
+.form-field-container {
+    padding: 10px;
+    font-size: 17px;
+    width: 70%;
+    border: none;
+}
+
+.form-field-container:focus {
+    outline: none;
+}
+
+.form-field-select-container {
+    width: 70px;
+    font-size: 15px;
+    padding: 2px;
+    background: white;
+}
+
+.form-otp-container {
+    margin: auto;
+    width: fit-content;
+    border-bottom: black;
+    padding-left: 8px;
+}
+
+.form-field-otp-container {
+    letter-spacing: 30px;
+    font-size: large;
+    border: 0;
+    width: fit-content;
+    margin: auto;
+}
+
+.form-content-container:focus-within {
+    color: rgb(37, 37, 37);
+    border-color: rgb(37, 37, 37);
+}
+
+.login-button-container {
+    width: 80%;
+    margin: auto;
+    border-radius: 40px;
+    text-align: center;
+    background-image: linear-gradient(217deg, #00ceb1, #eb9ce9);
+    transition: all 0.5s;
+    cursor: pointer;
+}
+
+.login-button-internal {
+    background: none;
+    border: none;
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    cursor: pointer;
+    color: white;
+    font-size: 12px;
+    font-weight: 900;
+}
+
+.login-button-container:hover {
+    background-image: linear-gradient(217deg, #00b89f, #c782c5);
+}
+
+
+/* Email Form */
+
+.email-form-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    height: 300px;
+    border-radius: 10px;
+    background-color: white;
+    padding: 15px;
+    overflow-x: hidden;
+}
+
+/* Order Form */
+
+.order-form-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    height: 60vh;
+    border-radius: 10px;
+    background-color: white;
+    padding: 15px;
+    overflow-x: hidden;
+}
+
+
+/* Page Load Overlay */
+#page-load-overlay {
+    background-color: rgb(212, 212, 212);
+    opacity: 0.8;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
 
 
 @media (max-width: 768px) {

@@ -27,14 +27,14 @@
     <!--   Calling AWS S3 from local file   -->
 
     <!-- Add the entire Firebase JavaScript SDK -->
-    <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase.js"></script>
+    <!-- <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase.js"></script> -->
 
     <title>floww Search</title>
 </head>
 
 <body>
 
-    <div class="full-page-container">
+    <div class="full-page-container" id="search-page-id">
 
         <div class="header-container">
             <div class="header-left-container">
@@ -46,19 +46,22 @@
             </div>
 
             <div class="header-right-container">
-                <div class="columns">
-                    <div class="column">
-                        <button class="button">
-                            My Orders
-                        </button>
-                    </div>
 
-                    <div class="column">
-                        <button class="button">
-                            Login
-                        </button>
+                <div class="column" v-if="!userAuth">
+                    <button class="button" @click="LoginButton">
+                        Login | SignUp
+                    </button>
+                </div>
+
+                <div class="header-content-container profile-dropdown-container" v-if="userAuth">
+                    <span class="button is-rounded profile-dropbtn">{{userContactNo}} <i class="down-arrow"></i></span>
+                    <div class="profile-dropdown-content has-text-centered">
+                        <a class="" href="#">My Orders</a>
+                        <a class="" @click="GetApiKey">Get API Key</a>
+                        <a class="" @click="LogoutButton">Logout</a>
                     </div>
                 </div>
+
             </div>
         </div>
 
@@ -68,9 +71,9 @@
                 <div class="search-bar-container">
                     <div class="location-filter-container">
                         <div class="select is-rounded location-filter-body">
-                            <select>
-                                <option>Select City</option>
-                                <option>With options</option>
+                            <select v-model="location" v-on:change="GetVendorList">
+                                <option hidden value="empty" selected disabled>Select City</option>
+                                <option v-for="city in vendorCities" :value="city.id">{{city.name}}</option>
                             </select>
                         </div>
                     </div>
@@ -79,9 +82,9 @@
 
                     <div class="tag-filter-container">
                         <div class="select is-rounded tag-filter-body">
-                            <select>
-                                <option>Select Tag</option>
-                                <option>With options</option>
+                            <select v-model="tagSelected" v-on:change="GetVendorList">
+                                <option hidden value="empty" selected disabled>Select Tag</option>
+                                <option v-for="tag in vendorTags" :value="tag.id">{{tag.name}}</option>
                             </select>
                         </div>
                     </div>
@@ -89,39 +92,41 @@
                     <br>
                     <br>
 
-                    <div class="filter-text-container">
-                        <span>Showing <span class="tag is-medium">12</span> 3PL providers in <span
-                                class="tag is-medium">Mumbai <button class="delete is-small"></button></span> with <span
-                                class="tag is-medium">Same Day Delivery <button
-                                    class="delete is-small"></button></span></span>
+                    <div class="filter-text-container has-text-centered">
+                        <span>Showing <span class="tag is-medium">{{vendorList.length}}</span> 3PL providers in <span
+                                class="tag is-medium">{{tagNames[location]}} <button class="delete is-small"
+                                    @click="RemoveLocation()"></button></span> with <span
+                                class="tag is-medium">{{tagNames[tagSelected]}} <button class="delete is-small"
+                                    @click="RemoveTag()"></button></span></span>
+                    </div>
+                </div>
+
+                <div class="search-load-container" v-if="searchLoading">
+                    <div class="search-load-content">
+                        <div class="search-load-element"></div>
                     </div>
                 </div>
 
                 <div class="search-list-container">
 
                     <!-- Card Starts -->
-                    <div class="card-container box has-text-centered">
-                        <div class="card-main-container columns">
+                    <!-- <div class="card-container box has-text-centered">
+                        <div class="card-main-container columns is-vcentered">
                             <div class="column">
                                 <div class="card-element-container">
                                     <span>JS Transport</span>
                                 </div>
                                 <div class="card-element-container starting-from-box">
-                                    <span>starting ₹49</span>
+                                    <span class="tag is-warning">starting ₹49</span>
                                 </div>
                             </div>
 
                             <div class="column">
-                                <div class="card-element-container">
+                                <div class="card-element-container rating-container">
                                     <span><i class="fa fa-star"></i> 4.5/5</span>
                                 </div>
-                                <div class="card-element-container">
-                                    <div class="copy-button-tooltip">
-                                        <button onclick="CopyButton('+91 9910530300', this)"
-                                            onmouseout="CleanCopyButton(this)">
-                                            <span class="copy-button-tooltiptext">Click to Copy</span>+91 9910530300
-                                        </button>
-                                    </div>
+                                <div class="card-element-container vendor-number-container">
+                                    <a href="tel:+91 9910530300"><u>+91 9910530300</u></a>
                                 </div>
                             </div>
 
@@ -129,22 +134,22 @@
                                 <div class="card-element-container">
                                     <div class="copy-button-tooltip">
                                         <button onclick="CopyButton('VEN21432', this)"
-                                            onmouseout="CleanCopyButton(this)">
+                                            onmouseout="CleanCopyButton(this)" class="button is-warning is-small">
                                             <span class="copy-button-tooltiptext">Click to Copy</span>Get Vendor Key
                                         </button>
                                     </div>
                                 </div>
-                                <div class="card-element-container">
-                                    <a href="#"><span>API Docs</span></a>
+                                <div class="card-element-container vendor-number-container">
+                                    <a href="#"><span><u>API Docs</u></span></a>
                                 </div>
                             </div>
 
-                            <div class="column">
+                            <div class="column has-text-right is-4">
                                 <div class="card-element-container">
-                                    <a href="#" class="website-link-button"><span>Open Website</span></a>
+                                    <a href="#" class="website-link-button"><span>Open WEBSITE</span></a>
                                 </div>
                                 <div class="card-element-container">
-                                    <a class="website-link-button"><span>Request Delivery</span></a>
+                                    <a class="website-link-button"><span>Request DELIVERY</span></a>
                                 </div>
                             </div>
                         </div>
@@ -152,7 +157,8 @@
                         <div class="card-second-container">
 
                             <div class="card-view-more-container">
-                                <button class="button is-small is-rounded is-link" onclick="ToggleCardView(this)">View More</button>
+                                <button class="button is-small is-rounded is-link" onclick="ToggleCardView(this)">
+                                    <span>View More</span></button>
                             </div>
 
                             <div class="card-expand-container columns is-multiline is-gapless">
@@ -165,7 +171,7 @@
                                         <span>BKC, Mumbai</span>
                                     </div>
                                     <div class="column">
-                                        <span>1-10 Riders</span>
+                                        <span>1-10 {{tagNames[vendorList[0].fleetType]}}</span>
                                     </div>
                                 </div>
                                 <div class="column is-full columns has-text-left">
@@ -173,7 +179,9 @@
                                         <span>Services :</span>
                                     </div>
                                     <div class="column">
-                                        <span>Same Day Delivery, OTP Verification</span>
+                                        <ul class="services-list-container">
+                                            <li v-for="service in services" class="tag is-small">{{service}}</li>
+                                        </ul>
                                     </div>
                                 </div>
                                 <div class="column is-full columns has-text-left">
@@ -181,7 +189,9 @@
                                         <span>Badges :</span>
                                     </div>
                                     <div class="column">
-                                        <span>Same Day Delivery, OTP Verification</span>
+                                        <ul class="services-list-container">
+                                            <li v-for="service in services" class="tag is-small">{{service}}</li>
+                                        </ul>
                                     </div>
                                 </div>
 
@@ -189,8 +199,11 @@
 
                         </div>
 
-                    </div>
+                    </div> -->
                     <!-- Card Ends -->
+
+                    <vendor-card-component v-for="vendor in vendorList" :vendordata="vendor" :tagnames="tagNames"
+                        @request-delivery="RequestDelivery(vendor.vendorKey, vendor.name)"></vendor-card-component>
 
                 </div>
             </div>
@@ -206,6 +219,145 @@
 
         </div>
 
+        <div class="content-overlay" v-if="contentOverlay">
+
+            <div class="overlay-cross-container">
+                <span class="icon">
+                    <i class="fa fa-times fa-2x" v-on:click="CloseOverlay"></i>
+                </span>
+            </div>
+
+
+            <!-- Login Form Container -->
+
+            <div class="login-form-outside-container" v-if="formType=='login'">
+
+                <div class="login-box-container">
+
+                    <div class="login-heading-container">
+                        <p>Login</p>
+                    </div>
+
+                    <div class="login-form-container">
+                        <div class="form-content-container" v-if="loginForm.status=='number'">
+                            <p class="form-label-container">Phone Number</p>
+                            <p class="form-field-outer-container">
+                                <i class="fa fa-phone" style="height: fit-content; margin: auto;"></i>
+                                <select class="form-field-select-container form-field-container"
+                                    v-model="phoneForm.code" onchange="CountryCodeChange(this.value)"
+                                    id="phone-country-code-id">
+                                    <option id="countryselecteditem" value=""></option>
+                                    <option v-for="country in countryCode" :value="country.dial_code">{{country.name}}
+                                        ({{country.dial_code}})
+                                    </option>
+                                </select>
+                                <input class="form-field-container" type="number"
+                                    onKeyPress="if(this.value.length==10) return false;"
+                                    placeholder="10 digit Mobile No" v-model="phoneForm.number">
+                            </p>
+                        </div>
+                        <div class="form-content-container" style="width: 85%; margin: auto;"
+                            v-if="loginForm.status=='otp'">
+                            <p class="form-otp-container">
+                                <input class="form-field-container form-field-otp-container" type="number"
+                                    onKeyPress="if(this.value.length==6) return false;" v-model="phoneForm.otp">
+                            </p>
+                        </div>
+                        <br>
+                        <p class="help" style="text-align: center;" v-if="loginForm.status=='otp'">
+                            OTP Sent on your Mobile
+                        </p>
+
+                    </div>
+
+                    <br>
+
+                    <div class="login-button-container" v-if="loginForm.status=='number'">
+                        <button class="login-button-internal" id="get-otp-button">Get OTP</button>
+                    </div>
+
+                    <div class="login-button-container" v-if="loginForm.status=='otp'" v-on:click="SubmitOtp">
+                        <button class="login-button-internal">Submit OTP</button>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Email Form Container -->
+
+            <div class="email-form-container" v-if="formType=='email'">
+                <p class="subtitle">
+                    Please provide your email ID, so we can send you the API Key on your email.
+                </p>
+                <p class="help has-text-danger" v-if="emailForm.error!='none'">{{emailForm.error}}</p>
+
+                <p>
+                <div class="field">
+                    <div class="control">
+                        <input class="input" type="email" placeholder="e.g. jake2021@gmail.com" v-model="emailForm.email">
+                    </div>
+                </div>
+                <div class="control">
+                    <button class="button is-primary" @click="SubmitEmail">Submit</button>
+                </div>
+                </p>
+            </div>
+
+            <!-- Order Form Container -->
+
+            <div class="order-form-container" v-if="formType=='order'">
+
+                <div class="vendor-order-form-container">
+                    <span>Requesting delivery from <span class="subtitle has-text-primary">{{orderForm.vendorName}}</span></span>
+                </div>
+                
+                <br>
+
+                <div class="base-order-form-container" v-if="orderForm.formStatus ==='base'">
+                    <div class="field">
+                        <label class="label">Company Name / Your Name</label>
+                        <div class="control">
+                            <input class="input" type="text" placeholder="e.g. Amazon" v-model="orderForm.companyName">
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label class="label">Product Description</label>
+                        <div class="control">
+                            <input class="input" type="text" placeholder="e.g. Fresh Vegitables" v-model="orderForm.productType">
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label class="label">Delivery Date</label>
+                        <div class="control">
+                            <input class="input" type="date" v-on:change="ChangeDeliveryDate($event)">
+                        </div>
+                    </div>
+
+                    <br>
+
+                    <div class="control" style="position: relative;">
+                        <button class="button is-info" style="position: absolute; right: 5px;" @click="OrderFormNext">Next</button>
+                        <p class="help has-text-danger">Please fill all 3 fields</p>
+                    </div>
+
+                </div>
+
+                <div class="advance-order-form-container" v-if="orderForm.formStatus ==='advance'">
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div id="page-load-overlay">
+            <div class="search-load-content">
+                <div class="search-load-element"></div>
+            </div>
+        </div>
+
     </div>
 
 
@@ -215,6 +367,12 @@
     <script
         src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyAVcyVFjXhbFtR3dqbfoFWtHx0doqT7leE"></script>
     <!-- Google Address Autocomplete Places -->
+
+
+    <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-firestore.js"></script>
+    <!-- Add Firebase products that you want to use -->
 
     <script src="js/countryCode.js"></script>
     <!-- Country Code JS file -->
