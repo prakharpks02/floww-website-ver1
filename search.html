@@ -228,7 +228,7 @@
             </div>
 
 
-            <!-- Login Form Container -->
+            <!-- -----------------------Login Form Container -->
 
             <div class="login-form-outside-container" v-if="formType=='login'">
 
@@ -283,7 +283,7 @@
 
             </div>
 
-            <!-- Email Form Container -->
+            <!-- ---------------------Email Form Container -->
 
             <div class="email-form-container" v-if="formType=='email'">
                 <p class="subtitle">
@@ -294,7 +294,8 @@
                 <p>
                 <div class="field">
                     <div class="control">
-                        <input class="input" type="email" placeholder="e.g. jake2021@gmail.com" v-model="emailForm.email">
+                        <input class="input" type="email" placeholder="e.g. jake2021@gmail.com"
+                            v-model="emailForm.email">
                     </div>
                 </div>
                 <div class="control">
@@ -303,17 +304,158 @@
                 </p>
             </div>
 
-            <!-- Order Form Container -->
+            <!-- --------------------Order Form Container -->
 
             <div class="order-form-container" v-if="formType=='order'">
 
-                <div class="vendor-order-form-container">
-                    <span>Requesting delivery from <span class="subtitle has-text-primary">{{orderForm.vendorName}}</span></span>
-                </div>
-                
+                <p>Requesting delivery from <span class="subtitle has-text-primary">{{orderForm.vendorName}}</span></p>
+
                 <br>
 
-                <div class="base-order-form-container" v-if="orderForm.formStatus ==='base'">
+                <!-- Desktop View of Order Form -->
+                <div class="desktop-view-toggle">
+
+                    <div class="field is-horizontal">
+                        <div class="field-body">
+                            <div class="field">
+                                <div class="control">
+                                    <input class="input" type="text" placeholder="Company Name OR Your Name"
+                                        v-model="orderForm.companyName">
+                                </div>
+                            </div>
+
+                            <div class="field">
+                                <div class="control">
+                                    <input class="input" type="text" placeholder="Type of Product"
+                                        v-model="orderForm.productType">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="width: 350px;" class="columns is-vcentered">
+                        <div class="column">
+                            <label class="label">Delivery Date</label>
+                        </div>
+                        <div class="field column">
+                            <div class="control">
+                                <input class="input" type="date" v-on:change="ChangeDeliveryDate($event)">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <hr>
+
+                <div class="control">
+                    <label class="radio">
+                        <input type="radio" value="perOrder" v-model="orderForm.orderType">
+                        Per Order Delivery
+                    </label>
+                    <label class="radio">
+                        <input type="radio" value="rental" v-model="orderForm.orderType">
+                        Vehicle Rental
+                    </label>
+                </div>
+
+                <div class="internal-order-form-container" v-if="orderForm.orderType=='perOrder'">
+                    <div class="per-order-form-container">
+
+                        <div class="field is-horizontal">
+                            <div class="field-body">
+                                <div class="field">
+                                    <div class="control">
+                                        <input class="input" type="text" placeholder="Pickup Address"
+                                            v-model="orderTempElement.pickup">
+                                    </div>
+                                </div>
+
+                                <div class="field">
+                                    <div class="control">
+                                        <input class="input" type="text" placeholder="Pickup Contact No"
+                                            v-model="orderTempElement.pickupNo">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="field is-horizontal">
+                            <div class="field-body">
+                                <div class="field">
+                                    <div class="control">
+                                        <input class="input" type="text" placeholder="Drop Address"
+                                            v-model="orderTempElement.drop">
+                                    </div>
+                                </div>
+
+                                <div class="field">
+                                    <div class="control">
+                                        <input class="input" type="text" placeholder="Drop Contact No"
+                                            v-model="orderTempElement.dropNo">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="field is-horizontal">
+                            <div class="field-body">
+                                <div class="field">
+                                    <div class="select is-rounded">
+                                        <select v-model="orderTempElement.weight">
+                                            <option hidden value="" selected disabled>Select Weight</option>
+                                            <option v-for="weight in weightRanges" :value="weight.id">{{weight.name}}
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="field">
+                                    <div class="control">
+                                        <textarea class="textarea"
+                                            placeholder="Please add any instruction or Description here" v-model="orderTempElement.instruction"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="per-order-list-container">
+                        <div class="per-order-list-card" v-for="order in orderForm.orderList">
+                            <p class="per-order-list-element">{{order.pickupNo}} - {{order.pickup}}</p>
+                            <p class="per-order-list-element">{{order.dropNo}} - {{order.drop}}</p>
+                            <p>Weight - {{order.weight}} Kg | <span :title="order.instructions">Hover to See
+                                    Instruction</span></p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="internal-order-form-container" v-if="orderForm.orderType=='rental'">
+                    <div class="select is-rounded">
+                        <select v-model="location" v-on:change="GetVendorList">
+                            <option hidden value="empty" selected disabled>Select City</option>
+                            <option v-for="city in vendorCities" :value="city.id">{{city.name}}</option>
+                        </select>
+                    </div>
+
+                    <br>
+
+                    <div class="field">
+                        <label class="label">Company Name / Your Name</label>
+                        <div class="control">
+                            <input class="input" type="text" placeholder="e.g. Amazon" v-model="orderForm.companyName">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Mobile View of Order Form -->
+            <div class="mobile-view-toggle">
+
+                <div class="base-order-form-container" v-if="orderFormMobile.formStatus ==='base'">
                     <div class="field">
                         <label class="label">Company Name / Your Name</label>
                         <div class="control">
@@ -324,7 +466,8 @@
                     <div class="field">
                         <label class="label">Product Description</label>
                         <div class="control">
-                            <input class="input" type="text" placeholder="e.g. Fresh Vegitables" v-model="orderForm.productType">
+                            <input class="input" type="text" placeholder="e.g. Fresh Vegitables"
+                                v-model="orderForm.productType">
                         </div>
                     </div>
 
@@ -338,25 +481,108 @@
                     <br>
 
                     <div class="control" style="position: relative;">
-                        <button class="button is-info" style="position: absolute; right: 5px;" @click="OrderFormNext">Next</button>
-                        <p class="help has-text-danger">Please fill all 3 fields</p>
+                        <button class="button is-info" style="position: absolute; right: 5px;"
+                            @click="OrderFormMobileNext">Next</button>
+                        <p class="help has-text-danger" style="position: absolute; left: 5px;"
+                            v-if="orderFormMobile.error1">
+                            Please fill all 3 fields</p>
                     </div>
 
                 </div>
 
-                <div class="advance-order-form-container" v-if="orderForm.formStatus ==='advance'">
+                <div class="advance-order-form-container" v-if="orderFormMobile.formStatus ==='advance'">
 
+                    <div class="control">
+                        <label class="radio">
+                            <input type="radio" value="perOrder" v-model="orderForm.orderType">
+                            Per Order Delivery
+                        </label>
+                        <label class="radio">
+                            <input type="radio" value="rental" v-model="orderForm.orderType">
+                            Vehicle Rental
+                        </label>
+                    </div>
+
+                    <div class="internal-order-form-container" v-if="orderForm.orderType=='perOrder'">
+                        <div class="per-order-form-container">
+                            <div class="field">
+                                <label class="label">Company Name / Your Name</label>
+                                <div class="control">
+                                    <input class="input" type="text" placeholder="e.g. Amazon"
+                                        v-model="orderForm.companyName">
+                                </div>
+                            </div>
+
+                            <div class="field">
+                                <label class="label">Company Name / Your Name</label>
+                                <div class="control">
+                                    <input class="input" type="text" placeholder="e.g. Amazon"
+                                        v-model="orderForm.companyName">
+                                </div>
+                            </div>
+
+                            <div class="field">
+                                <label class="label">Company Name / Your Name</label>
+                                <div class="control">
+                                    <input class="input" type="text" placeholder="e.g. Amazon"
+                                        v-model="orderForm.companyName">
+                                </div>
+                            </div>
+
+                            <div class="field">
+                                <label class="label">Company Name / Your Name</label>
+                                <div class="control">
+                                    <input class="input" type="text" placeholder="e.g. Amazon"
+                                        v-model="orderForm.companyName">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="per-order-list-container">
+                            <div class="per-order-list-card" v-for="order in orderForm.orderList">
+                                <p class="per-order-list-element">{{order.pickupNo}} - {{order.pickup}}</p>
+                                <p class="per-order-list-element">{{order.dropNo}} - {{order.drop}}</p>
+                                <p>Weight - {{order.weight}} Kg | <span :title="order.instructions">Hover to See
+                                        Instruction</span></p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="internal-order-form-container" v-if="orderForm.orderType=='rental'">
+                        <div class="select is-rounded">
+                            <select v-model="location" v-on:change="GetVendorList">
+                                <option hidden value="empty" selected disabled>Select City</option>
+                                <option v-for="city in vendorCities" :value="city.id">{{city.name}}</option>
+                            </select>
+                        </div>
+
+                        <br>
+
+                        <div class="field">
+                            <label class="label">Company Name / Your Name</label>
+                            <div class="control">
+                                <input class="input" type="text" placeholder="e.g. Amazon"
+                                    v-model="orderForm.companyName">
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
             </div>
 
+
+
+
         </div>
 
-        <div id="page-load-overlay">
-            <div class="search-load-content">
-                <div class="search-load-element"></div>
-            </div>
+    </div>
+
+    <div id="page-load-overlay">
+        <div class="search-load-content">
+            <div class="search-load-element"></div>
         </div>
+    </div>
 
     </div>
 
@@ -364,14 +590,14 @@
 
     <!-- All JS files start here -->
 
-    <script
-        src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyAVcyVFjXhbFtR3dqbfoFWtHx0doqT7leE"></script>
+    <!-- <script
+        src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyAVcyVFjXhbFtR3dqbfoFWtHx0doqT7leE"></script> -->
     <!-- Google Address Autocomplete Places -->
 
 
-    <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-app.js"></script>
+    <!-- <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-firestore.js"></script> -->
     <!-- Add Firebase products that you want to use -->
 
     <script src="js/countryCode.js"></script>

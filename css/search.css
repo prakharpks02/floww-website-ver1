@@ -505,14 +505,21 @@ html {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 400px;
-    height: 60vh;
+    width: 600px;
+    height: 750px;
     border-radius: 10px;
     background-color: white;
     padding: 15px;
     overflow-x: hidden;
 }
 
+.base-order-form-container {
+    height: fit-content;
+}
+
+.internal-order-form-container {
+    margin-top: 15px;
+}
 
 /* Page Load Overlay */
 #page-load-overlay {
@@ -539,6 +546,11 @@ html {
 
     .header-left-container {
         width: 80px;
+    }
+
+    .order-form-container {
+        width: 350px;
+        height: 450px;
     }
 
 }

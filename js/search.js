@@ -84,7 +84,7 @@ var firebaseConfig = {
 };
 
 // Initialize Firebase
-firebase.initializeApp(firebaseConfig);
+//firebase.initializeApp(firebaseConfig);
 
 var authConfirmResult = undefined;
 // --------------------------------------------- Firebase Code End
@@ -235,6 +235,8 @@ var app1 = new Vue({
         'tagNames': tagNames,
         'vendorCities': vendorCities,
         'vendorTags': vendorTags,
+        'weightRanges': weightRanges,
+        'rentalPlan': rentalPlan,
 
         'vendorList': vendorListConst,
         'location': 'mumbai',
@@ -260,7 +262,6 @@ var app1 = new Vue({
             'error': 'none'
         },
         'orderForm': {
-            'formStatus': 'base',
             'vendorKey': '',
             'vendorName': 'JS Transport',
             'companyName': '',
@@ -268,10 +269,22 @@ var app1 = new Vue({
             'deliveryDate': '',
             'orderType': 'perOrder',
             'orderList': [],
-            'rentDetail': {
-                'time': '',
-                'contactNo': ''
-            }
+            'rentPlan': '',
+            'serviceList': [],
+        },
+        'orderTempElement': {
+            'pickup': '',
+            'pickupNo': '',
+            'drop': '',
+            'dropNo': '',
+            'weight': '',
+            'instruction': '',
+        },
+        'selectedVendorService': [],
+        'orderFormMobile': {
+            'formStatus': 'base',
+            'error1': false,
+            'error2': false,
         },
     },
     methods: {
@@ -440,21 +453,28 @@ var app1 = new Vue({
                 'deliveryDate': '',
                 'orderType': 'perOrder',
                 'orderList': [],
-                'rentDetail': {
-                    'time': '',
-                    'contactNo': ''
-                }
+                'rentPlan': '',
+                'serviceList': [],
+            };
+            this.orderFormMobile = {
+                'formStatus': 'base',
+                'error1': false,
+                'error2': false,
             };
             this.orderForm.vendorKey = vendorkey;
             this.orderForm.vendorName = vendorname;
             this.formType = 'order';
             this.contentOverlay = true;
         },
-        ChangeDeliveryDate: function(event) {
-            this.orderForm.deliveryDate = Math.round(new Date(event.currentTarget.value).getTime()/1000);
+        ChangeDeliveryDate: function (event) {
+            this.orderForm.deliveryDate = Math.round(new Date(event.currentTarget.value).getTime() / 1000);
         },
-        OrderFormNext: function () {
-
+        OrderFormMobileNext: function () {
+            if (this.orderForm.companyName == '' || this.orderForm.productType == '' || this.orderForm.deliveryDate == '') {
+                this.orderForm.error1 = true;
+            } else {
+                this.orderForm.formStatus = 'advance';
+            };
         },
         // DeleteOrder: function (orderid) {
         // 	console.log(orderid);
