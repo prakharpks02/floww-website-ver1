@@ -90,4 +90,16 @@ const rentalPlan = [{
     'id': 'plan3',
 }]
 
+
+const orderStatus = [{
+    'name': 'When order is requested',
+    'id': 'requested',
+}, {
+    'name': 'Accepted, and in progress (not working now)',
+    'id': 'enroute',
+}, {
+    'name': 'Completed the order',
+    'id': 'completed',
+}]
+
 const globalApiUrl = "https://backend.gofloww.co"
