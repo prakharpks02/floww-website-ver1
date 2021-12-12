@@ -10,7 +10,12 @@ const tagNames = {
     'bangalore': 'Bangalore',
     'patna': 'Patna',
     'delhi': 'Delhi',
-    'pune': 'Pune',
+    'weight0': '0 - 1 Kg',
+    'weight1': '1 - 5 Kg',
+    'weight2': '6 - 10 Kg',
+    'weight3': '11 - 15 Kg',
+    'weight4': '16 - 20 Kg',
+    'weight5': '21+ Kg',
 }
 
 const vendorCities = [{
@@ -79,7 +84,7 @@ const weightRanges = [{
     'id': 'weight5',
 }]
 
-const rentalPlan = [{
+const rentalPlans = [{
     'name': 'For 1 hr',
     'id': 'plan1',
 }, {
