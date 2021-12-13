@@ -96,6 +96,18 @@ const rentalPlans = [{
 }]
 
 
+const taskStatus = [{
+    'name': 'When task is requested',
+    'id': 'requested',
+}, {
+    'name': 'Accepted, and in progress (not working now)',
+    'id': 'working',
+}, {
+    'name': 'Completed the task',
+    'id': 'completed',
+}]
+
+
 const orderStatus = [{
     'name': 'When order is requested',
     'id': 'requested',
