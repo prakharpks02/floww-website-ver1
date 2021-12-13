@@ -3,7 +3,7 @@ var vendorListConst = [{
     'startPrice': '57',
     'rating': '4.1',
     'contactNo': '+91 9999955555',
-    'vendorKey': 'VEN10000',
+    'vendorCode': 'VEN10000',
     'year': '1941',
     'location': 'Juhu, Mumbai',
     'size': '30-50',
@@ -15,7 +15,7 @@ var vendorListConst = [{
     'startPrice': '57',
     'rating': '4.1',
     'contactNo': '+91 9999955555',
-    'vendorKey': 'VEN10000',
+    'vendorCode': 'VEN10000',
     'year': '1941',
     'location': 'Juhu, Mumbai',
     'size': '30-50',
@@ -27,7 +27,7 @@ var vendorListConst = [{
     'startPrice': '57',
     'rating': '4.1',
     'contactNo': '+91 9999955555',
-    'vendorKey': 'VEN10000',
+    'vendorCode': 'VEN10000',
     'year': '1941',
     'location': 'Juhu, Mumbai',
     'size': '30-50',
@@ -39,7 +39,7 @@ var vendorListConst = [{
     'startPrice': '57',
     'rating': '4.1',
     'contactNo': '+91 9999955555',
-    'vendorKey': 'VEN10000',
+    'vendorCode': 'VEN10000',
     'year': '1941',
     'location': 'Juhu, Mumbai',
     'size': '30-50',
@@ -51,7 +51,7 @@ var vendorListConst = [{
     'startPrice': '57',
     'rating': '4.1',
     'contactNo': '+91 9999955555',
-    'vendorKey': 'VEN10000',
+    'vendorCode': 'VEN10000',
     'year': '1941',
     'location': 'Juhu, Mumbai',
     'size': '30-50',
@@ -118,6 +118,15 @@ function ToggleCardView(element) {
     }
 }
 
+function ToggleViewList(element) {
+    document.getElementById('mobile-per-order-list-container').classList.toggle('hide');
+    if (element.innerHTML == "View List") {
+        element.innerHTML = "Close List";
+    } else {
+        element.innerHTML = "View List";
+    }
+}
+
 
 
 
@@ -157,7 +166,7 @@ Vue.component('vendor-card-component', {
                                 <button onclick="CopyButton(this)"
                                     onmouseout="CleanCopyButton(this)" class="button is-warning is-small">
                                     <span class="copy-button-tooltiptext">Click to Copy</span>Get Vendor Key
-                                    <span style="display: none;">{{vendordata.vendorKey}}</span>
+                                    <span style="display: none;">{{vendordata.vendorCode}}</span>
                                 </button>
                             </div>
                         </div>
@@ -236,7 +245,7 @@ var app1 = new Vue({
         'vendorCities': vendorCities,
         'vendorTags': vendorTags,
         'weightRanges': weightRanges,
-        'rentalPlan': rentalPlan,
+        'rentalPlans': rentalPlans,
 
         'vendorList': vendorListConst,
         'location': 'mumbai',
@@ -262,27 +271,30 @@ var app1 = new Vue({
             'error': 'none'
         },
         'orderForm': {
-            'vendorKey': '',
+            'vendorCode': '',
             'vendorName': 'JS Transport',
             'companyName': '',
             'productType': '',
             'deliveryDate': '',
             'orderType': 'perOrder',
             'orderList': [],
-            'rentPlan': '',
+            'rentPlan': 'N/A',
             'serviceList': [],
         },
+        'pickupCheckbox': false,
         'orderTempElement': {
             'pickup': '',
+            'pickupPincode': '',
             'pickupNo': '',
             'drop': '',
+            'dropPincode': '',
             'dropNo': '',
             'weight': '',
             'instruction': '',
         },
         'selectedVendorService': [],
         'orderFormMobile': {
-            'formStatus': 'base',
+            'formStatus': 'advance',
             'error1': false,
             'error2': false,
         },
@@ -444,9 +456,9 @@ var app1 = new Vue({
                     window.alert('Server Error, Please Try Again!');
                 });
         },
-        RequestDelivery: function (vendorkey, vendorname) {
+        RequestDelivery: function (vendorcode, vendorname) {
             this.orderForm = {
-                'vendorKey': '',
+                'vendorCode': '',
                 'vendorName': '',
                 'companyName': '',
                 'productType': '',
@@ -461,7 +473,7 @@ var app1 = new Vue({
                 'error1': false,
                 'error2': false,
             };
-            this.orderForm.vendorKey = vendorkey;
+            this.orderForm.vendorCode = vendorcode;
             this.orderForm.vendorName = vendorname;
             this.formType = 'order';
             this.contentOverlay = true;
@@ -471,88 +483,77 @@ var app1 = new Vue({
         },
         OrderFormMobileNext: function () {
             if (this.orderForm.companyName == '' || this.orderForm.productType == '' || this.orderForm.deliveryDate == '') {
-                this.orderForm.error1 = true;
+                this.orderFormMobile.error1 = true;
             } else {
-                this.orderForm.formStatus = 'advance';
+                this.orderFormMobile.formStatus = 'advance';
             };
         },
-        // DeleteOrder: function (orderid) {
-        // 	console.log(orderid);
-        // 	axios.post(globalApiUrl + '/api/delete-order-draft/', {
-        // 			order_id: orderid,
-        // 			draft_id: globalDraftId,
-        // 		})
-        // 		.then(function (response) {
-        // 			let responseData = JSON.parse(response.data);
-        // 			console.log(responseData);
-        // 			let index = app1.orderList.findIndex(function (order) {
-        // 				return order.orderId == orderid
-        // 			});
-        // 			app1.orderList.splice(index, 1);
-        // 			try {
-        // 				let index = app1.errorList.findIndex(function (order) {
-        // 					return order.orderId == orderid
-        // 				});
-        // 				app1.errorList.splice(index, 1);
-        // 			} catch {
-        // 				// No Catch
-        // 			}
-        // 			try {
-        // 				let index = app1.correctList.findIndex(function (order) {
-        // 					return order.orderId == orderid
-        // 				});
-        // 				app1.correctList.splice(index, 1);
-        // 			} catch {
-        // 				// No Catch
-        // 			}
-        // 			try {
-        // 				let index = app1.warningList.findIndex(function (order) {
-        // 					return order.orderId == orderid
-        // 				});
-        // 				app1.warningList.splice(index, 1);
-        // 			} catch {
-        // 				// No Catch
-        // 			}
-        // 		})
-        // 		.catch(function (error) {
-        // 			console.error(error);
-        // 			window.alert('Server Error, Please Try Again!');
-        // 		});
+        AddOrder: function () {
+            let orderTempElementVar = JSON.parse(JSON.stringify(this.orderTempElement));
+            this.orderForm.orderList.push(orderTempElementVar);
 
-        // },
+            if (!this.pickupCheckbox) {
+                this.orderTempElement.pickup = '';
+                this.orderTempElement.pickupPincode = '';
+                this.orderTempElement.pickupNo = '';
+            }
+            this.orderTempElement.drop = '';
+            this.orderTempElement.dropPincode = '';
+            this.orderTempElement.dropNo = '';
+            this.orderTempElement.weight = '';
+            this.orderTempElement.instruction = '';
 
-        // PickupGoogleAuto: function () {
-        // 	let pickupInputField = document.getElementById("pickup-address-field");
-        // 	const autocomplete = new google.maps.places.Autocomplete(pickupInputField, googleOptions);
+        },
+        SubmitOrderForm: function () {
+            axios.post(globalApiUrl + '/api/sumbit-order-form/', {
+                    orderDetail: JSON.stringify(this.orderForm),
+                })
+                .then(function (response) {
+                    let responseData = JSON.parse(response.data);
+                    console.log(responseData.status);
 
-        // 	autocomplete.addListener("place_changed", () => {
-        // 		const place = autocomplete.getPlace();
-        // 		console.log(place);
+                    if (responseData.status == 'success') {
+                        app1.CloseOverlay();
+                    } else {
+                        window.alert('Server Error, Please try again!');
+                    };
+                })
+                .catch(function (error) {
+                    window.alert('Server Error, Please Try Again!');
+                });
+        },
+        PickupGoogleAuto: function () {
+        	let pickupInputField = document.getElementById("pickup-address-field");
+        	const autocomplete = new google.maps.places.Autocomplete(pickupInputField, googleOptions);
 
-        // 		for (var i = 0; i < place.address_components.length; i++) {
-        // 			if (place.address_components[i].types[0] == 'postal_code') {
-        // 				app1.formData.pickPincode = place.address_components[i].long_name;
-        // 			}
-        // 		}
-        // 		app1.formData.pickAddress = document.getElementById("pickup-address-field").value;
-        // 	})
-        // },
-        // DeliveryGoogleAuto: function () {
-        // 	let deliveryInputField = document.getElementById("delivery-address-field");
-        // 	const autocomplete = new google.maps.places.Autocomplete(deliveryInputField, googleOptions);
+        	autocomplete.addListener("place_changed", () => {
+        		const place = autocomplete.getPlace();
+        		console.log(place);
 
-        // 	autocomplete.addListener("place_changed", () => {
-        // 		const place = autocomplete.getPlace();
-        // 		console.log(place);
+        		for (var i = 0; i < place.address_components.length; i++) {
+        			if (place.address_components[i].types[0] == 'postal_code') {
+        				app1.formData.pickPincode = place.address_components[i].long_name;
+        			}
+        		}
+        		app1.formData.pickAddress = document.getElementById("pickup-address-field").value;
+        	})
+        },
+        DeliveryGoogleAuto: function () {
+        	let deliveryInputField = document.getElementById("delivery-address-field");
+        	const autocomplete = new google.maps.places.Autocomplete(deliveryInputField, googleOptions);
 
-        // 		for (var i = 0; i < place.address_components.length; i++) {
-        // 			if (place.address_components[i].types[0] == 'postal_code') {
-        // 				app1.formData.delPincode = place.address_components[i].long_name;
-        // 			}
-        // 		}
-        // 		app1.formData.delAddress = document.getElementById("delivery-address-field").value;
-        // 	})
-        // },
+        	autocomplete.addListener("place_changed", () => {
+        		const place = autocomplete.getPlace();
+        		console.log(place);
+
+        		for (var i = 0; i < place.address_components.length; i++) {
+        			if (place.address_components[i].types[0] == 'postal_code') {
+        				app1.formData.delPincode = place.address_components[i].long_name;
+        			}
+        		}
+        		app1.formData.delAddress = document.getElementById("delivery-address-field").value;
+        	})
+        },
     },
     mounted() {
         document.getElementsByClassName('copy-button-tooltiptext')[0].classList.add('copy-button-tooltiptext-bottom');
