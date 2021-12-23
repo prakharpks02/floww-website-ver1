@@ -505,7 +505,7 @@ var app1 = new Vue({
 
         },
         SubmitOrderForm: function () {
-            axios.post(globalApiUrl + '/api/sumbit-order-form/', {
+            axios.post(globalApiUrl + '/api/submit-order-form/', {
                     orderDetail: JSON.stringify(this.orderForm),
                 })
                 .then(function (response) {
