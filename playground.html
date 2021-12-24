@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" href="img/logo/floww-logo-favicon.ico">
+
+    <link rel="stylesheet" type="text/css" href="css/playground.css">
+
+    <!-- Importing Major 3rd Party File links -->
+
+    <link rel="stylesheet" type="text/css" href="css/fontawesome.css">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+
+    <link rel="stylesheet" type="text/css" href="css/bulma.css">
+    <!--   Calling Bulma from local file   -->
+
+    <script type="text/javascript" src="js/vue.js"></script>
+    <!--   Calling Vue from local file   -->
+    <script type="text/javascript" src="js/axios.min.js"></script>
+    <!--   Calling Axios from local file   -->
+
+    <!-- <script type="text/javascript" src="{% static 'platform_app/js/aws.s3.js' %}"></script> -->
+    <!--   Calling AWS S3 from local file   -->
+
+    <!-- Add the entire Firebase JavaScript SDK -->
+    <!-- <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase.js"></script> -->
+
+    <title>floww Playground</title>
+</head>
+
+<body>
+
+    <div class="full-page-container" id="search-page-id">
+
+        <div class="header-container">
+            <div class="header-left-container">
+                <a href="/">
+                    <img src="img/logo/floww-logo-full-blue-resize.png"
+                        alt="floww Logo, Biggest API marketplace for 3PL" class="desktop-view-toggle">
+                    <img src="img/logo/floww-logo-small-blue.png" class="mobile-view-toggle">
+                </a>
+            </div>
+
+        </div>
+
+        <div class="playground-container">
+            <div class="api-list-container">
+                <div class="api-card-container box" v-for="api in apiUrlList">
+                    <p>{{api.url}}</p>
+                    <p>{{api.type}}</p>
+                    <button class="button" v-on:click="ViewForm($event)">Show Form</button>
+                    <div class="api-form-container hide">
+                        <ul>
+                            <li v-for="(parameter, index) in api.parameterNames">
+                                <input class="input" :placeholder="parameter" v-model="formInput[index]">
+                                <br><br>
+
+                            </li>
+                        </ul>
+                        <button class="button is-warning" v-on:click="SubmitForm(api)">Submit</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="api-response-container box">
+                <p>
+                    status code - {{statusCode}}
+                </p>
+
+                <p>
+                    Headers -
+                <pre><code>
+                        {{headerInfo}}
+                    </code></pre>
+                </p>
+
+                <p>
+                    Response -
+                <pre><code>
+                        {{responseBody}}
+                    </code></pre>
+                </p>
+            </div>
+        </div>
+
+        <div id="page-load-overlay">
+            <div class="search-load-content">
+                <div class="search-load-element"></div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+    <!-- All JS files start here -->
+
+    <!-- <script src="js/countryCode.js"></script> -->
+    <!-- Country Code JS file -->
+
+    <!-- <script src="js/flowwVariables.js"></script> -->
+    <!-- Floww custom Dictionaries JS file -->
+
+    <script src="js/playground.js"></script>
+
+    <!-- <script type="text/javascript">
+        const globalUserStatus = JSON.parse(document.getElementById('userStatus').textContent);
+
+        if (globalUserStatus != 'active')
+        {
+            document.getElementById('disable-overlay-id').classList.remove('hide');
+        }
+
+        function getCookie(name) {
+            let cookieValue = null;
+
+            if (document.cookie && document.cookie !== '')
+            {
+                const cookies = document.cookie.split(';');
+                for (let i = 0; i < cookies.length; i++)
+                {
+                    const cookie = cookies[i].trim();
+
+                    // Does this cookie string begin with the name we want?
+                    if (cookie.substring(0, name.length + 1) === (name + '='))
+                    {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+
+                        break;
+                    }
+                }
+            }
+
+            return cookieValue;
+        }
+
+        axios.defaults.headers.common['X-CSRFToken'] = getCookie('csrftoken');
+    </script> -->
+
+</body>
+
+</html>
