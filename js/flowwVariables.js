@@ -120,3 +120,111 @@ const orderStatus = [{
 }]
 
 const globalApiUrl = "https://backend.gofloww.co"
+
+const apiUrlList = [{
+    'url': 'http://localhost:8000/api-token-auth/',
+    'type': 'AUTH (POST)',
+    'parameterNames': [{
+            "name": "username",
+            "type": "string"
+        },
+        {
+            "name": "password",
+            "type": "string"
+        },
+    ],
+}, {
+    'url': 'http://localhost:8000/api/v1/get-cost-estimate/',
+    'type': 'POST',
+    'parameterNames': [{
+            "name": "vendorCode",
+            "type": "string"
+        },
+        {
+            "name": "orderType",
+            "type": "string"
+        },
+        {
+            "name": "orderList",
+            "type": "list"
+        },
+        {
+            "name": "rentalPlan",
+            "type": "string"
+        },
+    ],
+}, {
+    'url': 'http://localhost:8000/api/v1/request-deliveries/',
+    'type': 'POST',
+    'parameterNames': [{
+            "name": "vendorCode",
+            "type": "string"
+        },
+        {
+            "name": "productDescription",
+            "type": "string"
+        },
+        {
+            "name": "companyName",
+            "type": "string"
+        },
+        {
+            "name": "deliveryTimestamp",
+            "type": "integer"
+        },
+        {
+            "name": "orderType",
+            "type": "string"
+        },
+        {
+            "name": "orderList",
+            "type": "list"
+        },
+        {
+            "name": "rentalPlan",
+            "type": "string"
+        },
+        {
+            "name": "serviceList",
+            "type": "list"
+        },
+    ],
+}, {
+    'url': 'http://localhost:8000/api/v1/get-task-details/',
+    'type': 'GET',
+    'parameterNames': [{
+        "name": "taskId",
+        "type": "string"
+    }],
+}, {
+    'url': 'http://localhost:8000/api/v1/get-order-details/',
+    'type': 'GET',
+    'parameterNames': [{
+        "name": "orderId",
+        "type": "string"
+    }],
+}, {
+    'url': 'http://localhost:8000/api/v1/edit-order-instruction/',
+    'type': 'POST',
+    'parameterNames': [{
+        "name": "orderId",
+        "type": "string"
+    }, {
+        "name": "instruction",
+        "type": "string"
+    }],
+}, {
+    'url': 'http://localhost:8000/api/v1/cancel-orders/',
+    'type': 'POST',
+    'parameterNames': [{
+        "name": "orderList",
+        "type": "list"
+    }],
+}, {
+    'url': 'http://localhost:8000/api/v1/track-order/',
+    'type': 'GET',
+    'parameterNames': [{
+        "name": "orderId",
+        "type": "string"
+    }],
+}];

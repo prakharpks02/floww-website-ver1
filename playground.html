@@ -45,46 +45,67 @@
                 </a>
             </div>
 
-        </div>
-
-        <div class="playground-container">
-            <div class="api-list-container">
-                <div class="api-card-container box" v-for="api in apiUrlList">
-                    <p>{{api.url}}</p>
-                    <p>{{api.type}}</p>
-                    <button class="button" v-on:click="ViewForm($event)">Show Form</button>
-                    <div class="api-form-container hide">
-                        <ul>
-                            <li v-for="(parameter, index) in api.parameterNames">
-                                <input class="input" :placeholder="parameter" v-model="formInput[index]">
-                                <br><br>
-
-                            </li>
-                        </ul>
-                        <button class="button is-warning" v-on:click="SubmitForm(api)">Submit</button>
+            <div class="header-right-container">
+                <div class="field has-addons">
+                    <div class="control">
+                        <input class="input" type="text" placeholder="Paste Token Here" v-model="tokenInput">
+                    </div>
+                    <div class="control">
+                        <a class="button is-info" v-on:click="SetToken">
+                            Set Token
+                        </a>
                     </div>
                 </div>
             </div>
 
-            <div class="api-response-container box">
-                <p>
-                    status code - {{statusCode}}
-                </p>
+        </div>
 
-                <p>
-                    Headers -
-                <pre><code>
-                        {{headerInfo}}
-                    </code></pre>
-                </p>
+        <div class="playground-container columns">
 
-                <p>
-                    Response -
-                <pre><code>
-                        {{responseBody}}
-                    </code></pre>
-                </p>
+            <div class="api-list-container column">
+                <div class="api-card-container box" v-for="api in apiUrlList">
+                    <p>{{api.url}}</p>
+                    <p>{{api.type}}</p>
+                    <button class="button" v-on:click="ViewForm(api)">Show Form</button>
+
+                </div>
             </div>
+
+            <div class="api-io-container column">
+
+                <div class="api-form-container box">
+                    <ul>
+                        <li v-for="(parameter, index) in selectedApi.parameterNames">
+                            <input class="input" :placeholder="parameter.name" v-model="formInput[index]">
+                            <br><br>
+
+                        </li>
+                    </ul>
+                    <button class="button is-warning" v-on:click="SubmitForm"
+                        :disabled="formInput.length==0">Submit</button>
+                </div>
+
+                <div class="api-response-container box">
+                    <p>
+                        status code - {{statusCode}}
+                    </p>
+
+                    <p>
+                        Headers -
+                    <p><code>
+                            {{headerInfo}}
+                        </code></p>
+                    </p>
+
+                    <p>
+                        Response -
+                    <p class="response-code-container"><code>
+                            {{responseBody}}
+                        </code></p>
+                    </p>
+                </div>
+            </div>
+
         </div>
 
         <div id="page-load-overlay">
@@ -102,44 +123,10 @@
     <!-- <script src="js/countryCode.js"></script> -->
     <!-- Country Code JS file -->
 
-    <!-- <script src="js/flowwVariables.js"></script> -->
+    <script src="js/flowwVariables.js"></script>
     <!-- Floww custom Dictionaries JS file -->
 
     <script src="js/playground.js"></script>
-
-    <!-- <script type="text/javascript">
-        const globalUserStatus = JSON.parse(document.getElementById('userStatus').textContent);
-
-        if (globalUserStatus != 'active')
-        {
-            document.getElementById('disable-overlay-id').classList.remove('hide');
-        }
-
-        function getCookie(name) {
-            let cookieValue = null;
-
-            if (document.cookie && document.cookie !== '')
-            {
-                const cookies = document.cookie.split(';');
-                for (let i = 0; i < cookies.length; i++)
-                {
-                    const cookie = cookies[i].trim();
-
-                    // Does this cookie string begin with the name we want?
-                    if (cookie.substring(0, name.length + 1) === (name + '='))
-                    {
-                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-
-                        break;
-                    }
-                }
-            }
-
-            return cookieValue;
-        }
-
-        axios.defaults.headers.common['X-CSRFToken'] = getCookie('csrftoken');
-    </script> -->
 
 </body>
 
