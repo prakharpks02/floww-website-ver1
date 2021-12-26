@@ -76,8 +76,7 @@ var app1 = new Vue({
 
                 axios.post(this.selectedApi.url, formData)
                     .then(function (response) {
-                        console.log(response);
-                        let responseData = response.data;
+                        let responseData = JSON.parse(response.data);
                         console.log(responseData);
 
                         app1.ShowServerResponse(responseData, response.status, response.headers);
@@ -116,7 +115,7 @@ var app1 = new Vue({
                         params: formData
                     })
                     .then(function (response) {
-                        let responseData = response.data;
+                        let responseData = JSON.parse(response.data);
                         console.log(responseData);
 
                         app1.ShowServerResponse(responseData, response.status, response.headers);
