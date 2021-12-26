@@ -39,6 +39,57 @@ html {
     display: none;
 }
 
+/* Tooltip Copy Button Starts */
+
+.copy-button-tooltip {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.copy-button-tooltip button {
+    cursor: pointer;
+}
+
+.copy-button-tooltip .copy-button-tooltiptext {
+    visibility: hidden;
+    width: 140px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    bottom: 150%;
+    left: 50%;
+    margin-left: -75px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.copy-button-tooltip .copy-button-tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+}
+
+.copy-button-tooltip:hover .copy-button-tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+
+.copy-button-tooltiptext-bottom {
+    bottom: -150% !important;
+}
+
+/* Tooltip Copy Button Ends */
+
 .full-page-container {
     position: fixed;
     width: 100%;
@@ -84,6 +135,11 @@ html {
     width: 100%;
     margin: auto;
     padding-bottom: 10px;
+}
+
+.selected-card {
+    background-color: #1E92FB !important;
+    color: white !important;
 }
 
 .api-io-container {

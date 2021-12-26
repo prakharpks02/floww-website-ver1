@@ -27,6 +27,10 @@ function setCookie(cname, cvalue, exdays) {
     document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
 }
 
+function CleanCopyButton(element) {
+    element.children[0].innerHTML = "Click to Copy";
+}
+
 
 // ------------------------------------------------------Vue Starts from Here
 var app1 = new Vue({
@@ -65,7 +69,10 @@ var app1 = new Vue({
                 for (i = 0; i < this.selectedApi.parameterNames.length; i++) {
 
                     if (this.selectedApi.parameterNames[i].type == "list") {
-                        formData[this.selectedApi.parameterNames[i].name] = JSON.parse(this.formInput[i]);
+                        if (this.formInput[i]) {
+                            formData[this.selectedApi.parameterNames[i].name] = JSON.parse(this.formInput[i]);
+                        };
+
                     } else if (this.selectedApi.parameterNames[i].type == "integer") {
                         formData[this.selectedApi.parameterNames[i].name] = parseInt(this.formInput[i]);
                     } else {
@@ -85,7 +92,7 @@ var app1 = new Vue({
                     .catch(function (error) {
                         console.error(error);
                         if (error.response) {
-                            app1.ShowServerResponse(error.response.data, error.response.status, error.response.headers);
+                            app1.ShowServerResponse(JSON.parse(error.response.data), error.response.status, error.response.headers);
                         } else if (error.request) {
                             app1.ShowServerResponse(error.request, '-', 'No response from server');
                         } else {
@@ -102,7 +109,9 @@ var app1 = new Vue({
                 for (i = 0; i < this.selectedApi.parameterNames.length; i++) {
 
                     if (this.selectedApi.parameterNames[i].type == "list") {
-                        formData[this.selectedApi.parameterNames[i].name] = JSON.parse(this.formInput[i]);
+                        if (this.formInput[i] != '') {
+                            formData[this.selectedApi.parameterNames[i].name] = JSON.parse(this.formInput[i]);
+                        };
                     } else if (this.selectedApi.parameterNames[i].type == "integer") {
                         formData[this.selectedApi.parameterNames[i].name] = parseInt(this.formInput[i]);
                     } else {
@@ -124,7 +133,7 @@ var app1 = new Vue({
                     .catch(function (error) {
                         console.error(error);
                         if (error.response) {
-                            app1.ShowServerResponse(error.response.data, error.response.status, error.response.headers);
+                            app1.ShowServerResponse(JSON.parse(error.response.data), error.response.status, error.response.headers);
                         } else if (error.request) {
                             app1.ShowServerResponse(error.request, '-', 'No response from server');
                         } else {
@@ -167,7 +176,7 @@ var app1 = new Vue({
                     .catch(function (error) {
                         console.error(error);
                         if (error.response) {
-                            app1.ShowServerResponse(error.response.data, error.response.status, error.response.headers);
+                            app1.ShowServerResponse(JSON.parse(error.response.data), error.response.status, error.response.headers);
                         } else if (error.request) {
                             app1.ShowServerResponse(error.request, '-', 'No response from server');
                         } else {
@@ -182,12 +191,24 @@ var app1 = new Vue({
             this.responseBody = JSON.stringify(response, undefined, 2);
             this.headerInfo = JSON.stringify(header, undefined, 2);
         },
-        ViewForm: function (elementdict) {
+        ViewForm: function (elementdict, element) {
             this.formInput = [];
 
             this.selectedApi.url = elementdict.url;
             this.selectedApi.type = elementdict.type;
             this.selectedApi.parameterNames = elementdict.parameterNames;
+
+
+            let allCardElements = document.getElementsByClassName('api-card-container');
+            for (i = 0; i < allCardElements.length; i++) {
+                allCardElements[i].classList.remove('selected-card');
+            }
+
+            element.currentTarget.parentElement.classList.add('selected-card');
+        },
+        CopyResponse: function (element) {
+            navigator.clipboard.writeText(this.responseBody);
+            element.currentTarget.children[0].innerHTML = "Copied";
         },
     },
     mounted() {
@@ -199,9 +220,7 @@ var app1 = new Vue({
             window.alert('Token applied from browser Cookie. Reapply, if you doubt it to be correct.');
         }
 
-        axios.defaults.headers.common = {
-            "Content-Type": "application/json"
-        }
+        axios.defaults.headers.common['Content-Type'] = "application/json";
 
 
         document.getElementById("page-load-overlay").classList.add("hide");
