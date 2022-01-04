@@ -244,7 +244,6 @@ var app1 = new Vue({
         'tagNames': tagNames,
         'vendorCities': vendorCities,
         'vendorTags': vendorTags,
-        'weightRanges': weightRanges,
         'rentalPlans': rentalPlans,
 
         'vendorList': vendorListConst,

@@ -1,4 +1,5 @@
 const tagNames = {
+    // Service Tags
     'same_day': 'Same Day Delivery',
     'otp': 'OTP Verification',
     'cold_chain': 'Cold Chain',
@@ -9,19 +10,48 @@ const tagNames = {
     'bulk_del': 'Bulk Delivery',
     'courier': 'Courier',
     'cod': 'Cash on Delivery',
+
+    // Vehicle Type
     'bike': 'Bike (2 wheeler)',
     'tempo': 'Tempo (3/4 wheeler)',
+
+    // Badges
     '100y_old': '100 Years Old',
+
+    // Locations
     'mumbai': 'Mumbai',
     'bangalore': 'Bangalore',
     'patna': 'Patna',
     'delhi': 'Delhi',
-    'weight0': '0 - 1 Kg',
-    'weight1': '1 - 5 Kg',
-    'weight2': '6 - 10 Kg',
-    'weight3': '11 - 15 Kg',
-    'weight4': '16 - 20 Kg',
-    'weight5': '21+ Kg',
+    'pune': 'Pune',
+
+    // Product Tags
+    'product0': 'Delhi',
+    'product1': 'Delhi',
+    'product2': 'Delhi',
+    'product3': 'Delhi',
+    'product4': 'Delhi',
+    'product5': 'Delhi',
+    'product6': 'Delhi',
+    'product7': 'Delhi',
+    'product8': 'Delhi',
+    'product9': 'Delhi',
+    'product10': 'Delhi',
+
+    // Rental Plans
+    'plan0': '1 hr and 50 km',
+    'plan1': 'TBD',
+    'plan2': 'TBD',
+
+    // Task Statuses
+    'requested': 'Task is requested',
+    'working': 'Accepted, and in progress',
+    'completed': 'Completed the task',
+
+    // Order Statuses
+    'requested': 'Order is requested',
+    'enroute': 'Accepted, and in progress',
+    'completed': 'Completed the order',
 }
 
 const vendorCities = [{
@@ -55,58 +85,41 @@ const vendorTags = [{
     'id': 'intercity',
 }, {
     'name': '30 Min Delivery',
-    'id': '30_min',
+    'id': '30min',
 }, {
     'name': 'Tracking',
-    'id': 'tracking',
+    'id': 'track',
 }, {
     'name': 'Sanitized Fleet',
-    'id': 'san_fleet',
+    'id': 'sanitize',
 }, {
     'name': 'Bulk Delivery',
     'id': 'bulk_del',
 }, {
     'name': 'Courier',
     'id': 'courier',
-}]
-
-const weightRanges = [{
-    'name': '0 - 1 Kg',
-    'id': 'weight0',
 }, {
-    'name': '1 - 5 Kg',
-    'id': 'weight1',
-}, {
-    'name': '6 - 10 Kg',
-    'id': 'weight2',
-}, {
-    'name': '11 - 15 Kg',
-    'id': 'weight3',
-}, {
-    'name': '16 - 20 Kg',
-    'id': 'weight4',
-}, {
-    'name': '21+ Kg',
-    'id': 'weight5',
+    'name': 'Cash on Delivery',
+    'id': 'cod',
 }]
 
 const rentalPlans = [{
-    'name': 'For 1 hr',
+    'name': '1 hr and 50 km',
+    'id': 'plan0',
+}, {
+    'name': 'TBD',
     'id': 'plan1',
 }, {
-    'name': 'For 4 hr',
+    'name': 'TBD',
     'id': 'plan2',
-}, {
-    'name': 'For 8 hr',
-    'id': 'plan3',
 }]
 
 
 const taskStatus = [{
-    'name': 'When task is requested',
+    'name': 'Task is requested',
     'id': 'requested',
 }, {
-    'name': 'Accepted, and in progress (not working now)',
+    'name': 'Accepted, and in progress',
     'id': 'working',
 }, {
     'name': 'Completed the task',
@@ -115,10 +128,10 @@ const taskStatus = [{
 
 
 const orderStatus = [{
-    'name': 'When order is requested',
+    'name': 'Order is requested',
     'id': 'requested',
 }, {
-    'name': 'Accepted, and in progress (not working now)',
+    'name': 'Accepted, and in progress',
     'id': 'enroute',
 }, {
     'name': 'Completed the order',
