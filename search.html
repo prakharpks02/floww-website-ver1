@@ -39,8 +39,8 @@
         <div class="header-container">
             <div class="header-left-container">
                 <a href="/">
-                    <img src="img/logo/floww-logo-full-blue-resize.png" alt="floww Logo, Biggest API marketplace for 3PL"
-                        class="desktop-view-toggle">
+                    <img src="img/logo/floww-logo-full-blue-resize.png"
+                        alt="floww Logo, Biggest API marketplace for 3PL" class="desktop-view-toggle">
                     <img src="img/logo/floww-logo-small-blue.png" class="mobile-view-toggle">
                 </a>
             </div>
@@ -84,7 +84,7 @@
                         <div class="select is-rounded tag-filter-body">
                             <select v-model="tagSelected" v-on:change="GetVendorList">
                                 <option hidden value="empty" selected disabled>Select Tag</option>
-                                <option v-for="tag in vendorTags" :value="tag.id">{{tag.name}}</option>
+                                <option v-for="tag in serviceTags" :value="tag.id">{{tag.name}}</option>
                             </select>
                         </div>
                     </div>
@@ -333,20 +333,39 @@
                         </div>
                     </div>
 
-                    <div style="width: 350px;" class="columns is-vcentered">
+                    <div class="columns is-vcentered">
+
                         <div class="column">
-                            <label class="label">Delivery Date</label>
+                            <div class="field">
+                                <label class="label">Delivery Date</label>
+                                <div class="control">
+                                    <input class="input" type="date" v-on:change="ChangeDeliveryDate($event)">
+                                </div>
+                            </div>
                         </div>
-                        <div class="field column">
-                            <div class="control">
-                                <input class="input" type="date" v-on:change="ChangeDeliveryDate($event)">
+
+                        <div class="column">
+                            <div class="field">
+                                <label class="label">Request Services</label>
+                                <div class="field has-addons">
+                                    <div class="select tag-filter-body">
+                                        <select id="request-service-tag">
+                                            <option hidden value="empty" selected disabled>Select Tag</option>
+                                            <option v-for="tag in serviceTags" :value="tag.id">{{tag.name}}</option>
+                                        </select>
+                                    </div>
+                                    <div class="control">
+                                        <button class="button is-info" v-on:click="AddServiceTag">Add</button>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
                     </div>
 
 
 
-                    <hr>
+                    <hr style="margin-top: 5px; margin-bottom: 5px;">
 
                     <div class="control">
                         <label class="radio">
@@ -375,8 +394,8 @@
                                 <div class="field-body">
                                     <div class="field">
                                         <div class="control">
-                                            <input class="input" type="text" placeholder="Pickup Address"
-                                                v-model="orderTempElement.pickup">
+                                            <input class="input pickup-address-field" type="text"
+                                                placeholder="Pickup Address" v-model="orderTempElement.pickup">
                                         </div>
                                     </div>
 
@@ -393,8 +412,8 @@
                                 <div class="field-body">
                                     <div class="field">
                                         <div class="control">
-                                            <input class="input" type="text" placeholder="Drop Address"
-                                                v-model="orderTempElement.drop">
+                                            <input class="input drop-address-field" type="text"
+                                                placeholder="Drop Address" v-model="orderTempElement.drop">
                                         </div>
                                     </div>
 
@@ -418,8 +437,7 @@
 
                                     <div class="field" style="width: 400px;">
                                         <div class="control is-expanded">
-                                            <input class="input" type="number"
-                                                placeholder="Please add any instruction or Description"
+                                            <input class="input" type="number" placeholder="Instruction or Description"
                                                 v-model="orderTempElement.instruction">
                                         </div>
                                     </div>
@@ -447,7 +465,7 @@
 
                     <div class="internal-order-form-container" v-if="orderForm.orderType=='rental'">
                         <div class="select is-rounded">
-                            <select v-model="orderForm.rentPlan">
+                            <select v-model="orderForm.rentalPlan">
                                 <option hidden value="N/A" selected disabled>Select Plan</option>
                                 <option v-for="plan in rentalPlans" :value="plan.id">{{plan.name}}</option>
                             </select>
@@ -456,6 +474,7 @@
 
                     <div class="control add-button-per-order-form">
                         <button class="button is-info" v-on:click="SubmitOrderForm">Submit</button>
+                        <button class="button is-warning" v-on:click="GetCostEstimate">Cost Estimate</button>
                     </div>
                 </div>
 
@@ -475,9 +494,12 @@
 
                         <div class="field">
                             <label class="label">Product Description</label>
-                            <div class="control">
-                                <input class="input" type="text" placeholder="e.g. Fresh Vegitables"
-                                    v-model="orderForm.productType">
+
+                            <div class="select is-rounded tag-filter-body">
+                                <select v-model="orderForm.productType">
+                                    <option hidden value="" selected disabled>Select Product</option>
+                                    <option v-for="product in productTags" :value="product.id">{{product.name}}</option>
+                                </select>
                             </div>
                         </div>
 
@@ -488,7 +510,22 @@
                             </div>
                         </div>
 
-                        <br>
+                        <div class="field">
+                            <label class="label">Request Services</label>
+                            <div class="field has-addons">
+                                <div class="select tag-filter-body">
+                                    <select id="request-service-tag">
+                                        <option hidden value="empty" selected disabled>Select Tag</option>
+                                        <option v-for="tag in serviceTags" :value="tag.id">{{tag.name}}</option>
+                                    </select>
+                                </div>
+                                <div class="control">
+                                    <button class="button is-info" v-on:click="AddServiceTag">Add</button>
+                                </div>
+                            </div>
+
+                        </div>
+
 
                         <div class="control" style="position: relative;">
                             <button class="button is-info" style="position: absolute; right: 5px;"
@@ -529,8 +566,8 @@
                                     <div class="column">
                                         <div class="field">
                                             <div class="control">
-                                                <input class="input" type="text" placeholder="Pickup Address"
-                                                    v-model="orderTempElement.pickup">
+                                                <input class="input pickup-address-field" type="text"
+                                                    placeholder="Pickup Address" v-model="orderTempElement.pickup">
                                             </div>
                                         </div>
                                     </div>
@@ -549,8 +586,8 @@
                                     <div class="column">
                                         <div class="field">
                                             <div class="control">
-                                                <input class="input" type="text" placeholder="Drop Address"
-                                                    v-model="orderTempElement.drop">
+                                                <input class="input drop-address-field" type="text"
+                                                    placeholder="Drop Address" v-model="orderTempElement.drop">
                                             </div>
                                         </div>
                                     </div>
@@ -579,7 +616,7 @@
                                         <div class="field">
                                             <div class="control is-expanded">
                                                 <input class="input" type="text"
-                                                    placeholder="Please add any instruction or Description"
+                                                    placeholder="Instruction or Description"
                                                     v-model="orderTempElement.instruction">
                                             </div>
                                         </div>
@@ -606,7 +643,7 @@
 
                         <div class="internal-order-form-container" v-if="orderForm.orderType=='rental'">
                             <div class="select is-rounded">
-                                <select v-model="orderForm.rentPlan">
+                                <select v-model="orderForm.rentalPlan">
                                     <option hidden value="N/A" selected disabled>Select Plan</option>
                                     <option v-for="plan in rentalPlans" :value="plan.id">{{plan.name}}</option>
                                 </select>
@@ -616,6 +653,7 @@
                         <div class="control add-button-per-order-form">
                             <button class="button is-info" v-on:click="orderFormMobile.formStatus='base'">Back</button>
                             <button class="button is-info" v-on:click="SubmitOrderForm">Submit</button>
+                            <button class="button is-warning" v-on:click="GetCostEstimate">Cost Estimate</button>
                         </div>
                     </div>
 
@@ -636,8 +674,8 @@
 
     <!-- All JS files start here -->
 
-    <!-- <script
-        src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyAVcyVFjXhbFtR3dqbfoFWtHx0doqT7leE"></script> -->
+    <script
+        src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyAVcyVFjXhbFtR3dqbfoFWtHx0doqT7leE"></script>
     <!-- Google Address Autocomplete Places -->
 
 

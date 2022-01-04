@@ -71,7 +71,42 @@ const vendorCities = [{
     'id': 'pune',
 }]
 
-const vendorTags = [{
+const productTags = [{
+    'name': 'Other',
+    'id': 'product0',
+}, {
+    'name': 'OTP Verification',
+    'id': 'product1',
+}, {
+    'name': 'Cold Chain',
+    'id': 'product2',
+}, {
+    'name': 'Intercity',
+    'id': 'product3',
+}, {
+    'name': '30 Min Delivery',
+    'id': 'product4',
+}, {
+    'name': 'Tracking',
+    'id': 'product5',
+}, {
+    'name': 'Sanitized Fleet',
+    'id': 'product6',
+}, {
+    'name': 'Bulk Delivery',
+    'id': 'product7',
+}, {
+    'name': 'Courier',
+    'id': 'product8',
+}, {
+    'name': 'Cash on Delivery',
+    'id': 'product9',
+}, {
+    'name': 'Cash on Delivery',
+    'id': 'product10',
+}]
+
+const serviceTags = [{
     'name': 'Same Day Delivery',
     'id': 'same_day',
 }, {
@@ -106,12 +141,6 @@ const vendorTags = [{
 const rentalPlans = [{
     'name': '1 hr and 50 km',
     'id': 'plan0',
-}, {
-    'name': 'TBD',
-    'id': 'plan1',
-}, {
-    'name': 'TBD',
-    'id': 'plan2',
 }]
 
 

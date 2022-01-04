@@ -243,8 +243,9 @@ var app1 = new Vue({
         'countryCode': countryCode,
         'tagNames': tagNames,
         'vendorCities': vendorCities,
-        'vendorTags': vendorTags,
+        'serviceTags': serviceTags,
         'rentalPlans': rentalPlans,
+        'productTags': productTags,
 
         'vendorList': vendorListConst,
         'location': 'mumbai',
@@ -277,7 +278,7 @@ var app1 = new Vue({
             'deliveryDate': '',
             'orderType': 'perOrder',
             'orderList': [],
-            'rentPlan': 'N/A',
+            'rentalPlan': 'plan0',
             'serviceList': [],
         },
         'pickupCheckbox': false,
@@ -464,7 +465,7 @@ var app1 = new Vue({
                 'deliveryDate': '',
                 'orderType': 'perOrder',
                 'orderList': [],
-                'rentPlan': '',
+                'rentalPlan': 'plan0',
                 'serviceList': [],
             };
             this.orderFormMobile = {
@@ -476,6 +477,16 @@ var app1 = new Vue({
             this.orderForm.vendorName = vendorname;
             this.formType = 'order';
             this.contentOverlay = true;
+
+            try {
+                setTimeout(function () {
+                    app1.PickupGoogleAuto(document.getElementsByClassName('pickup-address-field')[0]);
+                    app1.DeliveryGoogleAuto(document.getElementsByClassName('drop-address-field')[0]);
+                }, 1000);
+            } catch (err) {
+                console.log(err);
+            }
+
         },
         ChangeDeliveryDate: function (event) {
             this.orderForm.deliveryDate = Math.round(new Date(event.currentTarget.value).getTime() / 1000);
@@ -485,27 +496,55 @@ var app1 = new Vue({
                 this.orderFormMobile.error1 = true;
             } else {
                 this.orderFormMobile.formStatus = 'advance';
+
+                try {
+                    setTimeout(function () {
+                        app1.PickupGoogleAuto(document.getElementsByClassName('pickup-address-field')[1]);
+                        app1.DeliveryGoogleAuto(document.getElementsByClassName('drop-address-field')[1]);
+                    }, 1000);
+                } catch (err) {
+                    console.log(err);
+                }
+
+
             };
         },
         AddOrder: function () {
-            let orderTempElementVar = JSON.parse(JSON.stringify(this.orderTempElement));
-            this.orderForm.orderList.push(orderTempElementVar);
 
-            if (!this.pickupCheckbox) {
-                this.orderTempElement.pickup = '';
-                this.orderTempElement.pickupPincode = '';
-                this.orderTempElement.pickupNo = '';
+            if (this.orderTempElement.pickup == '' || this.orderTempElement.pickupNo == '' || this.orderTempElement.drop == '' || this.orderTempElement.dropNo == '' || this.orderTempElement.weight == '') {
+                window.alert('All fields except Instruction, are mandatory.')
+            } else {
+                let orderTempElementVar = JSON.parse(JSON.stringify(this.orderTempElement));
+                this.orderForm.orderList.push(orderTempElementVar);
+
+                if (!this.pickupCheckbox) {
+                    this.orderTempElement.pickup = '';
+                    this.orderTempElement.pickupPincode = '';
+                    this.orderTempElement.pickupNo = '';
+                }
+                this.orderTempElement.drop = '';
+                this.orderTempElement.dropPincode = '';
+                this.orderTempElement.dropNo = '';
+                this.orderTempElement.weight = '';
+                this.orderTempElement.instruction = '';
             }
-            this.orderTempElement.drop = '';
-            this.orderTempElement.dropPincode = '';
-            this.orderTempElement.dropNo = '';
-            this.orderTempElement.weight = '';
-            this.orderTempElement.instruction = '';
+
 
         },
         SubmitOrderForm: function () {
-            axios.post(globalApiUrl + '/api/submit-order-form/', {
-                    orderDetail: JSON.stringify(this.orderForm),
+            if (this.orderForm.productType == '') {
+                this.orderForm.productType = 'product0';
+            }
+            axios.post(globalApiUrl + '/api/search/request-deliveries/', {
+                    vendorCode: this.orderForm.vendorCode,
+                    productDescription: this.orderForm.productType,
+                    companyName: this.orderForm.companyName,
+                    contactNo: this.orderForm.contactNo,
+                    deliveryDate: this.orderForm.deliveryDate,
+                    orderType: this.orderForm.orderType,
+                    rentalPlan: this.orderForm.rentalPlan,
+                    orderList: this.orderForm.orderList,
+                    serviceList: this.orderForm.serviceList,
                 })
                 .then(function (response) {
                     let responseData = JSON.parse(response.data);
@@ -514,44 +553,37 @@ var app1 = new Vue({
                     if (responseData.status == 'success') {
                         app1.CloseOverlay();
                     } else {
-                        window.alert('Server Error, Please try again!');
+                        window.alert(responseData.message);
                     };
                 })
                 .catch(function (error) {
                     window.alert('Server Error, Please Try Again!');
                 });
         },
-        PickupGoogleAuto: function () {
-        	let pickupInputField = document.getElementById("pickup-address-field");
-        	const autocomplete = new google.maps.places.Autocomplete(pickupInputField, googleOptions);
+        GetCostEstimate: function () {
+            axios.post(globalApiUrl + '/api/search/get-cost-estimate/', {
+                    vendorCode: this.orderForm.vendorCode,
+                    orderType: this.orderForm.orderType,
+                    rentalPlan: this.orderForm.rentalPlan,
+                    orderList: this.orderForm.orderList,
+                })
+                .then(function (response) {
+                    let responseData = JSON.parse(response.data);
+                    console.log(responseData);
 
-        	autocomplete.addListener("place_changed", () => {
-        		const place = autocomplete.getPlace();
-        		console.log(place);
-
-        		for (var i = 0; i < place.address_components.length; i++) {
-        			if (place.address_components[i].types[0] == 'postal_code') {
-        				app1.formData.pickPincode = place.address_components[i].long_name;
-        			}
-        		}
-        		app1.formData.pickAddress = document.getElementById("pickup-address-field").value;
-        	})
+                    if (responseData.cost == 'N/A') {
+                        window.alert('Server Error, Please try again!');
+                    } else {
+                        window.alert('The Cost is - ₹ ' + responseData.cost);
+                    };
+                })
+                .catch(function (error) {
+                    window.alert('Server Error, Please Try Again!');
+                });
         },
-        DeliveryGoogleAuto: function () {
-        	let deliveryInputField = document.getElementById("delivery-address-field");
-        	const autocomplete = new google.maps.places.Autocomplete(deliveryInputField, googleOptions);
-
-        	autocomplete.addListener("place_changed", () => {
-        		const place = autocomplete.getPlace();
-        		console.log(place);
-
-        		for (var i = 0; i < place.address_components.length; i++) {
-        			if (place.address_components[i].types[0] == 'postal_code') {
-        				app1.formData.delPincode = place.address_components[i].long_name;
-        			}
-        		}
-        		app1.formData.delAddress = document.getElementById("delivery-address-field").value;
-        	})
+        AddServiceTag: function (event) {
+            console.log(document.getElementById('request-service-tag').value);
+            this.orderForm.serviceList.push(document.getElementById('request-service-tag').value);
         },
     },
     mounted() {
