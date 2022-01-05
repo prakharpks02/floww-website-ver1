@@ -110,7 +110,7 @@
                 <div class="search-list-container">
 
                     <!-- Card Starts -->
-                    <!-- <div class="card-container box has-text-centered">
+                    <!-- <div class="desktop-view-toggle card-container box has-text-centered">
                         <div class="card-main-container columns is-vcentered">
                             <div class="column">
                                 <div class="card-element-container">
@@ -133,10 +133,11 @@
                             <div class="column">
                                 <div class="card-element-container">
                                     <div class="copy-button-tooltip">
-                                        <button onclick="CopyButton('VEN21432', this)"
-                                            onmouseout="CleanCopyButton(this)" class="button is-warning is-small">
-                                            <span class="copy-button-tooltiptext">Click to Copy</span>Get Vendor Key
-                                        </button>
+                                        <a onclick="CopyButton(this)" onmouseout="CleanCopyButton(this)"
+                                            class="vendor-code-container">
+                                            <span class="copy-button-tooltiptext">Click to Copy</span>Get Vendor Code
+                                            <span style="display: none;">{{vendorList[0].vendorCode}}</span>
+                                        </a>
                                     </div>
                                 </div>
                                 <div class="card-element-container vendor-number-container">
@@ -157,8 +158,8 @@
                         <div class="card-second-container">
 
                             <div class="card-view-more-container">
-                                <button class="button is-small is-rounded is-link" onclick="ToggleCardView(this)">
-                                    <span>View More</span></button>
+                                <a class="card-view-more-button" onclick="ToggleCardView(this)">
+                                    <span>View More</span></a>
                             </div>
 
                             <div class="card-expand-container columns is-multiline is-gapless">
@@ -180,7 +181,7 @@
                                     </div>
                                     <div class="column">
                                         <ul class="services-list-container">
-                                            <li v-for="service in services" class="tag is-small">{{service}}</li>
+                                            <li v-for="service in services" class="tag is-small">{{tagNames[service]}}</li>
                                         </ul>
                                     </div>
                                 </div>
@@ -190,7 +191,7 @@
                                     </div>
                                     <div class="column">
                                         <ul class="services-list-container">
-                                            <li v-for="service in services" class="tag is-small">{{service}}</li>
+                                            <li v-for="service in services" class="tag is-small">{{tagNames[service]}}</li>
                                         </ul>
                                     </div>
                                 </div>
@@ -200,6 +201,101 @@
                         </div>
 
                     </div> -->
+
+                    <!-- <div class="mobile-view-toggle card-container box">
+                        <div class="card-main-container">
+                            <p>JS Transport</p>
+                            <p class="rating-container">
+                                <span><i class="fa fa-star"></i> 4.5/5</span>
+                            </p>
+                            <p class="starting-from-box">
+                                <span class="tag is-warning">starting ₹49</span>
+                            </p>
+
+                            <br>
+
+                            <div class="columns is-mobile is-gapless" style="margin-bottom: 7px;">
+                                <div class="column is-5">
+                                    <a href="" class="website-link-button"><span>Open Website</span></a>
+                                </div>
+                                <div class="column is-7">
+                                    <a class="website-link-button"><span>Request Delivery</span></a>
+                                </div>
+                            </div>
+
+                            <div class="columns is-mobile is-gapless" style="margin-bottom: 5px;">
+                                <div class="column">
+                                    <div class="copy-button-tooltip">
+                                        <a onclick="CopyButton(this)" onmouseout="CleanCopyButton(this)"
+                                            class="vendor-code-container">
+                                            <span class="copy-button-tooltiptext">Click to Copy</span>Get Vendor Code
+                                            <span style="display: none;">{{vendorList[0].vendorCode}}</span>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="column vendor-number-container">
+                                    <a href="https://gofloww.co/api-doc" target="_blank"><span><u>API
+                                                Docs</u></span></a>
+                                </div>
+                            </div>
+
+                            <p class="vendor-number-container">
+                                <a href="tel:+91 9910530300"><u>+91 9910530300</u></a>
+                            </p>
+
+                        </div>
+
+                        <div class="card-second-container">
+
+                            <div class="card-view-more-container">
+                                <a class="card-view-more-button" onclick="ToggleCardView(this)">
+                                    <span>View More</span></a>
+                            </div>
+
+                            <div class="card-expand-container columns is-multiline is-gapless">
+
+                                <div class="column is-full columns is-mobile">
+                                    <div class="column">
+                                        <span>Founded in 1994</span>
+                                    </div>
+                                    <div class="column">
+                                        <span>BKC, Mumbai</span>
+                                    </div>
+                                    <div class="column">
+                                        <span>1-10 {{tagNames[vendorList[0].fleetType]}}</span>
+                                    </div>
+                                </div>
+                                <div class="column is-full columns is-gapless has-text-left"
+                                    style="margin-bottom: 5px;">
+                                    <div class="column is-2">
+                                        <span>Services :</span>
+                                    </div>
+                                    <div class="column">
+                                        <ul class="services-list-container">
+                                            <li v-for="service in vendorList[0].services" class="tag is-small">
+                                                {{tagNames[service]}}</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="column is-full columns is-gapless has-text-left"
+                                    style="margin-bottom: 5px;">
+                                    <div class="column is-2">
+                                        <span>Badges :</span>
+                                    </div>
+                                    <div class="column">
+                                        <ul class="services-list-container">
+                                            <li v-for="service in vendorList[0].services" class="tag is-small">
+                                                {{tagNames[service]}}</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div> 
+
+                    </div>-->
+                    
                     <!-- Card Ends -->
 
                     <vendor-card-component v-for="vendor in vendorList" :vendordata="vendor" :tagnames="tagNames"

@@ -140,94 +140,190 @@ Vue.component('vendor-card-component', {
     },
     // delimiters: ['[[', ']]'],
     template: `
-            <div class="card-container box has-text-centered">
-                <div class="card-main-container columns is-vcentered">
-                    <div class="column">
-                        <div class="card-element-container">
-                            <span>{{vendordata.name}}</span>
+            <div class="card-container-outside box">
+
+
+                <div class="desktop-view-toggle card-container has-text-centered">
+                    <div class="card-main-container columns is-vcentered">
+                        <div class="column">
+                            <div class="card-element-container">
+                                <span>{{vendordata.name}}</span>
+                            </div>
+                            <div class="card-element-container starting-from-box">
+                                <span class="tag is-warning">starting ₹{{vendordata.startPrice}}</span>
+                            </div>
                         </div>
-                        <div class="card-element-container starting-from-box">
+
+                        <div class="column">
+                            <div class="card-element-container rating-container">
+                                <span><i class="fa fa-star"></i> {{vendordata.rating}}/5</span>
+                            </div>
+                            <div class="card-element-container vendor-number-container">
+                                <a :href="'tel:'+vendordata.contactNo">{{vendordata.contactNo}}</a>
+                            </div>
+                        </div>
+
+                        <div class="column">
+                            <div class="card-element-container">
+                                <div class="copy-button-tooltip">
+                                    <a onclick="CopyButton(this)"
+                                        onmouseout="CleanCopyButton(this)" class="vendor-code-container">
+                                        <span class="copy-button-tooltiptext">Click to Copy</span>Get Vendor Code
+                                        <span style="display: none;">{{vendordata.vendorCode}}</span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="card-element-container vendor-number-container">
+                                <a href="https://gofloww.co/api-doc" target="_blank"><span>API Docs</span></a>
+                            </div>
+                        </div>
+
+                        <div class="column has-text-right is-4">
+                            <div class="card-element-container">
+                                <a onclick="window.alert('Coming Soon')" class="website-link-button"><span>Open Website</span></a>
+                            </div>
+                            <div class="card-element-container">
+                                <a class="website-link-button" @click="$emit('request-delivery')"><span>Request Delivery</span></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card-second-container">
+
+                        <div class="card-view-more-container">
+                            <a class="card-view-more-button" onclick="ToggleCardView(this)"><span>View More</span></a>
+                        </div>
+
+                        <div class="card-expand-container columns is-multiline is-gapless">
+
+                            <div class="column is-full columns">
+                                <div class="column">
+                                    <span>Founded in {{vendordata.year}}</span>
+                                </div>
+                                <div class="column">
+                                    <span>{{vendordata.location}}</span>
+                                </div>
+                                <div class="column">
+                                    <span>{{vendordata.size}} {{tagnames[vendordata.fleetType]}}</span>
+                                </div>
+                            </div>
+                            <div class="column is-full columns has-text-left">
+                                <div class="column is-2">
+                                    <span>Services :</span>
+                                </div>
+                                <div class="column">
+                                    <ul class="services-list-container">
+                                        <li v-for="service in vendordata.services" class="tag is-small">{{tagnames[service]}}</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="column is-full columns has-text-left">
+                                <div class="column is-2">
+                                    <span>Badges :</span>
+                                </div>
+                                <div class="column">
+                                    <ul class="services-list-container">
+                                        <li v-for="badge in vendordata.badges" class="tag is-small">{{tagnames[badge]}}</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="mobile-view-toggle card-container">
+                    <div class="card-main-container">
+                        <p><span class="vendor-name-container">{{vendordata.name}}</span>    <span class="rating-container"><i class="fa fa-star"></i> {{vendordata.rating}}/5</span></p>
+                        
+                        <p class="starting-from-box">
                             <span class="tag is-warning">starting ₹{{vendordata.startPrice}}</span>
-                        </div>
-                    </div>
+                        </p>
 
-                    <div class="column">
-                        <div class="card-element-container rating-container">
-                            <span><i class="fa fa-star"></i> {{vendordata.rating}}/5</span>
-                        </div>
-                        <div class="card-element-container vendor-number-container">
-                            <a :href="'tel:'+vendordata.contactNo"><u>{{vendordata.contactNo}}</u></a>
-                        </div>
-                    </div>
+                        <br>
 
-                    <div class="column">
-                        <div class="card-element-container">
-                            <div class="copy-button-tooltip">
-                                <button onclick="CopyButton(this)"
-                                    onmouseout="CleanCopyButton(this)" class="button is-warning is-small">
-                                    <span class="copy-button-tooltiptext">Click to Copy</span>Get Vendor Key
-                                    <span style="display: none;">{{vendordata.vendorCode}}</span>
-                                </button>
+                        <div class="columns is-mobile is-gapless" style="margin-bottom: 7px;">
+                            <div class="column is-5">
+                                <a onclick="window.alert('Coming Soon')" class="website-link-button"><span>Open Website</span></a>
+                            </div>
+                            <div class="column is-7">
+                                <a class="website-link-button" @click="$emit('request-delivery')"><span>Request Delivery</span></a>
                             </div>
                         </div>
-                        <div class="card-element-container vendor-number-container">
-                            <a href="#"><span><u>API Docs</u></span></a>
+
+                        <div class="columns is-mobile is-gapless" style="margin-bottom: 5px;">
+                            <div class="column">
+                                <div class="copy-button-tooltip">
+                                    <a onclick="CopyButton(this)" onmouseout="CleanCopyButton(this)"
+                                        class="vendor-code-container">
+                                        <span class="copy-button-tooltiptext">Click to Copy</span>Get Vendor Code
+                                        <span style="display: none;">{{vendordata.vendorCode}}</span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="column vendor-number-container">
+                                <a href="https://gofloww.co/api-doc" target="_blank"><span>API Docs</span></a>
+                            </div>
                         </div>
+
+                        <p class="vendor-number-container">
+                            <a :href="'tel:'+vendordata.contactNo">{{vendordata.contactNo}}</a>
+                        </p>
+
                     </div>
 
-                    <div class="column has-text-right is-4">
-                        <div class="card-element-container">
-                            <a href="#" class="website-link-button"><span>Open WEBSITE</span></a>
+                    <div class="card-second-container">
+
+                        <div class="card-view-more-container">
+                            <a class="card-view-more-button" onclick="ToggleCardView(this)">
+                                <span>View More</span></a>
                         </div>
-                        <div class="card-element-container">
-                            <a class="website-link-button" @click="$emit('request-delivery')"><span>Request DELIVERY</span></a>
+
+                        <div class="card-expand-container columns is-multiline is-gapless">
+
+                            <div class="column is-full columns is-mobile">
+                                <div class="column">
+                                    <span>{{vendordata.year}}</span>
+                                </div>
+                                <div class="column">
+                                    <span>{{vendordata.location}}</span>
+                                </div>
+                                <div class="column">
+                                    <span>{{vendordata.size}} {{tagnames[vendordata.fleetType]}}</span>
+                                </div>
+                            </div>
+                            <div class="column is-full columns is-gapless has-text-left"
+                                style="margin-bottom: 5px;">
+                                <div class="column is-2">
+                                    <span>Services :</span>
+                                </div>
+                                <div class="column">
+                                    <ul class="services-list-container">
+                                        <li v-for="service in vendordata.services" class="tag is-small">
+                                            {{tagnames[service]}}</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="column is-full columns is-gapless has-text-left"
+                                style="margin-bottom: 5px;">
+                                <div class="column is-2">
+                                    <span>Badges :</span>
+                                </div>
+                                <div class="column">
+                                    <ul class="services-list-container">
+                                        <li v-for="service in vendordata.badges" class="tag is-small">
+                                            {{tagnames[service]}}</li>
+                                    </ul>
+                                </div>
+                            </div>
+
                         </div>
+
                     </div>
                 </div>
 
-                <div class="card-second-container">
-
-                    <div class="card-view-more-container">
-                        <button class="button is-small is-rounded is-link" onclick="ToggleCardView(this)"><span>View More</span></button>
-                    </div>
-
-                    <div class="card-expand-container columns is-multiline is-gapless">
-
-                        <div class="column is-full columns">
-                            <div class="column">
-                                <span>Founded in {{vendordata.year}}</span>
-                            </div>
-                            <div class="column">
-                                <span>{{vendordata.location}}</span>
-                            </div>
-                            <div class="column">
-                                <span>{{vendordata.size}} {{tagnames[vendordata.fleetType]}}</span>
-                            </div>
-                        </div>
-                        <div class="column is-full columns has-text-left">
-                            <div class="column is-2">
-                                <span>Services :</span>
-                            </div>
-                            <div class="column">
-                                <ul class="services-list-container">
-                                    <li v-for="service in vendordata.services" class="tag is-small">{{tagnames[service]}}</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="column is-full columns has-text-left">
-                            <div class="column is-2">
-                                <span>Badges :</span>
-                            </div>
-                            <div class="column">
-                                <ul class="services-list-container">
-                                    <li v-for="badge in vendordata.badges" class="tag is-small">{{tagnames[badge]}}</li>
-                                </ul>
-                            </div>
-                        </div>
-
-                    </div>
-
-                </div>
 
             </div>
 			`,
@@ -251,12 +347,12 @@ var app1 = new Vue({
         'location': 'mumbai',
         'tagSelected': 'empty',
 
-        'userAuth': false,
+        'userAuth': true,
         'userContactNo': '+91 9919919191',
 
-        'contentOverlay': true,
+        'contentOverlay': false,
         'searchLoading': false,
-        'formType': 'order',
+        'formType': '',
 
         'phoneForm': {
             'code': '',

@@ -1,6 +1,6 @@
 /* custom scrollbar */
 ::-webkit-scrollbar {
-    width: 20px;
+    width: 15px;
 }
 
 ::-webkit-scrollbar-track {
@@ -32,11 +32,11 @@ html {
 }
 
 .desktop-view-toggle {
-    display: block;
+    display: block !important;
 }
 
 .mobile-view-toggle {
-    display: none;
+    display: none !important;
 }
 
 /* Tooltip Copy Button Starts */
@@ -85,7 +85,13 @@ html {
 }
 
 .copy-button-tooltiptext-bottom {
-    bottom: -150% !important;
+    bottom: unset !important;
+    top: 150%;
+}
+
+.copy-button-tooltiptext-bottom::after {
+    top: unset !important;
+    bottom: 100%;
 }
 
 /* Tooltip Copy Button Ends */
@@ -142,7 +148,7 @@ html {
     background-color: #f9f9f9;
     width: 100%;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-    z-index: 1;
+    z-index: 3;
 }
 
 .profile-dropdown-content a {
@@ -271,10 +277,14 @@ html {
     }
 }
 
-.card-container {
+.card-container-outside {
     width: 90%;
     padding: 10px !important;
     margin: auto;
+}
+
+.card-container {
+    width: 100%;
 }
 
 /* Card Main Section */
@@ -292,10 +302,17 @@ html {
 .vendor-number-container {
     font-size: 15px;
     font-weight: normal;
+    text-decoration: underline solid;
 }
 
 .rating-container {
     color: #ffcd3c;
+}
+
+.vendor-code-container {
+    font-size: 15px;
+    font-weight: normal;
+    text-decoration: underline solid;
 }
 
 .website-link-button {
@@ -305,16 +322,31 @@ html {
 
     box-shadow: 0 0 20px #eee;
     transition: 0.5s;
-    background: linear-gradient(90deg, #f6d365, #fda085 51%, #f6d365) var(--website_button_var, 0)/ 200%;
+    background: linear-gradient(90deg, #03FFFE, #1E92FB 51%, #03FFFE) var(--website_button_var, 0)/ 200%;
 
 }
 
 .website-link-button:hover {
-    color: yellow;
+    color: rgb(223, 223, 223);
     --website_button_var: 100%;
 }
 
 /* Card Second Section */
+
+.card-view-more-container {
+    width: 100%;
+    height: 45px;
+    padding-right: 20px;
+}
+
+.card-view-more-button {
+    float: right;
+    transition: 0.5s;
+    color: #1E92FB;
+    background-color: rgb(255, 255, 255);
+    padding: 10px;
+    border-radius: 5px;
+}
 
 .card-second-container {
     max-height: 30px;
@@ -325,16 +357,6 @@ html {
 .card-expanded-container {
     max-height: 200px;
     transition: max-height 0.7s ease-out;
-}
-
-.card-view-more-container {
-    width: 100%;
-    height: 45px;
-    padding-right: 20px;
-}
-
-.card-view-more-container button {
-    float: right;
 }
 
 .card-expand-container {
@@ -571,22 +593,87 @@ html {
 }
 
 
-@media (max-width: 768px), (max-height: 768px) {
+@media screen and (max-width: 768px), (max-height: 768px) {
 
     .desktop-view-toggle {
-        display: none;
+        display: none !important;
     }
 
     .mobile-view-toggle {
-        display: block;
+        display: block !important;
     }
 
     .header-left-container {
         width: 80px;
     }
 
+    .search-container {
+        width: 90%;
+        height: 85%;
+    }
+
     .order-form-container {
         width: 330px;
         height: 450px;
+    }
+    
+    .search-bar-container {
+        padding: 0;
+        padding-top: 20px;
+        font-size: 15px;
+    }
+
+    .search-list-container {
+        margin-top: 5px;
+    }
+
+    .vendor-name-container {
+        font-size: 17px;
+        font-weight: 600;
+    }
+
+    .rating-container {
+        font-size: 15px;
+        font-weight: 800;
+        float: right;
+    }
+
+    .starting-from-box {
+        font-size: 15px;
+        font-weight: 600;
+    }
+
+    .website-link-button {
+        width: fit-content;
+        width: -moz-fit-content;
+        margin: auto;
+        padding: 5px;
+        font-size: 15px;
+    }
+
+    .card-view-more-container {
+        padding-right: 0px;
+    }
+
+    .card-view-more-button:hover {
+        background-color: rgb(255, 255, 255);
+        color: #1E92FB;
+    }
+
+    .card-expanded-container {
+        max-height: 300px;
+    }
+}
+
+@media screen and (max-height:600px) {
+    .search-bar-container {
+        font-size: 12px;
+    }
+}
+
+@media screen and (max-width: 350px) {
+    .website-link-button {
+        padding: 5px;
+        font-size: 12px;
     }
 }
