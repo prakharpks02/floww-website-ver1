@@ -26,17 +26,16 @@ const tagNames = {
     'pune': 'Pune',
 
     // Product Tags
-    'product0': 'Delhi',
-    'product1': 'Delhi',
-    'product2': 'Delhi',
-    'product3': 'Delhi',
-    'product4': 'Delhi',
-    'product5': 'Delhi',
-    'product6': 'Delhi',
-    'product7': 'Delhi',
-    'product8': 'Delhi',
-    'product9': 'Delhi',
-    'product10': 'Delhi',
+    'product0': 'Others',
+    'product1': 'Fruits & Vegetables',
+    'product2': 'Groceries',
+    'product3': 'Pharma',
+    'product4': 'Foods',
+    'product5': 'Apparels',
+    'product6': 'Electronics',
+    'product7': 'Refrigerated Goods',
+    'product8': 'Gifts & Luxury',
+    'product9': 'Furniture',
 
     // Rental Plans
     'plan0': '1 hr and 50 km',
@@ -75,35 +74,32 @@ const productTags = [{
     'name': 'Other',
     'id': 'product0',
 }, {
-    'name': 'OTP Verification',
+    'name': 'Fruits & Vegetables',
     'id': 'product1',
 }, {
-    'name': 'Cold Chain',
+    'name': 'Groceries',
     'id': 'product2',
 }, {
-    'name': 'Intercity',
+    'name': 'Pharma',
     'id': 'product3',
 }, {
-    'name': '30 Min Delivery',
+    'name': 'Foods',
     'id': 'product4',
 }, {
-    'name': 'Tracking',
+    'name': 'Apparels',
     'id': 'product5',
 }, {
-    'name': 'Sanitized Fleet',
+    'name': 'Electronics',
     'id': 'product6',
 }, {
-    'name': 'Bulk Delivery',
+    'name': 'Refrigerated Goods',
     'id': 'product7',
 }, {
-    'name': 'Courier',
+    'name': 'Gifts & Luxury',
     'id': 'product8',
 }, {
-    'name': 'Cash on Delivery',
+    'name': 'Furniture',
     'id': 'product9',
-}, {
-    'name': 'Cash on Delivery',
-    'id': 'product10',
 }]
 
 const serviceTags = [{
@@ -270,6 +266,101 @@ const apiUrlList = [{
     }],
 }, {
     'url': 'http://localhost:8000/api/v1/track-order/',
+    'type': 'GET',
+    'parameterNames': [{
+        "name": "orderId",
+        "type": "string"
+    }],
+},
+{
+    'url': 'http://localhost:8000/api/test/get-cost-estimate/',
+    'type': 'POST',
+    'parameterNames': [{
+            "name": "vendorCode",
+            "type": "string"
+        },
+        {
+            "name": "orderType",
+            "type": "string"
+        },
+        {
+            "name": "orderList",
+            "type": "list"
+        },
+        {
+            "name": "rentalPlan",
+            "type": "string"
+        },
+    ],
+}, {
+    'url': 'http://localhost:8000/api/test/request-deliveries/',
+    'type': 'POST',
+    'parameterNames': [{
+            "name": "vendorCode",
+            "type": "string"
+        },
+        {
+            "name": "productDescription",
+            "type": "string"
+        },
+        {
+            "name": "companyName",
+            "type": "string"
+        },
+        {
+            "name": "deliveryTimestamp",
+            "type": "integer"
+        },
+        {
+            "name": "orderType",
+            "type": "string"
+        },
+        {
+            "name": "orderList",
+            "type": "list"
+        },
+        {
+            "name": "rentalPlan",
+            "type": "string"
+        },
+        {
+            "name": "serviceList",
+            "type": "list"
+        },
+    ],
+}, {
+    'url': 'http://localhost:8000/api/test/get-task-details/',
+    'type': 'GET',
+    'parameterNames': [{
+        "name": "taskId",
+        "type": "string"
+    }],
+}, {
+    'url': 'http://localhost:8000/api/test/get-order-details/',
+    'type': 'GET',
+    'parameterNames': [{
+        "name": "orderId",
+        "type": "string"
+    }],
+}, {
+    'url': 'http://localhost:8000/api/test/edit-order-instruction/',
+    'type': 'POST',
+    'parameterNames': [{
+        "name": "orderId",
+        "type": "string"
+    }, {
+        "name": "instruction",
+        "type": "string"
+    }],
+}, {
+    'url': 'http://localhost:8000/api/test/cancel-orders/',
+    'type': 'POST',
+    'parameterNames': [{
+        "name": "orderList",
+        "type": "list"
+    }],
+}, {
+    'url': 'http://localhost:8000/api/test/track-order/',
     'type': 'GET',
     'parameterNames': [{
         "name": "orderId",
