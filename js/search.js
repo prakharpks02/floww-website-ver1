@@ -1,64 +1,64 @@
-var vendorListConst = [{
-    'name': 'JS Transport',
-    'startPrice': '57',
-    'rating': '4.1',
-    'contactNo': '+91 9999955555',
-    'vendorCode': 'VEN10000',
-    'year': '1941',
-    'location': 'Juhu, Mumbai',
-    'size': '30-50',
-    'fleetType': 'riders',
-    'services': ['otp', 'cold_chain', 'same_day', 'intercity'],
-    'badges': ['100y_old'],
-}, {
-    'name': 'JS Transport',
-    'startPrice': '57',
-    'rating': '4.1',
-    'contactNo': '+91 9999955555',
-    'vendorCode': 'VEN10000',
-    'year': '1941',
-    'location': 'Juhu, Mumbai',
-    'size': '30-50',
-    'fleetType': 'riders',
-    'services': ['otp', 'cold_chain', 'same_day', 'intercity'],
-    'badges': ['100y_old'],
-}, {
-    'name': 'JS Transport',
-    'startPrice': '57',
-    'rating': '4.1',
-    'contactNo': '+91 9999955555',
-    'vendorCode': 'VEN10000',
-    'year': '1941',
-    'location': 'Juhu, Mumbai',
-    'size': '30-50',
-    'fleetType': 'riders',
-    'services': ['otp', 'cold_chain', 'same_day', 'intercity'],
-    'badges': ['100y_old'],
-}, {
-    'name': 'JS Transport',
-    'startPrice': '57',
-    'rating': '4.1',
-    'contactNo': '+91 9999955555',
-    'vendorCode': 'VEN10000',
-    'year': '1941',
-    'location': 'Juhu, Mumbai',
-    'size': '30-50',
-    'fleetType': 'riders',
-    'services': ['otp', 'cold_chain', 'same_day', 'intercity'],
-    'badges': ['100y_old'],
-}, {
-    'name': 'JS Transport',
-    'startPrice': '57',
-    'rating': '4.1',
-    'contactNo': '+91 9999955555',
-    'vendorCode': 'VEN10000',
-    'year': '1941',
-    'location': 'Juhu, Mumbai',
-    'size': '30-50',
-    'fleetType': 'riders',
-    'services': ['otp', 'cold_chain', 'same_day', 'intercity'],
-    'badges': ['100y_old'],
-}];
+// var vendorListConst = [{
+//     'name': 'JS Transport',
+//     'startPrice': '57',
+//     'rating': '4.1',
+//     'contactNo': '+91 9999955555',
+//     'vendorCode': 'VEN10000',
+//     'year': '1941',
+//     'location': 'Juhu, Mumbai',
+//     'size': '30-50',
+//     'fleetType': 'riders',
+//     'services': ['otp', 'cold_chain', 'same_day', 'intercity'],
+//     'badges': ['100y_old'],
+// }, {
+//     'name': 'JS Transport',
+//     'startPrice': '57',
+//     'rating': '4.1',
+//     'contactNo': '+91 9999955555',
+//     'vendorCode': 'VEN10000',
+//     'year': '1941',
+//     'location': 'Juhu, Mumbai',
+//     'size': '30-50',
+//     'fleetType': 'riders',
+//     'services': ['otp', 'cold_chain', 'same_day', 'intercity'],
+//     'badges': ['100y_old'],
+// }, {
+//     'name': 'JS Transport',
+//     'startPrice': '57',
+//     'rating': '4.1',
+//     'contactNo': '+91 9999955555',
+//     'vendorCode': 'VEN10000',
+//     'year': '1941',
+//     'location': 'Juhu, Mumbai',
+//     'size': '30-50',
+//     'fleetType': 'riders',
+//     'services': ['otp', 'cold_chain', 'same_day', 'intercity'],
+//     'badges': ['100y_old'],
+// }, {
+//     'name': 'JS Transport',
+//     'startPrice': '57',
+//     'rating': '4.1',
+//     'contactNo': '+91 9999955555',
+//     'vendorCode': 'VEN10000',
+//     'year': '1941',
+//     'location': 'Juhu, Mumbai',
+//     'size': '30-50',
+//     'fleetType': 'riders',
+//     'services': ['otp', 'cold_chain', 'same_day', 'intercity'],
+//     'badges': ['100y_old'],
+// }, {
+//     'name': 'JS Transport',
+//     'startPrice': '57',
+//     'rating': '4.1',
+//     'contactNo': '+91 9999955555',
+//     'vendorCode': 'VEN10000',
+//     'year': '1941',
+//     'location': 'Juhu, Mumbai',
+//     'size': '30-50',
+//     'fleetType': 'riders',
+//     'services': ['otp', 'cold_chain', 'same_day', 'intercity'],
+//     'badges': ['100y_old'],
+// }];
 
 
 
@@ -67,33 +67,6 @@ const googleOptions = {
         country: 'in'
     },
     fields: ["address_components", "formatted_address"],
-};
-
-// --------------------------------------------- Firebase Code Start
-// TODO: Replace the following with your app's Firebase project configuration
-// For Firebase JavaScript SDK v7.20.0 and later, `measurementId` is an optional field
-// For Firebase JavaScript SDK v7.20.0 and later, `measurementId` is an optional field
-var firebaseConfig = {
-    apiKey: "AIzaSyB6qa2LChBsDEghHpont13yPM04lJn4XSU",
-    authDomain: "djangoauthtest-001.firebaseapp.com",
-    projectId: "djangoauthtest-001",
-    storageBucket: "djangoauthtest-001.appspot.com",
-    messagingSenderId: "134728719367",
-    appId: "1:134728719367:web:ca01f900f39ae3d6c9dea2",
-    measurementId: "G-RBB5BL72D2"
-};
-
-// Initialize Firebase
-//firebase.initializeApp(firebaseConfig);
-
-var authConfirmResult = undefined;
-// --------------------------------------------- Firebase Code End
-
-function CountryCodeChange(codeval) {
-    console.log(codeval);
-    document.getElementById("countryselecteditem").value = codeval;
-    document.getElementById("countryselecteditem").text = codeval;
-    document.getElementById("phone-country-code-id").selectedIndex = "0";
 };
 
 
@@ -343,11 +316,11 @@ var app1 = new Vue({
         'rentalPlans': rentalPlans,
         'productTags': productTags,
 
-        'vendorList': vendorListConst,
+        'vendorList': [],
         'location': 'mumbai',
         'tagSelected': 'empty',
 
-        'userAuth': true,
+        'userAuth': false,
         'userContactNo': '+91 9919919191',
 
         'contentOverlay': false,
@@ -358,9 +331,6 @@ var app1 = new Vue({
             'code': '',
             'number': '',
             'otp': '',
-        },
-        'loginForm': {
-            'status': 'number',
         },
         'emailForm': {
             'email': '',
@@ -399,7 +369,7 @@ var app1 = new Vue({
         GetVendorList: function () {
             this.searchLoading = true
 
-            axios.get(globalApiUrl + '/api/order-details/', {
+            axios.get(globalApiUrl + '/api/v1/search/get-3pl-list/', {
                     params: {
                         location: this.location, // Sending empty if no location selected 
                         tagSelected: this.tagSelected, // Sending empty if no tag selected
@@ -409,9 +379,17 @@ var app1 = new Vue({
                     let responseData = JSON.parse(response.data);
                     console.log(responseData);
 
-                    app1.vendorList = responseData;
+                    app1.vendorList = responseData.data;
 
                     app1.searchLoading = false;
+
+
+                    return responseData.data.length;
+                })
+                .then(lengthvar => {
+                    if (lengthvar != 0) {
+                        document.getElementsByClassName('copy-button-tooltiptext')[0].classList.add('copy-button-tooltiptext-bottom');
+                    }
                 })
                 .catch(function (error) {
                     app1.searchLoading = false;
@@ -432,37 +410,27 @@ var app1 = new Vue({
             this.formType = '';
 
         },
-        LoginButton: function () {
-            this.phoneForm = {
-                'code': '',
-                'number': '',
-                'otp': '',
-            };
-            this.loginForm.status = 'number';
-
-            this.formType = 'login';
-            this.contentOverlay = true;
-
-            // Initialize Recaptcha
-
-            setTimeout(function () {
-                const recaptchaElement = new firebase.auth.RecaptchaVerifier(document.getElementById('get-otp-button'), {
-                    'size': 'invisible',
-                    'callback': (response) => {
-                        console.log('Recaptcha Fired');
-                        app1.PhoneSignin();
-                    }
-                });
-
-                recaptchaElement.render();
-                console.log(document.getElementById('get-otp-button'));
-            }, 1000)
-        },
         LogoutButton: function () {
+            fetch(globalApiUrl + '/api/v1/auth/logout-user-session-auth/')
+                .then(function (response) {
+                    let responseData = JSON.parse(response.data);
+                    console.log(responseData);
 
+                    if (responseData.status == 'success') {
+                        window.alert('Logged out Successfully');
+                        app1.userAuth = false;
+                    } else {
+                        window.alert('Not able to logout. Server error.')
+                    }
+
+                })
+                .catch(function (error) {
+                    console.error(error);
+                    window.alert('Server Error, Please Try Again!');
+                });
         },
         GetApiKey: function () {
-            axios.post(globalApiUrl + '/api/send-api-key/')
+            axios.post(globalApiUrl + '/api/v1/auth/send-api-key/')
                 .then(function (response) {
                     let responseData = JSON.parse(response.data);
                     console.log(responseData);
@@ -479,61 +447,15 @@ var app1 = new Vue({
                 })
                 .catch(function (error) {
                     if (error.response.status === 403) {
-                        this.LoginButton();
-                        window.alert('Not Authorized! Please login to access.')
+                        window.open("https://gofloww.co/login", '_blank');
                     } else {
                         window.alert('Server Error, Please Try Again!');
                     }
                     console.error(error);
                 });
         },
-        PhoneSignin: function () {
-            const phoneNumber = String(this.phoneForm.code) + String(this.phoneForm.number);
-            firebase.auth().signInWithPhoneNumber(phoneNumber, recaptchaElement)
-                .then((confirmationResult) => {
-                    console.log('Otp sent');
-                    authConfirmResult = confirmationResult;
-                    app1.loginForm.status = 'otp';
-                }).catch((error) => {
-                    console.log(error);
-                    window.alert('Server Error, Please Try again Later');
-                });
-        },
-        SubmitOtp: function () {
-            authConfirmResult.confirm(this.phoneForm.otp).then((result) => {
-
-                console.log('Verified');
-                const user = result.user;
-                user.getIdToken().then((idToken) => {
-
-                    axios.post(globalApiUrl + '/api/firebase-login/', {
-                            tokenId: idToken,
-                            customVal: String(this.phoneForm.code) + String(this.phoneForm.number),
-                        })
-                        .then(function (response) {
-                            let responseData = JSON.parse(response.data);
-                            console.log(responseData.status);
-
-                            if (responseData.status == 'success') {
-                                app1.userAuth = true;
-                            } else {
-                                app1.userAuth = false;
-                                window.alert('Server error, please try again later or send email to info@gofloww.co')
-                            }
-                        })
-                        .catch(function (error) {
-                            app1.formData.status = 'failure';
-                            window.alert('Server Error, Please Try Again!');
-                        });
-
-                });
-            }).catch((error) => {
-                console.log(error);
-                window.alert('Server Error, Please Try again Later');
-            });
-        },
         SubmitEmail: function () {
-            axios.post(globalApiUrl + '/api/submit-email-ecommerce/', {
+            axios.post(globalApiUrl + '/api/v1/auth/submit-user-email/', {
                     email: this.emailForm.email,
                 })
                 .then(function (response) {
@@ -586,6 +508,7 @@ var app1 = new Vue({
         },
         ChangeDeliveryDate: function (event) {
             this.orderForm.deliveryDate = Math.round(new Date(event.currentTarget.value).getTime() / 1000);
+            console.log(this.orderForm.deliveryDate);
         },
         OrderFormMobileNext: function () {
             if (this.orderForm.companyName == '' || this.orderForm.productType == '' || this.orderForm.deliveryDate == '') {
@@ -631,11 +554,14 @@ var app1 = new Vue({
             if (this.orderForm.productType == '') {
                 this.orderForm.productType = 'product0';
             }
-            axios.post(globalApiUrl + '/api/search/request-deliveries/', {
+
+            if (this.orderForm.companyName == '' || this.orderForm.deliveryDate == '') {
+                window.alert("Please Add your company name and select delivery date");
+            }
+            axios.post(globalApiUrl + '/api/v1/search/request-deliveries/', {
                     vendorCode: this.orderForm.vendorCode,
                     productDescription: this.orderForm.productType,
                     companyName: this.orderForm.companyName,
-                    contactNo: this.orderForm.contactNo,
                     deliveryDate: this.orderForm.deliveryDate,
                     orderType: this.orderForm.orderType,
                     rentalPlan: this.orderForm.rentalPlan,
@@ -647,17 +573,22 @@ var app1 = new Vue({
                     console.log(responseData.status);
 
                     if (responseData.status == 'success') {
+                        window.alert("Task placed successfully");
                         app1.CloseOverlay();
                     } else {
                         window.alert(responseData.message);
                     };
                 })
                 .catch(function (error) {
-                    window.alert('Server Error, Please Try Again!');
+                    if (error.response.status === 403) {
+                        window.open("https://gofloww.co/login", '_blank');
+                    } else {
+                        window.alert('Server Error, Please Try Again!');
+                    }
                 });
         },
         GetCostEstimate: function () {
-            axios.post(globalApiUrl + '/api/search/get-cost-estimate/', {
+            axios.post(globalApiUrl + '/api/v1/search/get-cost-estimate/', {
                     vendorCode: this.orderForm.vendorCode,
                     orderType: this.orderForm.orderType,
                     rentalPlan: this.orderForm.rentalPlan,
@@ -667,10 +598,10 @@ var app1 = new Vue({
                     let responseData = JSON.parse(response.data);
                     console.log(responseData);
 
-                    if (responseData.cost == 'N/A') {
-                        window.alert('Server Error, Please try again!');
+                    if (responseData.status == 'success') {
+                        window.alert('The Cost is - ₹ ' + responseData.message);
                     } else {
-                        window.alert('The Cost is - ₹ ' + responseData.cost);
+                        window.alert(responseData.message);
                     };
                 })
                 .catch(function (error) {
@@ -682,24 +613,22 @@ var app1 = new Vue({
             this.orderForm.serviceList.push(document.getElementById('request-service-tag').value);
         },
     },
-    mounted() {
-        document.getElementsByClassName('copy-button-tooltiptext')[0].classList.add('copy-button-tooltiptext-bottom');
+    async mounted() {
+        await this.GetVendorList();
 
-        //this.GetVendorList();
+        axios.get(globalApiUrl + '/api/v1/auth/check-user-session-auth/')
+            .then(function (response) {
+                let responseData = JSON.parse(response.data);
+                console.log(responseData);
+                app1.userAuth = responseData.authVal;
 
-        // axios.get(globalApiUrl + '/api/check-user-session-auth/')
-        //     .then(function (response) {
-        //         let responseData = JSON.parse(response.data);
-        //         console.log(responseData);
-        //         app1.userAuth = responseData.authVal;
-
-        //         document.getElementById("page-load-overlay").classList.add("hide");
-        //     })
-        //     .catch(function (error) {
-        //         console.log(error);
-        //         window.alert('Server Error, Please Try Again!');
-        //         document.getElementById("page-load-overlay").classList.add("hide");
-        //     });
-        document.getElementById("page-load-overlay").classList.add("hide");
+                document.getElementById("page-load-overlay").classList.add("hide");
+            })
+            .catch(function (error) {
+                console.log(error);
+                app1.userAuth = false;
+                window.alert('Auth check failed. Please login again');
+                document.getElementById("page-load-overlay").classList.add("hide");
+            });
     },
 })

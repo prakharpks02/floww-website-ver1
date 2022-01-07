@@ -225,6 +225,14 @@ html {
     box-shadow: inset 0px 5px 3px -5px #CCC, inset 0px -5px 3px -5px #CCC;
 }
 
+.search-list-empty-text {
+    font-size: 20px;
+    color: rgb(173, 173, 173);
+    width: 200px;
+    margin: auto;
+    margin-top: 30%;
+}
+
 
 /* ---------------------------------------- Adding Search Loading Animation */
 
@@ -582,7 +590,7 @@ html {
 
 /* Page Load Overlay */
 #page-load-overlay {
-    background-color: rgb(212, 212, 212);
+    background-color: #03FFFE;
     opacity: 0.8;
     z-index: 2;
     width: 100%;

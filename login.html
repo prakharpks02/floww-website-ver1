@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    {%load static%}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="shortcut icon" href="img/logo/floww-logo-favicon.ico" type="image/x-icon">
+    <link rel="icon" href="img/logo/floww-logo-favicon.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href="css/fontawesome.css">
+
+    <link rel="stylesheet" type="text/css" href="css/bulma.css">
+    <!--   Calling Bulma from local file   -->
+
+    <script type="text/javascript" src="js/vue.js"></script>
+    <!--   Calling Vue from local file   -->
+    <script type="text/javascript" src="js/axios.min.js"></script>
+    <!--   Calling Axios from local file   -->
+
+
+    <link rel="stylesheet" href="css/login.css" />
+    <!--  Adding custom CSS file for all tags in this file  -->
+    <title>floww | Login</title>
+</head>
+
+<body>
+
+    <div class="full-page-container" id="login-page-id">
+
+        <div class="login-box-container">
+
+            <div class="login-heading-container">
+                <p>Login</p>
+            </div>
+
+            <!-- -----------------------Login Form Container -->
+
+            <div class="login-form-outside-container">
+
+                <div class="login-box-container">
+
+                    <div class="login-heading-container">
+                        <p>Login</p>
+                    </div>
+
+                    <div class="login-form-container">
+                        <div class="form-content-container" v-if="loginForm.status=='number'">
+                            <p class="form-label-container">Phone Number</p>
+                            <p class="form-field-outer-container">
+                                <i class="fa fa-phone" style="height: fit-content; margin: auto;"></i>
+                                <select class="form-field-select-container form-field-container"
+                                    v-model="phoneForm.code" onchange="CountryCodeChange(this.value)"
+                                    id="phone-country-code-id">
+                                    <option id="countryselecteditem" value=""></option>
+                                    <option v-for="country in countryCode" :value="country.dial_code">{{country.name}}
+                                        ({{country.dial_code}})
+                                    </option>
+                                </select>
+                                <input class="form-field-container" type="number"
+                                    onKeyPress="if(this.value.length==10) return false;"
+                                    placeholder="10 digit Mobile No" v-model="phoneForm.number">
+                            </p>
+                        </div>
+                        <div class="form-content-container" style="width: 85%; margin: auto;"
+                            v-if="loginForm.status=='otp'">
+                            <p class="form-otp-container">
+                                <input class="form-field-container form-field-otp-container" type="number"
+                                    onKeyPress="if(this.value.length==6) return false;" v-model="phoneForm.otp">
+                            </p>
+                        </div>
+                        <br>
+                        <p class="help" style="text-align: center;" v-if="loginForm.status=='otp'">
+                            OTP Sent on your Mobile
+                        </p>
+
+                    </div>
+
+                    <br>
+
+                    <div class="login-button-container" v-if="loginForm.status=='number'">
+                        <button class="login-button-internal" id="get-otp-button">Get OTP</button>
+                    </div>
+
+                    <div class="login-button-container" v-if="loginForm.status=='otp'" v-on:click="SubmitOtp">
+                        <button class="login-button-internal">Submit OTP</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+        <!-- ------------------------Overlay Login Container------------------------ -->
+
+        <div class="overlay-login-container">
+
+        </div>
+
+    </div>
+
+
+    <!-- JS content -->
+
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-firestore.js"></script>
+
+    <script src="js/countryCode.js"></script>
+    <script src="js/flowwVariables.js"></script>
+    <script src="js/login.js"></script>
+</body>
+
+</html>

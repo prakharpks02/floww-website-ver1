@@ -6,7 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="icon" href="img/logo/floww-logo-favicon.ico">
+    <link rel="shortcut icon" href="img/logo/floww-logo-favicon.ico" type="image/x-icon">
+    <link rel="icon" href="img/logo/floww-logo-favicon.ico" type="image/x-icon">
 
     <link rel="stylesheet" type="text/css" href="css/search.css">
 
@@ -22,12 +23,6 @@
     <!--   Calling Vue from local file   -->
     <script type="text/javascript" src="js/axios.min.js"></script>
     <!--   Calling Axios from local file   -->
-
-    <!-- <script type="text/javascript" src="{% static 'platform_app/js/aws.s3.js' %}"></script> -->
-    <!--   Calling AWS S3 from local file   -->
-
-    <!-- Add the entire Firebase JavaScript SDK -->
-    <!-- <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase.js"></script> -->
 
     <title>floww Search</title>
 </head>
@@ -48,15 +43,15 @@
             <div class="header-right-container">
 
                 <div class="column" v-if="!userAuth">
-                    <button class="button" @click="LoginButton">
+                    <a class="button" href="https://gofloww.co/login" target="_blank">
                         Login | SignUp
-                    </button>
+                    </a>
                 </div>
 
                 <div class="header-content-container profile-dropdown-container" v-if="userAuth">
                     <span class="button is-rounded profile-dropbtn">{{userContactNo}} <i class="down-arrow"></i></span>
                     <div class="profile-dropdown-content has-text-centered">
-                        <a class="" href="#">My Orders</a>
+                        <a class="" onclick="window.alert('This page is coming soon!')">My Orders</a>
                         <a class="" @click="GetApiKey">Get API Key</a>
                         <a class="" @click="LogoutButton">Logout</a>
                     </div>
@@ -108,6 +103,9 @@
                 </div>
 
                 <div class="search-list-container">
+                    <div class="search-list-empty-text" v-if="vendorList.length == 0">
+                        <span>No Vendors to Show. Please change City or Tag</span>
+                    </div>
 
                     <!-- Card Starts -->
                     <!-- <div class="desktop-view-toggle card-container box has-text-centered">
@@ -295,7 +293,7 @@
                         </div> 
 
                     </div>-->
-                    
+
                     <!-- Card Ends -->
 
                     <vendor-card-component v-for="vendor in vendorList" :vendordata="vendor" :tagnames="tagNames"
@@ -321,62 +319,6 @@
                 <span class="icon">
                     <i class="fa fa-times fa-2x" v-on:click="CloseOverlay"></i>
                 </span>
-            </div>
-
-
-            <!-- -----------------------Login Form Container -->
-
-            <div class="login-form-outside-container" v-if="formType=='login'">
-
-                <div class="login-box-container">
-
-                    <div class="login-heading-container">
-                        <p>Login</p>
-                    </div>
-
-                    <div class="login-form-container">
-                        <div class="form-content-container" v-if="loginForm.status=='number'">
-                            <p class="form-label-container">Phone Number</p>
-                            <p class="form-field-outer-container">
-                                <i class="fa fa-phone" style="height: fit-content; margin: auto;"></i>
-                                <select class="form-field-select-container form-field-container"
-                                    v-model="phoneForm.code" onchange="CountryCodeChange(this.value)"
-                                    id="phone-country-code-id">
-                                    <option id="countryselecteditem" value=""></option>
-                                    <option v-for="country in countryCode" :value="country.dial_code">{{country.name}}
-                                        ({{country.dial_code}})
-                                    </option>
-                                </select>
-                                <input class="form-field-container" type="number"
-                                    onKeyPress="if(this.value.length==10) return false;"
-                                    placeholder="10 digit Mobile No" v-model="phoneForm.number">
-                            </p>
-                        </div>
-                        <div class="form-content-container" style="width: 85%; margin: auto;"
-                            v-if="loginForm.status=='otp'">
-                            <p class="form-otp-container">
-                                <input class="form-field-container form-field-otp-container" type="number"
-                                    onKeyPress="if(this.value.length==6) return false;" v-model="phoneForm.otp">
-                            </p>
-                        </div>
-                        <br>
-                        <p class="help" style="text-align: center;" v-if="loginForm.status=='otp'">
-                            OTP Sent on your Mobile
-                        </p>
-
-                    </div>
-
-                    <br>
-
-                    <div class="login-button-container" v-if="loginForm.status=='number'">
-                        <button class="login-button-internal" id="get-otp-button">Get OTP</button>
-                    </div>
-
-                    <div class="login-button-container" v-if="loginForm.status=='otp'" v-on:click="SubmitOtp">
-                        <button class="login-button-internal">Submit OTP</button>
-                    </div>
-                </div>
-
             </div>
 
             <!-- ---------------------Email Form Container -->
@@ -421,9 +363,12 @@
                             </div>
 
                             <div class="field">
-                                <div class="control">
-                                    <input class="input" type="text" placeholder="Type of Product"
-                                        v-model="orderForm.productType">
+                                <div class="select is-rounded tag-filter-body">
+                                    <select v-model="orderForm.productType">
+                                        <option hidden value="" selected disabled>Select Product</option>
+                                        <option v-for="product in productTags" :value="product.id">{{product.name}}
+                                        </option>
+                                    </select>
                                 </div>
                             </div>
                         </div>
@@ -774,12 +719,6 @@
         src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyAVcyVFjXhbFtR3dqbfoFWtHx0doqT7leE"></script>
     <!-- Google Address Autocomplete Places -->
 
-
-    <!-- <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-firestore.js"></script> -->
-    <!-- Add Firebase products that you want to use -->
-
     <script src="js/countryCode.js"></script>
     <!-- Country Code JS file -->
 
@@ -787,40 +726,6 @@
     <!-- Floww custom Dictionaries JS file -->
 
     <script src="js/search.js"></script>
-
-    <!-- <script type="text/javascript">
-        const globalUserStatus = JSON.parse(document.getElementById('userStatus').textContent);
-
-        if (globalUserStatus != 'active')
-        {
-            document.getElementById('disable-overlay-id').classList.remove('hide');
-        }
-
-        function getCookie(name) {
-            let cookieValue = null;
-
-            if (document.cookie && document.cookie !== '')
-            {
-                const cookies = document.cookie.split(';');
-                for (let i = 0; i < cookies.length; i++)
-                {
-                    const cookie = cookies[i].trim();
-
-                    // Does this cookie string begin with the name we want?
-                    if (cookie.substring(0, name.length + 1) === (name + '='))
-                    {
-                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-
-                        break;
-                    }
-                }
-            }
-
-            return cookieValue;
-        }
-
-        axios.defaults.headers.common['X-CSRFToken'] = getCookie('csrftoken');
-    </script> -->
 
 </body>
 
