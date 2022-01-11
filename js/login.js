@@ -105,7 +105,7 @@ var app1 = new Vue({
 			this.loginStatus = successstatus;
 
 			if(successstatus){
-				//this.SetCookieValue('sessionid', sessionidval, 14);
+				this.SetCookieValue('sessionid', sessionidval, 14);
 			// 	setTimeout(function() {
 			// 		window.close();
 			// 	}, 3000)
@@ -115,7 +115,7 @@ var app1 = new Vue({
 			let date = new Date();
 			date.setTime(date.getTime() + (expDays * 24 * 60 * 60 * 1000));
 			const expires = "expires=" + date.toUTCString();
-			document.cookie = cName + "=" + cValue + "; " + expires + "; path=/; domain=localhost:8000;";
+			document.cookie = cName + "=" + cValue + "; " + expires + "; path=/; domain=.gofloww.co;";
 		},
 	},
 	mounted() {
