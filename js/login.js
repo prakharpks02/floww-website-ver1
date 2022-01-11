@@ -38,6 +38,7 @@ var app1 = new Vue({
 		'loginForm': {
 			'status': 'number',
 		},
+		'loginStatus': true,
 	},
 	methods: {
 		SubmitNumber: function () {
@@ -59,6 +60,8 @@ var app1 = new Vue({
 				});
 		},
 		SubmitOtp: function () {
+			document.getElementById("page-load-overlay").classList.remove("hide");
+
 			authConfirmResult.confirm(this.phoneForm.otp).then((result) => {
 
 				console.log('Verified');
@@ -71,26 +74,46 @@ var app1 = new Vue({
 						})
 						.then(function (response) {
 							let responseData = JSON.parse(response.data);
-							console.log(responseData.status);
+							console.log(responseData);
 							if (responseData.status == 'failure') {
-								app1.formData.status = 'failure';
+								app1.ShowSuccess(false);
 							} else if (responseData.status == 'success') {
 								console.log('success');
-							} else if (responseData.status =='created'){
+								app1.ShowSuccess(true);
+							} else if (responseData.status == 'created') {
 								console.log('created');
+								app1.ShowSuccess(true);
 							};
+							document.getElementById("page-load-overlay").classList.add("hide");
 						})
 						.catch(function (error) {
-							app1.formData.status = 'failure';
 							window.alert('Server Error, Please Try Again!');
+							app1.ShowSuccess(true);
+							document.getElementById("page-load-overlay").classList.add("hide");
 						});
 
 				});
 			}).catch((error) => {
 				console.log(error);
 				window.alert('Server Error, Please Try again Later');
+				document.getElementById("page-load-overlay").classList.add("hide");
 			});
 		},
+		ShowSuccess: function (successstatus) {
+			document.getElementById("login-form-container").classList.add("hide");
+			document.getElementById("success-container").classList.remove("hide");
+			this.loginStatus = successstatus;
+
+			// if(successstatus){
+			// 	setTimeout(function() {
+			// 		window.close();
+			// 	}, 3000)
+			// }
+		}
+	},
+	mounted() {
+		document.getElementById("page-load-overlay").classList.add("hide");
+		//this.ShowSuccess(true);
 	}
 });
 
