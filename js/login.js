@@ -76,19 +76,19 @@ var app1 = new Vue({
 							let responseData = JSON.parse(response.data);
 							console.log(responseData);
 							if (responseData.status == 'failure') {
-								app1.ShowSuccess(false);
+								app1.ShowSuccess(false, null);
 							} else if (responseData.status == 'success') {
 								console.log('success');
-								app1.ShowSuccess(true);
+								app1.ShowSuccess(true, responseData.sessionId);
 							} else if (responseData.status == 'created') {
 								console.log('created');
-								app1.ShowSuccess(true);
+								app1.ShowSuccess(true, responseData.sessionId);
 							};
 							document.getElementById("page-load-overlay").classList.add("hide");
 						})
 						.catch(function (error) {
 							window.alert('Server Error, Please Try Again!');
-							app1.ShowSuccess(true);
+							app1.ShowSuccess(false, null);
 							document.getElementById("page-load-overlay").classList.add("hide");
 						});
 
@@ -99,17 +99,24 @@ var app1 = new Vue({
 				document.getElementById("page-load-overlay").classList.add("hide");
 			});
 		},
-		ShowSuccess: function (successstatus) {
+		ShowSuccess: function (successstatus, sessionidval) {
 			document.getElementById("login-form-container").classList.add("hide");
 			document.getElementById("success-container").classList.remove("hide");
 			this.loginStatus = successstatus;
 
-			// if(successstatus){
+			if(successstatus){
+				//this.SetCookieValue('sessionid', sessionidval, 14);
 			// 	setTimeout(function() {
 			// 		window.close();
 			// 	}, 3000)
-			// }
-		}
+			}
+		},
+		SetCookieValue: function (cName, cValue, expDays) {
+			let date = new Date();
+			date.setTime(date.getTime() + (expDays * 24 * 60 * 60 * 1000));
+			const expires = "expires=" + date.toUTCString();
+			document.cookie = cName + "=" + cValue + "; " + expires + "; path=/; domain=localhost:8000;";
+		},
 	},
 	mounted() {
 		document.getElementById("page-load-overlay").classList.add("hide");
