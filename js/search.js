@@ -401,23 +401,8 @@ var app1 = new Vue({
 
         },
         LogoutButton: function () {
-            fetch(globalApiUrl + '/api/v1/auth/logout-user-session-auth/')
-                .then(function (response) {
-                    let responseData = JSON.parse(response.data);
-                    console.log(responseData);
-
-                    if (responseData.status == 'success') {
-                        window.alert('Logged out Successfully');
-                        app1.userAuth = false;
-                    } else {
-                        window.alert('Not able to logout. Server error.')
-                    }
-
-                })
-                .catch(function (error) {
-                    console.error(error);
-                    window.alert('Server Error, Please Try Again!');
-                });
+            document.cookie = 'floww-token' + '=;expires=' + new Date(1970, 0, 1).toUTCString() + ';path=/'
+            window.location.reload();
         },
         GetApiKey: function () {
             axios.post(globalApiUrl + '/api/v1/auth/send-api-key/')
@@ -426,7 +411,13 @@ var app1 = new Vue({
                     console.log(responseData);
 
                     if (responseData.status == 'success') {
-                        window.alert('API Sent on your email');
+
+                        if(responseData.emailStatus){
+                            window.alert('API Sent on your email');
+                        } else {
+                            window.alert('Email Could Not be sent, Please copy your API key from here /n'+responseData.apiKey);
+                        }
+                        
                     } else {
                         this.emailForm.email = '';
                         this.emailForm.error = 'none';

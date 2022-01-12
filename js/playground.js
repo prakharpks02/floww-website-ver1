@@ -54,7 +54,7 @@ var app1 = new Vue({
             let authTokenStr = "Token " + this.tokenInput;
             axios.defaults.headers.common['Authorization'] = authTokenStr;
 
-            setCookie('token', this.tokenInput, 14);
+            setCookie('floww-playground-token', this.tokenInput, 14);
 
             console.log("Authorization: " + authTokenStr);
             window.alert("Your Token is Set");
@@ -213,7 +213,7 @@ var app1 = new Vue({
     },
     mounted() {
 
-        let tokenVal = getCookie('token');
+        let tokenVal = getCookie('floww-playground-token');
         if (tokenVal) {
             let authTokenStr = "Token " + tokenVal;
             axios.defaults.headers.common['Authorization'] = authTokenStr;
