@@ -115,7 +115,7 @@ var app1 = new Vue({
 			let date = new Date();
 			date.setTime(date.getTime() + (expDays * 24 * 60 * 60 * 1000));
 			const expires = "expires=" + date.toUTCString();
-			document.cookie = cName + "=" + cValue + "; " + expires + "; path=/; domain=.gofloww.co;";
+			document.cookie = cName + "=" + cValue + "; " + expires + "; path=/; domain=backend.gofloww.co;";
 		},
 	},
 	mounted() {
