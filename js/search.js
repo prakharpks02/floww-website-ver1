@@ -1,74 +1,64 @@
-// var vendorListConst = [{
-//     'name': 'JS Transport',
-//     'startPrice': '57',
-//     'rating': '4.1',
-//     'contactNo': '+91 9999955555',
-//     'vendorCode': 'VEN10000',
-//     'year': '1941',
-//     'location': 'Juhu, Mumbai',
-//     'size': '30-50',
-//     'fleetType': 'riders',
-//     'services': ['otp', 'cold_chain', 'same_day', 'intercity'],
-//     'badges': ['100y_old'],
-// }, {
-//     'name': 'JS Transport',
-//     'startPrice': '57',
-//     'rating': '4.1',
-//     'contactNo': '+91 9999955555',
-//     'vendorCode': 'VEN10000',
-//     'year': '1941',
-//     'location': 'Juhu, Mumbai',
-//     'size': '30-50',
-//     'fleetType': 'riders',
-//     'services': ['otp', 'cold_chain', 'same_day', 'intercity'],
-//     'badges': ['100y_old'],
-// }, {
-//     'name': 'JS Transport',
-//     'startPrice': '57',
-//     'rating': '4.1',
-//     'contactNo': '+91 9999955555',
-//     'vendorCode': 'VEN10000',
-//     'year': '1941',
-//     'location': 'Juhu, Mumbai',
-//     'size': '30-50',
-//     'fleetType': 'riders',
-//     'services': ['otp', 'cold_chain', 'same_day', 'intercity'],
-//     'badges': ['100y_old'],
-// }, {
-//     'name': 'JS Transport',
-//     'startPrice': '57',
-//     'rating': '4.1',
-//     'contactNo': '+91 9999955555',
-//     'vendorCode': 'VEN10000',
-//     'year': '1941',
-//     'location': 'Juhu, Mumbai',
-//     'size': '30-50',
-//     'fleetType': 'riders',
-//     'services': ['otp', 'cold_chain', 'same_day', 'intercity'],
-//     'badges': ['100y_old'],
-// }, {
-//     'name': 'JS Transport',
-//     'startPrice': '57',
-//     'rating': '4.1',
-//     'contactNo': '+91 9999955555',
-//     'vendorCode': 'VEN10000',
-//     'year': '1941',
-//     'location': 'Juhu, Mumbai',
-//     'size': '30-50',
-//     'fleetType': 'riders',
-//     'services': ['otp', 'cold_chain', 'same_day', 'intercity'],
-//     'badges': ['100y_old'],
-// }];
-
-
-
-const googleOptions = {
-    componentRestrictions: {
-        country: 'in'
-    },
-    fields: ["address_components", "formatted_address"],
-};
-
+var vendorListConst = [{
+    'name': 'JS Transport',
+    'startPrice': '57',
+    'rating': '4.1',
+    'contactNo': '+91 9999955555',
+    'vendorCode': 'VEN10000',
+    'year': '1941',
+    'location': 'Juhu, Mumbai',
+    'size': '30-50',
+    'fleetType': 'riders',
+    'services': ['otp', 'cold_chain', 'same_day', 'intercity'],
+    'badges': ['100y_old'],
+}, {
+    'name': 'JS Transport',
+    'startPrice': '57',
+    'rating': '4.1',
+    'contactNo': '+91 9999955555',
+    'vendorCode': 'VEN10000',
+    'year': '1941',
+    'location': 'Juhu, Mumbai',
+    'size': '30-50',
+    'fleetType': 'riders',
+    'services': ['otp', 'cold_chain', 'same_day', 'intercity'],
+    'badges': ['100y_old'],
+}, {
+    'name': 'JS Transport',
+    'startPrice': '57',
+    'rating': '4.1',
+    'contactNo': '+91 9999955555',
+    'vendorCode': 'VEN10000',
+    'year': '1941',
+    'location': 'Juhu, Mumbai',
+    'size': '30-50',
+    'fleetType': 'riders',
+    'services': ['otp', 'cold_chain', 'same_day', 'intercity'],
+    'badges': ['100y_old'],
+}, {
+    'name': 'JS Transport',
+    'startPrice': '57',
+    'rating': '4.1',
+    'contactNo': '+91 9999955555',
+    'vendorCode': 'VEN10000',
+    'year': '1941',
+    'location': 'Juhu, Mumbai',
+    'size': '30-50',
+    'fleetType': 'riders',
+    'services': ['otp', 'cold_chain', 'same_day', 'intercity'],
+    'badges': ['100y_old'],
+}, {
+    'name': 'JS Transport',
+    'startPrice': '57',
+    'rating': '4.1',
+    'contactNo': '+91 9999955555',
+    'vendorCode': 'VEN10000',
+    'year': '1941',
+    'location': 'Juhu, Mumbai',
+    'size': '30-50',
+    'fleetType': 'riders',
+    'services': ['otp', 'cold_chain', 'same_day', 'intercity'],
+    'badges': ['100y_old'],
+}];
 
 // --------------------------------------- Fixed Functions For Page responsivness
 
@@ -496,15 +486,6 @@ var app1 = new Vue({
             this.formType = 'order';
             this.contentOverlay = true;
 
-            try {
-                setTimeout(function () {
-                    app1.PickupGoogleAuto(document.getElementsByClassName('pickup-address-field')[0]);
-                    app1.DeliveryGoogleAuto(document.getElementsByClassName('drop-address-field')[0]);
-                }, 1000);
-            } catch (err) {
-                console.log(err);
-            }
-
         },
         ChangeDeliveryDate: function (event) {
             this.orderForm.deliveryDate = Math.round(new Date(event.currentTarget.value).getTime() / 1000);
@@ -515,17 +496,6 @@ var app1 = new Vue({
                 this.orderFormMobile.error1 = true;
             } else {
                 this.orderFormMobile.formStatus = 'advance';
-
-                try {
-                    setTimeout(function () {
-                        app1.PickupGoogleAuto(document.getElementsByClassName('pickup-address-field')[1]);
-                        app1.DeliveryGoogleAuto(document.getElementsByClassName('drop-address-field')[1]);
-                    }, 1000);
-                } catch (err) {
-                    console.log(err);
-                }
-
-
             };
         },
         AddOrder: function () {
@@ -557,35 +527,43 @@ var app1 = new Vue({
 
             if (this.orderForm.companyName == '' || this.orderForm.deliveryDate == '') {
                 window.alert("Please Add your company name and select delivery date");
-            }
-            axios.post(globalApiUrl + '/api/v1/search/request-deliveries/', {
-                    vendorCode: this.orderForm.vendorCode,
-                    productDescription: this.orderForm.productType,
-                    companyName: this.orderForm.companyName,
-                    deliveryDate: this.orderForm.deliveryDate,
-                    orderType: this.orderForm.orderType,
-                    rentalPlan: this.orderForm.rentalPlan,
-                    orderList: this.orderForm.orderList,
-                    serviceList: this.orderForm.serviceList,
-                })
-                .then(function (response) {
-                    let responseData = JSON.parse(response.data);
-                    console.log(responseData.status);
+            } else {
 
-                    if (responseData.status == 'success') {
-                        window.alert("Task placed successfully");
-                        app1.CloseOverlay();
-                    } else {
-                        window.alert(responseData.message);
-                    };
-                })
-                .catch(function (error) {
-                    if (error.response.status === 403) {
-                        window.open("https://gofloww.co/login", '_blank');
-                    } else {
-                        window.alert('Server Error, Please Try Again!');
-                    }
-                });
+                if (this.orderForm.orderType == 'perOrder' && this.orderForm.orderList.length == 0) {
+                    window.alert("Please add atleast 1 order, or choose rental.");
+                } else {
+                    axios.post(globalApiUrl + '/api/v1/search/request-deliveries/', {
+                            vendorCode: this.orderForm.vendorCode,
+                            productDescription: this.orderForm.productType,
+                            companyName: this.orderForm.companyName,
+                            deliveryDate: this.orderForm.deliveryDate,
+                            orderType: this.orderForm.orderType,
+                            rentalPlan: this.orderForm.rentalPlan,
+                            orderList: this.orderForm.orderList,
+                            serviceList: this.orderForm.serviceList,
+                        })
+                        .then(function (response) {
+                            let responseData = JSON.parse(response.data);
+                            console.log(responseData.status);
+
+                            if (responseData.status == 'success') {
+                                window.alert("Task placed successfully");
+                                app1.CloseOverlay();
+                            } else {
+                                window.alert(responseData.message);
+                            };
+                        })
+                        .catch(function (error) {
+                            if (error.response.status === 403) {
+                                window.open("https://gofloww.co/login", '_blank');
+                            } else {
+                                window.alert('Server Error, Please Try Again!');
+                            }
+                        });
+                }
+
+            }
+
         },
         GetCostEstimate: function () {
             axios.post(globalApiUrl + '/api/v1/search/get-cost-estimate/', {
@@ -608,9 +586,22 @@ var app1 = new Vue({
                     window.alert('Server Error, Please Try Again!');
                 });
         },
-        AddServiceTag: function (event) {
-            console.log(document.getElementById('request-service-tag').value);
-            this.orderForm.serviceList.push(document.getElementById('request-service-tag').value);
+        AddServiceTag: function (formtype) {
+            let serviceVal = '';
+            if (formtype == 'mobile') {
+                serviceVal = document.getElementById('request-service-tag-mobile').value;
+            } else {
+                serviceVal = document.getElementById('request-service-tag-desktop').value;
+            }
+
+            console.log(serviceVal);
+            this.orderForm.serviceList.push(serviceVal);
+
+            let selectedServiceList = ''
+            for (i = 0; i < this.orderForm.serviceList.length; i++) {
+                selectedServiceList = selectedServiceList + this.orderForm.serviceList[i] + ' | ';
+            }
+            window.alert('Selected Service Codes are - ' + selectedServiceList);
         },
     },
     async mounted() {

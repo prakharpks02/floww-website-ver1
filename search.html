@@ -390,13 +390,13 @@
                                 <label class="label">Request Services</label>
                                 <div class="field has-addons">
                                     <div class="select tag-filter-body">
-                                        <select id="request-service-tag">
+                                        <select id="request-service-tag-desktop">
                                             <option hidden value="empty" selected disabled>Select Tag</option>
                                             <option v-for="tag in serviceTags" :value="tag.id">{{tag.name}}</option>
                                         </select>
                                     </div>
                                     <div class="control">
-                                        <button class="button is-info" v-on:click="AddServiceTag">Add</button>
+                                        <button class="button is-info" v-on:click="AddServiceTag('desktop')">Add</button>
                                     </div>
                                 </div>
 
@@ -478,7 +478,7 @@
 
                                     <div class="field" style="width: 400px;">
                                         <div class="control is-expanded">
-                                            <input class="input" type="number" placeholder="Instruction or Description"
+                                            <input class="input" type="text" placeholder="Instruction or Description"
                                                 v-model="orderTempElement.instruction">
                                         </div>
                                     </div>
@@ -555,13 +555,13 @@
                             <label class="label">Request Services</label>
                             <div class="field has-addons">
                                 <div class="select tag-filter-body">
-                                    <select id="request-service-tag">
+                                    <select id="request-service-tag-mobile">
                                         <option hidden value="empty" selected disabled>Select Tag</option>
                                         <option v-for="tag in serviceTags" :value="tag.id">{{tag.name}}</option>
                                     </select>
                                 </div>
                                 <div class="control">
-                                    <button class="button is-info" v-on:click="AddServiceTag">Add</button>
+                                    <button class="button is-info" v-on:click="AddServiceTag('mobile')">Add</button>
                                 </div>
                             </div>
 
