@@ -419,10 +419,10 @@ var app1 = new Vue({
                         }
 
                     } else {
-                        this.emailForm.email = '';
-                        this.emailForm.error = 'none';
-                        this.formType = 'email';
-                        this.contentOverlay = true;
+                        app1.emailForm.email = '';
+                        app1.emailForm.error = 'none';
+                        app1.formType = 'email';
+                        app1.contentOverlay = true;
                     }
 
                 })
