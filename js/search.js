@@ -437,7 +437,7 @@ var app1 = new Vue({
                 })
                 .catch(function (error) {
                     if (error.response.status === 403) {
-                        window.open("https://gofloww.co/login", '_blank');
+                        window.open("https://backend.gofloww.co/login/", '_blank');
                     } else {
                         window.alert('Server Error, Please Try Again!');
                     }
@@ -555,7 +555,7 @@ var app1 = new Vue({
                         })
                         .catch(function (error) {
                             if (error.response.status === 403) {
-                                window.open("https://gofloww.co/login", '_blank');
+                                window.open("https://backend.gofloww.co/login/", '_blank');
                             } else {
                                 window.alert('Server Error, Please Try Again!');
                             }

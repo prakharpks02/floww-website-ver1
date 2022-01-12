@@ -163,7 +163,7 @@ const orderStatus = [{
     'id': 'completed',
 }]
 
-const globalApiUrl = "https://backend.gofloww.co"  //"http://localhost:8000"
+const globalApiUrl = "http://localhost:8000"//"https://backend.gofloww.co"  //"http://localhost:8000"
 
 const apiUrlList = [{
     'url': 'http://localhost:8000/api-token-auth/',
