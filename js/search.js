@@ -412,12 +412,12 @@ var app1 = new Vue({
 
                     if (responseData.status == 'success') {
 
-                        if(responseData.emailStatus){
+                        if (responseData.emailStatus) {
                             window.alert('API Sent on your email');
                         } else {
-                            window.alert('Email Could Not be sent, Please copy your API key from here /n'+responseData.apiKey);
+                            window.alert('Email Could Not be sent, Please copy your API key from here /n' + responseData.apiKey);
                         }
-                        
+
                     } else {
                         this.emailForm.email = '';
                         this.emailForm.error = 'none';
@@ -427,12 +427,17 @@ var app1 = new Vue({
 
                 })
                 .catch(function (error) {
-                    if (error.response.status === 403) {
-                        window.open("https://backend.gofloww.co/login/", '_blank');
-                    } else {
-                        window.alert('Server Error, Please Try Again!');
-                    }
                     console.error(error);
+                    if (error.response) {
+                        if (error.response.status === 403) {
+                            window.open("https://backend.gofloww.co/login/", '_blank');
+                        } else {
+                            window.alert('Server Error, Please Try Again!');
+                        }
+                    } else {
+                        window.alert('Server Error, please try again later');
+                    }
+
                 });
         },
         SubmitEmail: function () {
