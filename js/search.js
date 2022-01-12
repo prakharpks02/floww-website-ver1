@@ -415,7 +415,7 @@ var app1 = new Vue({
                         if (responseData.emailStatus) {
                             window.alert('API Sent on your email');
                         } else {
-                            window.alert('Email Could Not be sent, Please copy your API key from here /n' + responseData.apiKey);
+                            window.alert('Email Could Not be sent, Please copy your API key from here \n' + responseData.apiKey);
                         }
 
                     } else {
