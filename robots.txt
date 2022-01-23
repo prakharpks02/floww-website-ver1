@@ -1,0 +1,7 @@
+User-agent: *
+Disallow: /theme-css/
+Disallow: /3pl-register-form
+Disallow: /login
+Disallow: /webfonts/
+
+Sitemap: /sitemap.xml
