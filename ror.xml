@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:ror="http://rorweb.com/0.1/" >
+<channel>
+  <title>ROR Sitemap for https://gofloww.co/</title>
+  <link>https://gofloww.co/</link>
+
+<item>
+     <link>https://gofloww.co/</link>
+     <title>floww</title>
+     <description>Looking to transform your e-commerce business? Try floww, a one-stop-destination for verified 3PL delivery vendors, 100% free and developer-friendly delivery APIs</description>
+     <ror:updatePeriod></ror:updatePeriod>
+     <ror:sortOrder>0</ror:sortOrder>
+     <ror:resourceOf>sitemap</ror:resourceOf>
+</item>
+<item>
+     <link>https://gofloww.co/search</link>
+     <title>floww Search</title>
+     <description>floww Search is the easiest way to find the best 3PL providers as per your needs. Choose from the pool of verified 3PL vendors and seamlessly integrate them with your system using standardized APIs.</description>
+     <ror:updatePeriod></ror:updatePeriod>
+     <ror:sortOrder>1</ror:sortOrder>
+     <ror:resourceOf>sitemap</ror:resourceOf>
+</item>
+<item>
+     <link>https://gofloww.co/api-doc</link>
+     <title>floww APIs</title>
+     <description>Access standardized APIs from a large pool of 3PL vendors and get your delivery sorted.</description>
+     <ror:updatePeriod></ror:updatePeriod>
+     <ror:sortOrder>1</ror:sortOrder>
+     <ror:resourceOf>sitemap</ror:resourceOf>
+</item>
+</channel>
+</rss>
+  
