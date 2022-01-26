@@ -6,17 +6,16 @@
     <meta mediarset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>floww</title>
-    <meta name='robots' content='max-image-preview:large' />
-
 
     <!-- SEO Tags -->
-    <meta name="title" content="floww - India's 1st ecosystem of delivery APIs">
+    <meta name="title" content="India's 1st ecosystem of delivery APIs - floww">
     <meta name="description"
         content="Looking to transform your e-commerce business? Try floww, a one-stop-destination for verified 3PL delivery vendors, 100% free and developer-friendly delivery APIs">
     <meta name="keywords"
-        content="Delivery api, Delivery app api, API delivery platform, Delivery solutions api, Delivery api documentation, Delivery api integration, Ecommerce api free">
+        content="Floww Delivery api, Delivery app api, API delivery platform, Floww Delivery solutions api, Delivery api documentation, Floww Delivery api integration, Ecommerce api free, Floww Logistics API India, Api shipping logistics, 3pl delivery companies, 3pl delivery vendors">
 
+    <title>floww</title>
+    <meta name='robots' content='max-image-preview:large' />
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-JK6MTWL5ZZ"></script>
@@ -27,7 +26,7 @@
 
         gtag('config', 'G-JK6MTWL5ZZ');
     </script>
-    
+
 
     <link rel="shortcut icon" href="img/logo/floww-logo-favicon.ico" type="image/x-icon">
     <link rel="icon" href="img/logo/floww-logo-favicon.ico" type="image/x-icon">
@@ -280,8 +279,7 @@
             //window.requestAnimationFrame(function() {				 
             window.RSIW = window.RSIW === undefined ? window.innerWidth : window.RSIW;
             window.RSIH = window.RSIH === undefined ? window.innerHeight : window.RSIH;
-            try
-            {
+            try {
                 var pw = document.getElementById(e.c).parentNode.offsetWidth,
                     newh;
                 pw = pw === 0 || isNaN(pw) ? window.RSIW : pw;
@@ -294,8 +292,7 @@
                 e.mh = e.mh === undefined || e.mh == "" || e.mh === "auto" ? 0 : parseInt(e.mh, 0);
                 if (e.layout === "fullscreen" || e.l === "fullscreen")
                     newh = Math.max(e.mh, window.RSIH);
-                else
-                {
+                else {
                     e.gw = Array.isArray(e.gw) ? e.gw : [e.gw];
                     for (var i in e.rl) if (e.gw[i] === undefined || e.gw[i] === 0) e.gw[i] = e.gw[i - 1];
                     e.gh = e.el === undefined || e.el === "" || (Array.isArray(e.el) && e.el.length == 0) ? e.gh : e.el;
@@ -318,8 +315,7 @@
                 if (window.rs_init_css === undefined) window.rs_init_css = document.head.appendChild(document.createElement("style"));
                 document.getElementById(e.c).height = newh + "px";
                 window.rs_init_css.innerHTML += "#" + e.c + "_wrapper { height: " + newh + "px }";
-            } catch (e)
-            {
+            } catch (e) {
                 console.log("Failure at Presize of Slider:" + e)
             }
             //});
@@ -2229,8 +2225,7 @@
                                 function EmailSubscribe() {
                                     let email = document.getElementById("subscribe-email-val").value;
 
-                                    if (CheckEmail(email))
-                                    {
+                                    if (CheckEmail(email)) {
 
                                         let mailChimpUrl = "https://backend.gofloww.co/api/v1/website/subscribe-email-mailchimp/"
 
@@ -2243,17 +2238,14 @@
                                             .then((responseJson) => {
                                                 let responseObject = JSON.parse(responseJson);
                                                 console.log(responseObject.data);
-                                                if (responseObject.data == 'success')
-                                                {
+                                                if (responseObject.data == 'success') {
                                                     document.getElementById("subscribe-email-val").value = "";
                                                     window.alert("Congrats! You have subscribed");
-                                                } else
-                                                {
+                                                } else {
                                                     window.alert("Server Error, please try later");
                                                 }
                                             })
-                                    } else
-                                    {
+                                    } else {
                                         window.alert('Incorrect Email Format');
                                     }
                                 };
