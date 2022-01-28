@@ -1,11 +1,11 @@
 var vendorListConst = [{
-    'name': 'JS Transport',
+    'name': 'JS Transport asjfkjnsdkfjnbskjdfnkjsdnfgjknskj',
     'startPrice': '57',
     'rating': '4.1',
     'contactNo': '+91 9999955555',
     'vendorCode': 'VEN10000',
     'year': '1941',
-    'location': 'Juhu, Mumbai',
+    'location': 'Juhu, Mumbai, sdbfmnjsdbfsdbfmnjsdbfsdbfmnjsdbfsdbfmnjsdbfsdbfmnjsdbfsdbfmnjsdbfsdbfmnjsdbfsdbfmnjsdbfsdbfmnjsdbfsdbfmnjsdbfsdbfmnjsdbfsdbfmnjsdbfsdbfmnjsdbfsdbfmnjsdbfsdbfmnjsdbfsdbfmnjsdbf',
     'size': '30-50',
     'fleetType': 'riders',
     'services': ['otp', 'cold_chain', 'same_day', 'intercity'],
@@ -63,8 +63,13 @@ var vendorListConst = [{
 // --------------------------------------- Fixed Functions For Page responsivness
 
 function CopyButton(element) {
-    navigator.clipboard.writeText(element.children[1].innerHTML);
-    element.children[0].innerHTML = "Copied";
+    if(app1.userAuth) {
+        navigator.clipboard.writeText(element.children[1].innerHTML);
+        element.children[0].innerHTML = "Copied";
+    } else {
+        window.alert('Please Login to Get Vendor Code');
+    }
+    
 }
 
 function CleanCopyButton(element) {
@@ -100,6 +105,7 @@ Vue.component('vendor-card-component', {
     props: {
         'vendordata': Object,
         'tagnames': Object,
+        'userauth': Boolean,
     },
     // delimiters: ['[[', ']]'],
     template: `
@@ -108,9 +114,9 @@ Vue.component('vendor-card-component', {
 
                 <div class="desktop-view-toggle card-container has-text-centered">
                     <div class="card-main-container columns is-vcentered">
-                        <div class="column">
+                        <div class="column is-4">
                             <div class="card-element-container">
-                                <span>{{vendordata.name}}</span>
+                                <span class="text-width-limiter">{{vendordata.name}}</span>
                             </div>
                             <div class="card-element-container starting-from-box">
                                 <span class="tag is-warning">starting ₹{{vendordata.startPrice}}</span>
@@ -122,7 +128,8 @@ Vue.component('vendor-card-component', {
                                 <span><i class="fa fa-star"></i> {{vendordata.rating}}/5</span>
                             </div>
                             <div class="card-element-container vendor-number-container">
-                                <a :href="'tel:'+vendordata.contactNo">{{vendordata.contactNo}}</a>
+                                <a :href="'tel:'+vendordata.contactNo" v-if="userauth">{{vendordata.contactNo}}</a>
+                                <a href="https://backend.gofloww.co/login/" target="_blank" v-if="!userauth">Login to Contact</a>
                             </div>
                         </div>
 
@@ -163,8 +170,8 @@ Vue.component('vendor-card-component', {
                                 <div class="column">
                                     <span>Founded in {{vendordata.year}}</span>
                                 </div>
-                                <div class="column">
-                                    <span>{{vendordata.location}}</span>
+                                <div class="column is-5">
+                                    <span class="text-width-limiter">{{vendordata.location}}</span>
                                 </div>
                                 <div class="column">
                                     <span>{{vendordata.size}} {{tagnames[vendordata.fleetType]}}</span>
@@ -199,7 +206,7 @@ Vue.component('vendor-card-component', {
 
                 <div class="mobile-view-toggle card-container">
                     <div class="card-main-container">
-                        <p><span class="vendor-name-container">{{vendordata.name}}</span>    <span class="rating-container"><i class="fa fa-star"></i> {{vendordata.rating}}/5</span></p>
+                        <p><span class="vendor-name-container text-width-limiter">{{vendordata.name}}</span>    <span class="rating-container"><i class="fa fa-star"></i> {{vendordata.rating}}/5</span></p>
                         
                         <p class="starting-from-box">
                             <span class="tag is-warning">starting ₹{{vendordata.startPrice}}</span>
@@ -232,7 +239,8 @@ Vue.component('vendor-card-component', {
                         </div>
 
                         <p class="vendor-number-container">
-                            <a :href="'tel:'+vendordata.contactNo">{{vendordata.contactNo}}</a>
+                            <a :href="'tel:'+vendordata.contactNo" v-if="userauth">{{vendordata.contactNo}}</a>
+                            <a href="https://backend.gofloww.co/login/" target="_blank" v-if="!userauth">Login to Contact</a>
                         </p>
 
                     </div>
@@ -250,8 +258,8 @@ Vue.component('vendor-card-component', {
                                 <div class="column">
                                     <span>{{vendordata.year}}</span>
                                 </div>
-                                <div class="column">
-                                    <span>{{vendordata.location}}</span>
+                                <div class="column is-5">
+                                    <span class="text-width-limiter">{{vendordata.location}}</span>
                                 </div>
                                 <div class="column">
                                     <span>{{vendordata.size}} {{tagnames[vendordata.fleetType]}}</span>
@@ -302,6 +310,7 @@ var app1 = new Vue({
         'countryCode': countryCode,
         'tagNames': tagNames,
         'vendorCities': vendorCities,
+        'filterTags': filterTags,
         'serviceTags': serviceTags,
         'rentalPlans': rentalPlans,
         'productTags': productTags,
@@ -311,7 +320,7 @@ var app1 = new Vue({
         'tagSelected': 'empty',
 
         'userAuth': false,
-        'userContactNo': '+91 9919919191',
+        'userContactNo': '',
 
         'contentOverlay': false,
         'searchLoading': false,
@@ -324,6 +333,7 @@ var app1 = new Vue({
         },
         'emailForm': {
             'email': '',
+            'companyName':'',
             'error': 'none'
         },
         'orderForm': {
@@ -420,6 +430,7 @@ var app1 = new Vue({
 
                     } else {
                         app1.emailForm.email = '';
+                        app1.emailForm.companyName = '';
                         app1.emailForm.error = 'none';
                         app1.formType = 'email';
                         app1.contentOverlay = true;
@@ -441,24 +452,33 @@ var app1 = new Vue({
                 });
         },
         SubmitEmail: function () {
-            axios.post(globalApiUrl + '/api/v1/auth/submit-user-email/', {
-                    email: this.emailForm.email,
-                })
-                .then(function (response) {
-                    let responseData = JSON.parse(response.data);
-                    console.log(responseData.status);
 
-                    if (responseData.status == 'success') {
-                        app1.GetApiKey();
-                        app1.emailForm.error = 'none';
-                    } else {
-                        app1.emailForm.error = responseData.message;
-                    };
-                })
-                .catch(function (error) {
-                    app1.emailForm.error = 'Server error, please try again later or send email to info@gofloww.co';
-                    window.alert('Server Error, Please Try Again!');
-                });
+            if(this.emailForm.email.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/) && this.emailForm.companyName != '') {
+
+                axios.post(globalApiUrl + '/api/v1/auth/submit-user-email/', {
+                        email: this.emailForm.email,
+                        companyName: this.emailForm.companyName,
+                    })
+                    .then(function (response) {
+                        let responseData = JSON.parse(response.data);
+                        console.log(responseData.status);
+
+                        if (responseData.status == 'success') {
+                            app1.GetApiKey();
+                            app1.emailForm.error = 'none';
+                        } else {
+                            app1.emailForm.error = responseData.message;
+                        };
+                    })
+                    .catch(function (error) {
+                        app1.emailForm.error = 'Server error, please try again later or send email to info@gofloww.co';
+                        window.alert('Server Error, Please Try Again!');
+                    });
+
+            } else {
+                this.emailForm.error='Please fill all the fields correctly';
+            }
+            
         },
         RequestDelivery: function (vendorcode, vendorname) {
             this.orderForm = {
@@ -603,11 +623,12 @@ var app1 = new Vue({
     async mounted() {
         await this.GetVendorList();
 
-        axios.get(globalApiUrl + '/api/v1/auth/check-user-session-auth/')
+        axios.get(globalApiUrl + '/api/v1/auth/check-user-token-auth/')
             .then(function (response) {
                 let responseData = JSON.parse(response.data);
                 console.log(responseData);
                 app1.userAuth = responseData.authVal;
+                app1.userContactNo = responseData.contactNo;
 
                 document.getElementById("page-load-overlay").classList.add("hide");
             })

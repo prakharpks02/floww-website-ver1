@@ -31,6 +31,14 @@ html {
     display: none;
 }
 
+.text-width-limiter {
+    width: 100%;
+    display:inline-block;
+    white-space: nowrap;
+    overflow: hidden !important;
+    text-overflow: ellipsis;
+}
+
 .desktop-view-toggle {
     display: block !important;
 }
@@ -599,7 +607,7 @@ html {
 }
 
 
-@media screen and (max-width: 768px), (max-height: 768px) {
+@media screen and (max-width: 870px), (max-height: 650px) {
 
     .desktop-view-toggle {
         display: none !important;

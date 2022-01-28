@@ -8,7 +8,7 @@
 
 
     <!-- SEO Tags -->
-    <meta name="title" content="floww Search - Find Best Delivery Partner">
+    <meta name="title" content="floww Search - Find Your Delivery Partner">
     <meta name="description" content="floww Search is the easiest way to find the best 3PL providers as per your needs. Choose from the pool of verified 3PL vendors and seamlessly integrate them with your system using standardized APIs.">
     <meta name="keywords" content="Delivery api, Delivery app api, API delivery platform, Delivery solutions api, Delivery api documentation, Delivery api integration, Ecommerce api free">
 
@@ -42,7 +42,7 @@
     <script type="text/javascript" src="js/axios.min.js"></script>
     <!--   Calling Axios from local file   -->
 
-    <title>floww Search</title>
+    <title>floww Search - Find Your Delivery Partner</title>
 </head>
 
 <body>
@@ -97,7 +97,7 @@
                         <div class="select is-rounded tag-filter-body">
                             <select v-model="tagSelected" v-on:change="GetVendorList">
                                 <option hidden value="empty" selected disabled>Select Tag</option>
-                                <option v-for="tag in serviceTags" :value="tag.id">{{tag.name}}</option>
+                                <option v-for="tag in filterTags" :value="tag.id">{{tag.name}}</option>
                             </select>
                         </div>
                     </div>
@@ -125,196 +125,7 @@
                         <span>No Vendors to Show. Please change City or Tag</span>
                     </div>
 
-                    <!-- Card Starts -->
-                    <!-- <div class="desktop-view-toggle card-container box has-text-centered">
-                        <div class="card-main-container columns is-vcentered">
-                            <div class="column">
-                                <div class="card-element-container">
-                                    <span>JS Transport</span>
-                                </div>
-                                <div class="card-element-container starting-from-box">
-                                    <span class="tag is-warning">starting ₹49</span>
-                                </div>
-                            </div>
-
-                            <div class="column">
-                                <div class="card-element-container rating-container">
-                                    <span><i class="fa fa-star"></i> 4.5/5</span>
-                                </div>
-                                <div class="card-element-container vendor-number-container">
-                                    <a href="tel:+91 9910530300"><u>+91 9910530300</u></a>
-                                </div>
-                            </div>
-
-                            <div class="column">
-                                <div class="card-element-container">
-                                    <div class="copy-button-tooltip">
-                                        <a onclick="CopyButton(this)" onmouseout="CleanCopyButton(this)"
-                                            class="vendor-code-container">
-                                            <span class="copy-button-tooltiptext">Click to Copy</span>Get Vendor Code
-                                            <span style="display: none;">{{vendorList[0].vendorCode}}</span>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="card-element-container vendor-number-container">
-                                    <a href="#"><span><u>API Docs</u></span></a>
-                                </div>
-                            </div>
-
-                            <div class="column has-text-right is-4">
-                                <div class="card-element-container">
-                                    <a href="#" class="website-link-button"><span>Open WEBSITE</span></a>
-                                </div>
-                                <div class="card-element-container">
-                                    <a class="website-link-button"><span>Request DELIVERY</span></a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="card-second-container">
-
-                            <div class="card-view-more-container">
-                                <a class="card-view-more-button" onclick="ToggleCardView(this)">
-                                    <span>View More</span></a>
-                            </div>
-
-                            <div class="card-expand-container columns is-multiline is-gapless">
-
-                                <div class="column is-full columns">
-                                    <div class="column">
-                                        <span>Founded in 1994</span>
-                                    </div>
-                                    <div class="column">
-                                        <span>BKC, Mumbai</span>
-                                    </div>
-                                    <div class="column">
-                                        <span>1-10 {{tagNames[vendorList[0].fleetType]}}</span>
-                                    </div>
-                                </div>
-                                <div class="column is-full columns has-text-left">
-                                    <div class="column is-2">
-                                        <span>Services :</span>
-                                    </div>
-                                    <div class="column">
-                                        <ul class="services-list-container">
-                                            <li v-for="service in services" class="tag is-small">{{tagNames[service]}}</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="column is-full columns has-text-left">
-                                    <div class="column is-2">
-                                        <span>Badges :</span>
-                                    </div>
-                                    <div class="column">
-                                        <ul class="services-list-container">
-                                            <li v-for="service in services" class="tag is-small">{{tagNames[service]}}</li>
-                                        </ul>
-                                    </div>
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                    </div> -->
-
-                    <!-- <div class="mobile-view-toggle card-container box">
-                        <div class="card-main-container">
-                            <p>JS Transport</p>
-                            <p class="rating-container">
-                                <span><i class="fa fa-star"></i> 4.5/5</span>
-                            </p>
-                            <p class="starting-from-box">
-                                <span class="tag is-warning">starting ₹49</span>
-                            </p>
-
-                            <br>
-
-                            <div class="columns is-mobile is-gapless" style="margin-bottom: 7px;">
-                                <div class="column is-5">
-                                    <a href="" class="website-link-button"><span>Open Website</span></a>
-                                </div>
-                                <div class="column is-7">
-                                    <a class="website-link-button"><span>Request Delivery</span></a>
-                                </div>
-                            </div>
-
-                            <div class="columns is-mobile is-gapless" style="margin-bottom: 5px;">
-                                <div class="column">
-                                    <div class="copy-button-tooltip">
-                                        <a onclick="CopyButton(this)" onmouseout="CleanCopyButton(this)"
-                                            class="vendor-code-container">
-                                            <span class="copy-button-tooltiptext">Click to Copy</span>Get Vendor Code
-                                            <span style="display: none;">{{vendorList[0].vendorCode}}</span>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="column vendor-number-container">
-                                    <a href="https://gofloww.co/api-doc" target="_blank"><span><u>API
-                                                Docs</u></span></a>
-                                </div>
-                            </div>
-
-                            <p class="vendor-number-container">
-                                <a href="tel:+91 9910530300"><u>+91 9910530300</u></a>
-                            </p>
-
-                        </div>
-
-                        <div class="card-second-container">
-
-                            <div class="card-view-more-container">
-                                <a class="card-view-more-button" onclick="ToggleCardView(this)">
-                                    <span>View More</span></a>
-                            </div>
-
-                            <div class="card-expand-container columns is-multiline is-gapless">
-
-                                <div class="column is-full columns is-mobile">
-                                    <div class="column">
-                                        <span>Founded in 1994</span>
-                                    </div>
-                                    <div class="column">
-                                        <span>BKC, Mumbai</span>
-                                    </div>
-                                    <div class="column">
-                                        <span>1-10 {{tagNames[vendorList[0].fleetType]}}</span>
-                                    </div>
-                                </div>
-                                <div class="column is-full columns is-gapless has-text-left"
-                                    style="margin-bottom: 5px;">
-                                    <div class="column is-2">
-                                        <span>Services :</span>
-                                    </div>
-                                    <div class="column">
-                                        <ul class="services-list-container">
-                                            <li v-for="service in vendorList[0].services" class="tag is-small">
-                                                {{tagNames[service]}}</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="column is-full columns is-gapless has-text-left"
-                                    style="margin-bottom: 5px;">
-                                    <div class="column is-2">
-                                        <span>Badges :</span>
-                                    </div>
-                                    <div class="column">
-                                        <ul class="services-list-container">
-                                            <li v-for="service in vendorList[0].services" class="tag is-small">
-                                                {{tagNames[service]}}</li>
-                                        </ul>
-                                    </div>
-                                </div>
-
-                            </div>
-
-                        </div> 
-
-                    </div>-->
-
-                    <!-- Card Ends -->
-
-                    <vendor-card-component v-for="vendor in vendorList" :vendordata="vendor" :tagnames="tagNames"
+                    <vendor-card-component v-for="vendor in vendorList" :vendordata="vendor" :tagnames="tagNames" :userauth="userAuth"
                         @request-delivery="RequestDelivery(vendor.vendorCode, vendor.name)"></vendor-card-component>
 
                 </div>
@@ -348,6 +159,12 @@
                 <p class="help has-text-danger" v-if="emailForm.error!='none'">{{emailForm.error}}</p>
 
                 <p>
+                <div class="field">
+                    <div class="control">
+                        <input class="input" type="text" placeholder="e.g. Happy Farms"
+                            v-model="emailForm.companyName">
+                    </div>
+                </div>
                 <div class="field">
                     <div class="control">
                         <input class="input" type="email" placeholder="e.g. jake2021@gmail.com"

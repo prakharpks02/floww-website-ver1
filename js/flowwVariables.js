@@ -14,12 +14,15 @@ const tagNames = {
     // Vehicle Type
     'bike': 'Bike (2 wheeler)',
     'tempo': 'Tempo (3/4 wheeler)',
+    'truck': 'Truck',
 
     // Badges
     '100y_old': '100 Years Old',
 
     // Locations
     'mumbai': 'Mumbai',
+    'thane': 'Thane',
+    'guwahati': 'Guwahati',
     'bangalore': 'Bangalore',
     'patna': 'Patna',
     'delhi': 'Delhi',
@@ -57,17 +60,11 @@ const vendorCities = [{
     'name': 'Mumbai',
     'id': 'mumbai',
 }, {
-    'name': 'Bangalore',
-    'id': 'bangalore',
+    'name': 'Thane',
+    'id': 'thane',
 }, {
-    'name': 'Patna',
-    'id': 'patna',
-}, {
-    'name': 'Delhi',
-    'id': 'delhi',
-}, {
-    'name': 'Pune',
-    'id': 'pune',
+    'name': 'Guwahati',
+    'id': 'guwahati',
 }]
 
 const productTags = [{
@@ -101,6 +98,49 @@ const productTags = [{
     'name': 'Furniture',
     'id': 'product9',
 }]
+
+const filterTags = [
+    {
+        'name': 'Bike (2 wheeler)',
+        'id': 'bike',
+    }, {
+        'name': 'Tempo (3/4 wheeler)',
+        'id': 'tempo',
+    }, {
+        'name': 'Truck',
+        'id': 'truck',
+    }, {
+        'name': 'Same Day Delivery',
+        'id': 'same_day',
+    }, {
+        'name': 'OTP Verification',
+        'id': 'otp',
+    }, {
+        'name': 'Cold Chain',
+        'id': 'cold_chain',
+    }, {
+        'name': 'Intercity',
+        'id': 'intercity',
+    }, {
+        'name': '30 Min Delivery',
+        'id': '30min',
+    }, {
+        'name': 'Tracking',
+        'id': 'track',
+    }, {
+        'name': 'Sanitized Fleet',
+        'id': 'sanitize',
+    }, {
+        'name': 'Bulk Delivery',
+        'id': 'bulk_del',
+    }, {
+        'name': 'Courier',
+        'id': 'courier',
+    }, {
+        'name': 'Cash on Delivery',
+        'id': 'cod',
+    },
+]
 
 const serviceTags = [{
     'name': 'Same Day Delivery',
