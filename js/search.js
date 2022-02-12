@@ -413,7 +413,7 @@ var app1 = new Vue({
 
         },
         LogoutButton: function () {
-            document.cookie = 'floww-token' + '=;expires=' + new Date(1970, 0, 1).toUTCString() + ';path=/'
+            document.cookie = 'floww-token' + '=;expires=' + new Date(1970, 0, 1).toUTCString() + '; path=/; domain=.gofloww.co;'
             window.location.reload();
         },
         GetApiKey: function () {
