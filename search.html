@@ -61,7 +61,7 @@
             <div class="header-right-container">
 
                 <div class="column" v-if="!userAuth">
-                    <a class="button" href="https://backend.gofloww.co/login/" target="_blank">
+                    <a class="button" v-on:click="LoginFunction">
                         Login | SignUp
                     </a>
                 </div>
@@ -141,6 +141,8 @@
         <div class="documentation-toggle-container">
 
         </div>
+
+        <!-- ---------------------------------Overlay Starts here---------------------- -->
 
         <div class="content-overlay" v-if="contentOverlay">
 
