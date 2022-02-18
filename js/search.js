@@ -628,8 +628,17 @@ var app1 = new Vue({
             window.open("https://backend.gofloww.co/login/", '_blank');
             window.alert('Please refresh this page after login.');
         },
+        CheckQueryParam: function () {
+            queryValueReturn = GetQueryParams('location');
+            if(queryValueReturn != 'None') {
+                this.location = queryValueReturn;
+            }
+        }
     },
     async mounted() {
+        
+        await this.CheckQueryParam();
+
         await this.GetVendorList();
 
         axios.get(globalApiUrl + '/api/v1/auth/check-user-token-auth/')

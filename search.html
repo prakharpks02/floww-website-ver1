@@ -576,6 +576,18 @@
 
             return cookieValue;
         }
+
+        function GetQueryParams(paramName) {
+            const urlSearchParams = new URLSearchParams(window.location.search);
+            returnValue = '';
+            if(urlSearchParams.has(paramName)){
+                returnValue = urlSearchParams.get(paramName);
+            } else {
+                returnValue = 'None';
+            }
+            return returnValue;
+        }
+
         let tokenVal = getCookie('floww-token');
 
         if (tokenVal) {
