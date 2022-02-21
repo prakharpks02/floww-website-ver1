@@ -65,6 +65,9 @@ const vendorCities = [{
 }, {
     'name': 'Guwahati',
     'id': 'guwahati',
+}, {
+    'name': 'Patna',
+    'id': 'patna',
 }]
 
 const productTags = [{
@@ -145,33 +148,53 @@ const filterTags = [
 const serviceTags = [{
     'name': 'Same Day Delivery',
     'id': 'same_day',
+    'iconClass': 'fa-bell',
+    'description': 'N/A',
 }, {
     'name': 'OTP Verification',
     'id': 'otp',
+    'iconClass': 'fa-bell',
+    'description': 'N/A',
 }, {
     'name': 'Cold Chain',
     'id': 'cold_chain',
+    'iconClass': 'fa-bell',
+    'description': 'N/A',
 }, {
     'name': 'Intercity',
     'id': 'intercity',
+    'iconClass': 'fa-bell',
+    'description': 'N/A',
 }, {
     'name': '30 Min Delivery',
     'id': '30min',
+    'iconClass': 'fa-bell',
+    'description': 'N/A',
 }, {
     'name': 'Tracking',
     'id': 'track',
+    'iconClass': 'fa-bell',
+    'description': 'N/A',
 }, {
     'name': 'Sanitized Fleet',
     'id': 'sanitize',
+    'iconClass': 'fa-bell',
+    'description': 'N/A',
 }, {
     'name': 'Bulk Delivery',
     'id': 'bulk_del',
+    'iconClass': 'fa-bell',
+    'description': 'N/A',
 }, {
     'name': 'Courier',
     'id': 'courier',
+    'iconClass': 'fa-bell',
+    'description': 'N/A',
 }, {
     'name': 'Cash on Delivery',
     'id': 'cod',
+    'iconClass': 'fa-bell',
+    'description': 'N/A',
 }]
 
 const rentalPlans = [{
