@@ -1,6 +1,6 @@
 var vendorListConst = [{
     'name': 'JS Transport asjfkjnsdkfjnbskjdfnkjsdnfgjknskj',
-    'startPrice': '57',
+    'startPrice': 'N/A',
     'rating': '4.1',
     'contactNo': '+91 9999955555',
     'vendorCode': 'VEN10000',
@@ -119,7 +119,8 @@ Vue.component('vendor-card-component', {
                                 <span class="text-width-limiter">{{vendordata.name}}</span>
                             </div>
                             <div class="card-element-container starting-from-box">
-                                <span class="tag is-warning">starting ₹{{vendordata.startPrice}}</span>
+                                <span class="tag is-warning" v-if="vendordata.startPrice!='N/A'">starting ₹{{vendordata.startPrice}}</span>
+                                <span class="tag is-warning" v-if="vendordata.startPrice =='N/A'"> Only Rental</span>
                             </div>
                         </div>
 
@@ -209,7 +210,8 @@ Vue.component('vendor-card-component', {
                         <p><span class="vendor-name-container text-width-limiter">{{vendordata.name}}</span>    <span class="rating-container"><i class="fa fa-star"></i> {{vendordata.rating}}/5</span></p>
                         
                         <p class="starting-from-box">
-                            <span class="tag is-warning">starting ₹{{vendordata.startPrice}}</span>
+                            <span class="tag is-warning" v-if="vendordata.startPrice!='N/A'">starting ₹{{vendordata.startPrice}}</span>
+                            <span class="tag is-warning" v-if="vendordata.startPrice =='N/A'"> Only Rental</span>
                         </p>
 
                         <br>
@@ -411,7 +413,7 @@ var app1 = new Vue({
 
         },
         LogoutButton: function () {
-            document.cookie = 'floww-token' + '=;expires=' + new Date(1970, 0, 1).toUTCString() + ';path=/'
+            document.cookie = 'floww-token' + '=;expires=' + new Date(1970, 0, 1).toUTCString() + '; path=/; domain=.gofloww.co;'
             window.location.reload();
         },
         GetApiKey: function () {
@@ -423,7 +425,7 @@ var app1 = new Vue({
                     if (responseData.status == 'success') {
 
                         if (responseData.emailStatus) {
-                            window.alert('API Sent on your email');
+                            window.alert('API Key Sent on your email');
                         } else {
                             window.alert('Email Could Not be sent, Please copy your API key from here \n' + responseData.apiKey);
                         }
@@ -466,6 +468,7 @@ var app1 = new Vue({
                         if (responseData.status == 'success') {
                             app1.GetApiKey();
                             app1.emailForm.error = 'none';
+                            app1.CloseOverlay();
                         } else {
                             app1.emailForm.error = responseData.message;
                         };
@@ -543,6 +546,8 @@ var app1 = new Vue({
 
             if (this.orderForm.companyName == '' || this.orderForm.deliveryDate == '') {
                 window.alert("Please Add your company name and select delivery date");
+            } else if (this.userAuth) {
+                this.LoginFunction();
             } else {
 
                 if (this.orderForm.orderType == 'perOrder' && this.orderForm.orderList.length == 0) {
@@ -563,7 +568,7 @@ var app1 = new Vue({
                             console.log(responseData.status);
 
                             if (responseData.status == 'success') {
-                                window.alert("Task placed successfully");
+                                window.alert(responseData.message);
                                 app1.CloseOverlay();
                             } else {
                                 window.alert(responseData.message);
@@ -571,7 +576,7 @@ var app1 = new Vue({
                         })
                         .catch(function (error) {
                             if (error.response.status === 403) {
-                                window.open("https://backend.gofloww.co/login/", '_blank');
+                                app1.LoginFunction();
                             } else {
                                 window.alert('Server Error, Please Try Again!');
                             }
@@ -619,8 +624,21 @@ var app1 = new Vue({
             }
             window.alert('Selected Service Codes are - ' + selectedServiceList);
         },
+        LoginFunction: function () {
+            window.open("https://backend.gofloww.co/login/", '_blank');
+            window.alert('Please refresh this page after login.');
+        },
+        CheckQueryParam: function () {
+            queryValueReturn = GetQueryParams('location');
+            if(queryValueReturn != 'None') {
+                this.location = queryValueReturn;
+            }
+        }
     },
     async mounted() {
+        
+        await this.CheckQueryParam();
+
         await this.GetVendorList();
 
         axios.get(globalApiUrl + '/api/v1/auth/check-user-token-auth/')

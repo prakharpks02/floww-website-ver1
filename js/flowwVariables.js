@@ -198,7 +198,7 @@ const serviceTags = [{
 }]
 
 const rentalPlans = [{
-    'name': '1 hr and 50 km',
+    'name': '4 hr and 50 km',
     'id': 'plan0',
 }]
 
