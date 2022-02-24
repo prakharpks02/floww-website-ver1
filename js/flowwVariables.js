@@ -226,6 +226,10 @@ const orderStatus = [{
     'id': 'completed',
 }]
 
+const logoUrls = [
+    {'logo0':'https://gofloww.co/img/logo/profile/placeholder.jpg'},
+]
+
 const globalApiUrl = "https://backend.gofloww.co"  //"http://localhost:8000"
 
 const apiUrlList = [{
