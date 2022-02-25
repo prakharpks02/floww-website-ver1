@@ -63,13 +63,13 @@ var vendorListConst = [{
 // --------------------------------------- Fixed Functions For Page responsivness
 
 function CopyButton(element) {
-    if(app1.userAuth) {
+    if (app1.userAuth) {
         navigator.clipboard.writeText(element.children[1].innerHTML);
         element.children[0].innerHTML = "Copied";
     } else {
         window.alert('Please Login to Get Vendor Code');
     }
-    
+
 }
 
 function CleanCopyButton(element) {
@@ -335,7 +335,7 @@ var app1 = new Vue({
         },
         'emailForm': {
             'email': '',
-            'companyName':'',
+            'companyName': '',
             'error': 'none'
         },
         'orderForm': {
@@ -372,11 +372,11 @@ var app1 = new Vue({
             this.searchLoading = true
 
             axios.get(globalApiUrl + '/api/v1/search/get-3pl-list/', {
-                    params: {
-                        location: this.location, // Sending empty if no location selected 
-                        tagSelected: this.tagSelected, // Sending empty if no tag selected
-                    }
-                })
+                params: {
+                    location: this.location, // Sending empty if no location selected 
+                    tagSelected: this.tagSelected, // Sending empty if no tag selected
+                }
+            })
                 .then(function (response) {
                     let responseData = JSON.parse(response.data);
                     console.log(responseData);
@@ -455,12 +455,12 @@ var app1 = new Vue({
         },
         SubmitEmail: function () {
 
-            if(this.emailForm.email.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/) && this.emailForm.companyName != '') {
+            if (this.emailForm.email.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/) && this.emailForm.companyName != '') {
 
                 axios.post(globalApiUrl + '/api/v1/auth/submit-user-email/', {
-                        email: this.emailForm.email,
-                        companyName: this.emailForm.companyName,
-                    })
+                    email: this.emailForm.email,
+                    companyName: this.emailForm.companyName,
+                })
                     .then(function (response) {
                         let responseData = JSON.parse(response.data);
                         console.log(responseData.status);
@@ -479,31 +479,37 @@ var app1 = new Vue({
                     });
 
             } else {
-                this.emailForm.error='Please fill all the fields correctly';
+                this.emailForm.error = 'Please fill all the fields correctly';
             }
-            
+
         },
         RequestDelivery: function (vendorcode, vendorname) {
-            this.orderForm = {
-                'vendorCode': '',
-                'vendorName': '',
-                'companyName': '',
-                'productType': '',
-                'deliveryDate': '',
-                'orderType': 'perOrder',
-                'orderList': [],
-                'rentalPlan': 'plan0',
-                'serviceList': [],
-            };
-            this.orderFormMobile = {
-                'formStatus': 'base',
-                'error1': false,
-                'error2': false,
-            };
-            this.orderForm.vendorCode = vendorcode;
-            this.orderForm.vendorName = vendorname;
-            this.formType = 'order';
-            this.contentOverlay = true;
+            if (this.userAuth) {
+                this.orderForm = {
+                    'vendorCode': '',
+                    'vendorName': '',
+                    'companyName': '',
+                    'productType': '',
+                    'deliveryDate': '',
+                    'orderType': 'perOrder',
+                    'orderList': [],
+                    'rentalPlan': 'plan0',
+                    'serviceList': [],
+                };
+                this.orderFormMobile = {
+                    'formStatus': 'base',
+                    'error1': false,
+                    'error2': false,
+                };
+                this.orderForm.vendorCode = vendorcode;
+                this.orderForm.vendorName = vendorname;
+                this.formType = 'order';
+                this.contentOverlay = true;
+            
+            } else {
+                this.LoginFunction();
+            }
+
 
         },
         ChangeDeliveryDate: function (event) {
@@ -546,7 +552,7 @@ var app1 = new Vue({
 
             if (this.orderForm.companyName == '' || this.orderForm.deliveryDate == '') {
                 window.alert("Please Add your company name and select delivery date");
-            } else if (this.userAuth) {
+            } else if (!this.userAuth) {
                 this.LoginFunction();
             } else {
 
@@ -554,15 +560,15 @@ var app1 = new Vue({
                     window.alert("Please add atleast 1 order, or choose rental.");
                 } else {
                     axios.post(globalApiUrl + '/api/v1/search/request-deliveries/', {
-                            vendorCode: this.orderForm.vendorCode,
-                            productDescription: this.orderForm.productType,
-                            companyName: this.orderForm.companyName,
-                            deliveryDate: this.orderForm.deliveryDate,
-                            orderType: this.orderForm.orderType,
-                            rentalPlan: this.orderForm.rentalPlan,
-                            orderList: this.orderForm.orderList,
-                            serviceList: this.orderForm.serviceList,
-                        })
+                        vendorCode: this.orderForm.vendorCode,
+                        productDescription: this.orderForm.productType,
+                        companyName: this.orderForm.companyName,
+                        deliveryDate: this.orderForm.deliveryDate,
+                        orderType: this.orderForm.orderType,
+                        rentalPlan: this.orderForm.rentalPlan,
+                        orderList: this.orderForm.orderList,
+                        serviceList: this.orderForm.serviceList,
+                    })
                         .then(function (response) {
                             let responseData = JSON.parse(response.data);
                             console.log(responseData.status);
@@ -588,11 +594,11 @@ var app1 = new Vue({
         },
         GetCostEstimate: function () {
             axios.post(globalApiUrl + '/api/v1/search/get-cost-estimate/', {
-                    vendorCode: this.orderForm.vendorCode,
-                    orderType: this.orderForm.orderType,
-                    rentalPlan: this.orderForm.rentalPlan,
-                    orderList: this.orderForm.orderList,
-                })
+                vendorCode: this.orderForm.vendorCode,
+                orderType: this.orderForm.orderType,
+                rentalPlan: this.orderForm.rentalPlan,
+                orderList: this.orderForm.orderList,
+            })
                 .then(function (response) {
                     let responseData = JSON.parse(response.data);
                     console.log(responseData);
@@ -630,13 +636,13 @@ var app1 = new Vue({
         },
         CheckQueryParam: function () {
             queryValueReturn = GetQueryParams('location');
-            if(queryValueReturn != 'None') {
+            if (queryValueReturn != 'None') {
                 this.location = queryValueReturn;
             }
         }
     },
     async mounted() {
-        
+
         await this.CheckQueryParam();
 
         await this.GetVendorList();
