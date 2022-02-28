@@ -202,6 +202,37 @@ const rentalPlans = [{
     'id': 'plan0',
 }]
 
+const fleetTypesVar = [{
+    'name': 'Bike',
+    'id': 'bike',
+},{
+    'name': '3/4 Wheeler',
+    'id': 'tempo',
+},{
+    'name': 'Truck',
+    'id': 'truck',
+}]
+
+const fleetSizeVar = [{
+    'name': '1',
+    'id': 'size0',
+},{
+    'name': '2 - 5',
+    'id': 'size1',
+},{
+    'name': '6-10',
+    'id': 'size2',
+},{
+    'name': '11-20',
+    'id': 'size3',
+},{
+    'name': '21-50',
+    'id': 'size4',
+},{
+    'name': '51+',
+    'id': 'size5',
+}]
+
 
 const taskStatus = [{
     'name': 'Task is requested',
@@ -227,7 +258,7 @@ const orderStatus = [{
 }]
 
 const logoUrls = [
-    {'logo0':'https://gofloww.co/img/logo/profile/placeholder.jpg'},
+    { 'logo0': 'https://gofloww.co/img/logo/profile/placeholder.jpg' },
 ]
 
 const globalApiUrl = "https://backend.gofloww.co"  //"http://localhost:8000"
@@ -236,69 +267,69 @@ const apiUrlList = [{
     'url': 'http://localhost:8000/api-token-auth/',
     'type': 'AUTH (POST)',
     'parameterNames': [{
-            "name": "username",
-            "type": "string"
-        },
-        {
-            "name": "password",
-            "type": "string"
-        },
+        "name": "username",
+        "type": "string"
+    },
+    {
+        "name": "password",
+        "type": "string"
+    },
     ],
 }, {
     'url': 'http://localhost:8000/api/v1/get-cost-estimate/',
     'type': 'POST',
     'parameterNames': [{
-            "name": "vendorCode",
-            "type": "string"
-        },
-        {
-            "name": "orderType",
-            "type": "string"
-        },
-        {
-            "name": "orderList",
-            "type": "list"
-        },
-        {
-            "name": "rentalPlan",
-            "type": "string"
-        },
+        "name": "vendorCode",
+        "type": "string"
+    },
+    {
+        "name": "orderType",
+        "type": "string"
+    },
+    {
+        "name": "orderList",
+        "type": "list"
+    },
+    {
+        "name": "rentalPlan",
+        "type": "string"
+    },
     ],
 }, {
     'url': 'http://localhost:8000/api/v1/request-deliveries/',
     'type': 'POST',
     'parameterNames': [{
-            "name": "vendorCode",
-            "type": "string"
-        },
-        {
-            "name": "productDescription",
-            "type": "string"
-        },
-        {
-            "name": "companyName",
-            "type": "string"
-        },
-        {
-            "name": "deliveryTimestamp",
-            "type": "integer"
-        },
-        {
-            "name": "orderType",
-            "type": "string"
-        },
-        {
-            "name": "orderList",
-            "type": "list"
-        },
-        {
-            "name": "rentalPlan",
-            "type": "string"
-        },
-        {
-            "name": "serviceList",
-            "type": "list"
-        },
+        "name": "vendorCode",
+        "type": "string"
+    },
+    {
+        "name": "productDescription",
+        "type": "string"
+    },
+    {
+        "name": "companyName",
+        "type": "string"
+    },
+    {
+        "name": "deliveryTimestamp",
+        "type": "integer"
+    },
+    {
+        "name": "orderType",
+        "type": "string"
+    },
+    {
+        "name": "orderList",
+        "type": "list"
+    },
+    {
+        "name": "rentalPlan",
+        "type": "string"
+    },
+    {
+        "name": "serviceList",
+        "type": "list"
+    },
     ],
 }, {
     'url': 'http://localhost:8000/api/v1/get-task-details/',
@@ -343,57 +374,57 @@ const apiUrlList = [{
     'url': 'http://localhost:8000/api/test/get-cost-estimate/',
     'type': 'POST',
     'parameterNames': [{
-            "name": "vendorCode",
-            "type": "string"
-        },
-        {
-            "name": "orderType",
-            "type": "string"
-        },
-        {
-            "name": "orderList",
-            "type": "list"
-        },
-        {
-            "name": "rentalPlan",
-            "type": "string"
-        },
+        "name": "vendorCode",
+        "type": "string"
+    },
+    {
+        "name": "orderType",
+        "type": "string"
+    },
+    {
+        "name": "orderList",
+        "type": "list"
+    },
+    {
+        "name": "rentalPlan",
+        "type": "string"
+    },
     ],
 }, {
     'url': 'http://localhost:8000/api/test/request-deliveries/',
     'type': 'POST',
     'parameterNames': [{
-            "name": "vendorCode",
-            "type": "string"
-        },
-        {
-            "name": "productDescription",
-            "type": "string"
-        },
-        {
-            "name": "companyName",
-            "type": "string"
-        },
-        {
-            "name": "deliveryTimestamp",
-            "type": "integer"
-        },
-        {
-            "name": "orderType",
-            "type": "string"
-        },
-        {
-            "name": "orderList",
-            "type": "list"
-        },
-        {
-            "name": "rentalPlan",
-            "type": "string"
-        },
-        {
-            "name": "serviceList",
-            "type": "list"
-        },
+        "name": "vendorCode",
+        "type": "string"
+    },
+    {
+        "name": "productDescription",
+        "type": "string"
+    },
+    {
+        "name": "companyName",
+        "type": "string"
+    },
+    {
+        "name": "deliveryTimestamp",
+        "type": "integer"
+    },
+    {
+        "name": "orderType",
+        "type": "string"
+    },
+    {
+        "name": "orderList",
+        "type": "list"
+    },
+    {
+        "name": "rentalPlan",
+        "type": "string"
+    },
+    {
+        "name": "serviceList",
+        "type": "list"
+    },
     ],
 }, {
     'url': 'http://localhost:8000/api/test/get-task-details/',
