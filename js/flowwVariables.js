@@ -45,6 +45,10 @@ const tagNames = {
     'plan1': 'TBD',
     'plan2': 'TBD',
 
+    // Popular Tags
+    'food': 'Food Delivery',
+    'polite': 'Polite Behaviour',
+
     // Task Statuses
     'requested': 'Task is requested',
     'working': 'Accepted, and in progress',
@@ -261,7 +265,7 @@ const logoUrls = [
     { 'logo0': 'https://gofloww.co/img/logo/profile/placeholder.jpg' },
 ]
 
-const globalApiUrl = "https://backend.gofloww.co"  //"http://localhost:8000"
+const globalApiUrl = "http://localhost:8000" //"https://backend.gofloww.co"  //"http://localhost:8000"
 
 const apiUrlList = [{
     'url': 'http://localhost:8000/api-token-auth/',

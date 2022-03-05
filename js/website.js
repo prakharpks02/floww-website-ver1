@@ -49,7 +49,7 @@ const rating = document.querySelector(".rating")
 const btns_popular = document.querySelector(".btns")
 const fd_yr = document.querySelector(".found_yr")
 const fleet_sz = document.querySelector(".fl_size")
-const service_container = document.querySelector(".container2")
+const service_container = document.querySelector(".container2_service")
 const base_chrge = document.querySelector(".base_charge_per")
 const per_km_chrge = document.querySelector(".per_km_charge_order")
 const per_kg_chrge = document.querySelector(".per_kg_charge_order")
@@ -98,13 +98,11 @@ function AssignVariables(testvariable) {
     ctt_no.innerHTML = testvariable.contact_no
     start_rate.innerHTML = testvariable.delivery_starting_from
     for (let j = 0; j < testvariable.popular_tags.length; j++) {
-        //let popular_temp = testvariable.popular_tags[i]
-        let popular_temp2 = document.createElement(button)
-        popular_temp2.innerHTML =
-            `
-        <button type="button" class="features">${tagNames.popular_temp}</button>          
-        `
-        btns_popular.appendChild(popular_temp2)
+        let popular_temp = testvariable.popular_tags[j]
+        let popular_temp2 = document.createElement("button")
+        popular_temp2.classList.add('features');
+        popular_temp2.innerHTML = tagNames[popular_temp];
+        btns_popular.appendChild(popular_temp2);
     }
 
     headline_1.innerHTML = testvariable.headline_text_1
@@ -116,18 +114,18 @@ function AssignVariables(testvariable) {
     fleet_sz.innerHTML = testvariable.fleet_size
 
     for (let i = 0; i < testvariable.services.length; i++) {
-        console.log(testvariable.services[i]);
-        console.log(serviceTags.findIndex(x => x.id === `${testvariable.services[i]}`))
-        let service_temp = document.createElement('div')
+        let serviceIndex = serviceTags.findIndex(x => x.id === `${testvariable.services[i]}`);
+        let service_temp = document.createElement('div');
+        service_temp.classList.add('service_1');
         service_temp.innerHTML =
             `
         <div class="icon_outline">
-            <i class="fa fa-3x ${serviceTags.iconClass} icon_1"></i>
+            <i class="fa fa-3x ${serviceTags[serviceIndex].iconClass} icon_1"></i>
         </div>
-        <h2 class="service_title">${serviceTags.name}</h2>
-        <p class="description">${serviceTags.description}</p>
-        `
-        service_container.appendChild(service_temp)
+        <h2 class="service_title">${serviceTags[serviceIndex].name}</h2>
+        <p class="description">${serviceTags[serviceIndex].description}</p>
+        `;
+        service_container.appendChild(service_temp);
     }
 
     base_chrge.innerHTML = testvariable.base_charge_per_order
@@ -145,13 +143,11 @@ function AssignVariables(testvariable) {
     start_rate_mob.innerHTML = testvariable.delivery_starting_from
 
     for (let j = 0; j < testvariable.popular_tags.length; j++) {
-        //let popular_temp_mob = testvariable.popular_tags[i]
-        let popular_temp2_mob = document.createElement(button)
-        popular_temp2_mob.innerHTML =
-            `
-        <button type="button" class="features">${tagNames.popular_temp}</button>          
-        `
-        btns_popular_mob.appendChild(popular_temp2_mob)
+        let popular_temp_mob = testvariable.popular_tags[j]
+        let popular_temp2_mob = document.createElement("button")
+        popular_temp2_mob.classList.add('features');
+        popular_temp2_mob.innerHTML = tagNames[popular_temp_mob];
+        btns_popular_mob.appendChild(popular_temp2_mob);
     }
 
     headline_1_mob.innerHTML = testvariable.headline_text_1
@@ -162,18 +158,18 @@ function AssignVariables(testvariable) {
     fleet_sz_mob.innerHTML = testvariable.fleet_size
 
     for (let i = 0; i < testvariable.services.length; i++) {
-        console.log(testvariable.services[i]);
-        console.log(serviceTags.findIndex(x => x.id === `${testvariable.services[i]}`))
-        let service_temp_mob = document.createElement('div')
+        let serviceIndex = serviceTags.findIndex(x => x.id === `${testvariable.services[i]}`);
+        let service_temp_mob = document.createElement('div');
+        service_temp_mob.classList.add('service_1_mob');
         service_temp_mob.innerHTML =
             `
         <div class="icon_outline_mob">
-            <i class="fa fa-2x icon_1_mob ${serviceTags.iconClass}"></i>s
+            <i class="fa fa-2x icon_1_mob ${serviceTags[serviceIndex].iconClass}"></i>s
         </div>
-        <h2 class="service_title_mob">${serviceTags.name}</h2>
-        <div class="para_mob">${serviceTags.description}</div>
-        `
-        service_container_mob.appendChild(service_temp_mob)
+        <h2 class="service_title_mob">${serviceTags[serviceIndex].name}</h2>
+        <div class="para_mob">${serviceTags[serviceIndex].description}</div>
+        `;
+        service_container_mob.appendChild(service_temp_mob);
     }
 
     base_chrge_mob.innerHTML = testvariable.base_charge_per_order
@@ -193,11 +189,11 @@ function CallApi() {
         VendorNotFound();
     } else {
 
-        axios.get('http://127.0.0.1:8000/api/v1/website/get-delivery-vendor-details/', {//globalApiUrl + 
-            params: {
-                vendorId: this.location, // Sending empty if no location selected 
-            }
-        })
+        axios.get('http://127.0.0.1:8000/api/v1/website/get-delivery-vendor-details/', { //globalApiUrl + 
+                params: {
+                    vendorId: queryVendorId, // Sending empty if no location selected 
+                }
+            })
             .then(function (response) {
                 let responseData = JSON.parse(response.data);
                 console.log(responseData);

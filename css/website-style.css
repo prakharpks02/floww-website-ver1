@@ -815,8 +815,6 @@ p {
 .service_1 {
     width: 80%;
     height: 110%;
-    grid-column: 3 / span 3;
-    grid-row: 5 / span 3;
     margin-left: 100px;
 }
 
@@ -860,52 +858,6 @@ p {
     font-size: 0.75rem;
     color: var(--tertiary);
     text-align: center;
-}
-
-.service_2 {
-    width: 80%;
-    height: 110%;
-    grid-column: 7 / span 3;
-    grid-row: 5 / span 3;
-    margin-left: 50px;
-}
-
-.service_3 {
-    width: 80%;
-    height: 110%;
-    grid-column: 11 / span 3;
-    grid-row: 5 / span 3;
-}
-
-.service_4 {
-    width: 80%;
-    height: 110%;
-    grid-column: 14 / span 3;
-    grid-row: 5 / span 3;
-    margin-left: 10%;
-}
-
-.service_5 {
-    width: 80%;
-    height: 110%;
-    grid-column: 3 / span 3;
-    grid-row: 9 / span 3;
-    margin-left: 100px;
-}
-
-.service_6 {
-    width: 80%;
-    height: 110%;
-    grid-column: 7 / span 3;
-    grid-row: 9 / span 3;
-    margin-left: 50px;
-}
-
-.service_7 {
-    width: 80%;
-    height: 110%;
-    grid-column: 11 / span 3;
-    grid-row: 9 / span 3;
 }
 
 /* Tile 3 mobile */
