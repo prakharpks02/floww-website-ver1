@@ -39,7 +39,7 @@ close1.addEventListener('click', function () {
 
 // Page Details Variables
 
-const vendor_contact_no_global = '';
+var vendor_contact_no_global = '';
 
 const logo_url = document.querySelector(".logo")
 const logo_url_footer = document.querySelector(".foot_img")
