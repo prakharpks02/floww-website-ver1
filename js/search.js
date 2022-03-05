@@ -156,7 +156,7 @@ Vue.component('vendor-card-component', {
 
                         <div class="column has-text-right is-4">
                             <div class="card-element-container">
-                                <a onclick="window.alert('Coming Soon')" class="website-link-button"><span>Open Website</span></a>
+                                <a :href="'https://gofloww.co/website?vendor-id='+vendordata.id" target="_blank" class="website-link-button"><span>Open Website</span></a>
                             </div>
                             <div class="card-element-container">
                                 <a class="website-link-button" @click="$emit('request-delivery')"><span>Request Delivery</span></a>
@@ -223,7 +223,7 @@ Vue.component('vendor-card-component', {
 
                         <div class="columns is-mobile is-gapless" style="margin-bottom: 7px;">
                             <div class="column is-5">
-                                <a onclick="window.alert('Coming Soon')" class="website-link-button"><span>Open Website</span></a>
+                                <a :href="'https://gofloww.co/website?vendor-id='+vendordata.id" target="_blank" class="website-link-button"><span>Open Website</span></a>
                             </div>
                             <div class="column is-7">
                                 <a class="website-link-button" @click="$emit('request-delivery')"><span>Request Delivery</span></a>
