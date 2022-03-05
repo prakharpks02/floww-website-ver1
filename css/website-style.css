@@ -18,6 +18,11 @@
     width: 50%;
 }
 
+.section {
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+
 /* header */
 
 .header {
@@ -28,17 +33,16 @@
 }
 
 .nav {
-    min-height: 9vh;
+    min-height: 11vh;
     position: relative;
 }
 
-.option {
+.logo {
     position: absolute;
-
-    width: 50px;
-    height: 50px;
     left: 60px;
     top: 10px;
+    width: 50px;
+    height: 50px;
     text-shadow: var(--shadow);
     border-radius: 158px 158px 158px 158px;
     -webkit-border-radius: 158px 158px 158px 158px;
@@ -50,7 +54,7 @@
 
 .name {
     position: absolute;
-    max-width: 20px;
+    width: 250px;
     left: 120px;
     top: 25%;
     color: var(--secondary);
@@ -60,14 +64,14 @@
 
 .verified {
     position: absolute;
-    left: 190px;
+    left: 320px;
     top: 12px;
     color: var(--primary);
 }
 
 a.option2 {
     position: absolute;
-    left: 26%;
+    left: 36%;
     top: 23px;
     text-decoration: none;
     color: var(--primary);
@@ -76,7 +80,7 @@ a.option2 {
 
 a.option3 {
     position: absolute;
-    left: 35%;
+    left: 45%;
     top: 23px;
     text-decoration: none;
     color: var(--primary);
@@ -85,7 +89,7 @@ a.option3 {
 
 a.option4 {
     position: absolute;
-    left: 44%;
+    left: 54%;
     top: 23px;
     text-decoration: none;
     color: var(--primary);
@@ -94,7 +98,7 @@ a.option4 {
 
 a.option5 {
     position: absolute;
-    left: 54%;
+    left: 64%;
     top: 23px;
     text-decoration: none;
     color: var(--primary);
@@ -103,7 +107,7 @@ a.option5 {
 
 a.option6 {
     position: absolute;
-    left: 65%;
+    left: 75%;
     top: 23px;
     text-decoration: none;
     color: var(--primary);
@@ -116,6 +120,7 @@ a.option6 {
     width: 150px;
     top: 20px;
     left: 80%;
+
     text-decoration: none;
 }
 
@@ -154,7 +159,7 @@ a:hover {
     letter-spacing: 1px;
     line-height: 15px;
     border: 4px solid var(--secondary);
-    padding: 2px;
+    padding: 10px;
     border-radius: 40px;
     background: transparent;
     background-color: var(--secondary);
@@ -162,9 +167,9 @@ a:hover {
     color: white;
     font-weight: 650;
     position: absolute;
-    right: 7%;
-    top: 30%;
-    width: 10%;
+    right: 10px;
+    top: 20%;
+    width: 13%;
 }
 
 .btn-default:hover {
@@ -187,7 +192,7 @@ a:hover {
     position: relative;
 }
 
-.option-mob {
+.logo-mob {
     position: absolute;
     height: 50px;
     width: 50px;
@@ -204,7 +209,7 @@ a:hover {
 
 .name-mob {
     position: absolute;
-    max-width: 20px;
+    width: fit-content;
     left: 5rem;
     top: 20px;
     color: var(--secondary);
@@ -213,7 +218,7 @@ a:hover {
 
 .verified-mob {
     position: absolute;
-    left: 9.5rem;
+    left: 16rem;
     top: 13px;
     color: var(--primary);
 }
@@ -319,7 +324,7 @@ a:hover {
 }
 
 .h1 {
-    width: 90vw;
+    width: 50%;
     grid-column: 2 / -1;
     grid-row: 4 / span 1;
     font-size: 2rem;
@@ -339,7 +344,7 @@ a:hover {
 }
 
 .h2 {
-    width: 90vw;
+    width: 50%;
 
     grid-column: 2 / -1;
     grid-row: 4 / span 3;
@@ -375,7 +380,7 @@ a:hover {
 }
 
 .h4 {
-    width: 90vw;
+    width: 50%;
 
     grid-column: 2 / -1;
     grid-row: 9 / span 1;
@@ -791,20 +796,20 @@ p {
 }
 
 .container2 {
-    display: grid;
-    height: 100vh;
+    /* display: grid; */
+    /* height: 100vh; */
     width: 100vw;
-    grid-template-columns: repeat(20, 1fr);
-    grid-template-rows: repeat(12, 1fr);
+    /* grid-template-columns: repeat(20, 1fr);
+    grid-template-rows: repeat(12, 1fr); */
 }
 
 .title_services {
-    grid-column: 3 / span 16;
-    grid-row: 3 / span 1;
-    justify-self: center;
-    margin-right: 50px;
     color: var(--tertiary);
+    width: 200px;
+    margin-left: 42%;
     font-size: 1.6rem;
+    font-weight: 700;
+    text-align: center;
 }
 
 .underline {
@@ -812,14 +817,30 @@ p {
     width: 100%;
 }
 
+.container2_service {
+    height: fit-content;
+    display: flex;
+    justify-content: center;
+    /* align-content: flex-start; */
+    flex-wrap: wrap;
+}
+
+/* .container2_service>* {
+    flex: 1 1 50%;
+} */
+
+
 .service_1 {
-    width: 80%;
-    height: 110%;
-    margin-left: 100px;
+    width: 25%;
+    margin: auto;
+    /* align-self: flex-start; */
+    position: relative;
+    text-align: center;
 }
 
 .icon_outline {
-    margin-left: 25%;
+    transform: translateX(-50%);
+    margin-left: 50%;
     background-color: #fff;
     border: 1px solid rgb(255, 255, 255);
     height: 100px;
@@ -828,25 +849,26 @@ p {
     -webkit-border-radius: 50%;
     width: 100px;
     text-shadow: var(--shadow);
-    border-radius: 158px 158px 158px 158px;
+    /* border-radius: 158px 158px 158px 158px;
     -webkit-border-radius: 158px 158px 158px 158px;
-    -moz-border-radius: 158px 158px 158px 158px;
+    -moz-border-radius: 158px 158px 158px 158px; */
     box-shadow: var(--shadow);
     -webkit-box-shadow: 2px 3px 28px -8px var(--primary);
     -moz-box-shadow: 2px 3px 28px -8px var(--primary);
 }
 
 .icon_1 {
-    margin-left: 26%;
-    margin-top: 21%;
+    transform: translate(-50%, 50%);
+    margin-left: 50%;
+    margin-bottom: 50%;
     color: var(--primary);
 }
 
 .service_title {
     color: var(--secondary);
     font-weight: 900;
-    margin-left: 22%;
-    margin-top: 10%;
+    /* margin-left: 22%; */
+    margin-top: 15px;
     font-size: 1.3rem;
 }
 
@@ -857,14 +879,13 @@ p {
     text-transform: capitalize;
     font-size: 0.75rem;
     color: var(--tertiary);
-    text-align: center;
 }
 
 /* Tile 3 mobile */
 
 .title_services_mob {
     color: var(--tertiary);
-    margin-top: 20%;
+    /* margin-top: 20%; */
     margin-left: 42%;
     font-size: 1.4rem;
 
@@ -878,25 +899,30 @@ p {
 }
 
 .container2_mob {
+    margin-top: 20px;
     height: fit-content;
     display: flex;
     justify-content: center;
-    align-content: flex-start;
+    /* align-content: flex-start; */
     flex-wrap: wrap;
 }
 
-.container2_mob>* {
+/* .container2_mob>* {
     flex: 1 1 50%;
-}
+} */
 
 .service_1_mob {
-    align-self: flex-start;
+    width: 50%;
+    margin: auto;
+    /* align-self: flex-start; */
     position: relative;
+    text-align: center;
+    margin-bottom: 10px;
 }
 
 .icon_outline_mob {
-    margin: 25%;
-    margin-left: 30%;
+    transform: translateX(-50%);
+    margin-left: 50%;
     background-color: #fff;
     border: 1px solid rgb(255, 255, 255);
     height: 70px;
@@ -905,9 +931,9 @@ p {
     -webkit-border-radius: 50%;
     width: 70px;
     text-shadow: var(--shadow);
-    border-radius: 158px 158px 158px 158px;
+    /* border-radius: 158px 158px 158px 158px;
     -webkit-border-radius: 158px 158px 158px 158px;
-    -moz-border-radius: 158px 158px 158px 158px;
+    -moz-border-radius: 158px 158px 158px 158px; */
     box-shadow: var(--shadow);
     -webkit-box-shadow: 2px 3px 28px -8px var(--primary);
     -moz-box-shadow: 2px 3px 28px -8px var(--primary);
@@ -915,42 +941,25 @@ p {
 
 .icon_1_mob {
     color: var(--primary);
-    margin-left: 26%;
-    margin-top: 25%;
+    transform: translate(-50%, 50%);
+    margin-left: 50%;
+    margin-bottom: 50%;
 }
 
 .service_title_mob {
-    position: absolute;
+    /* position: absolute; */
     color: var(--secondary);
-    top: 79%;
-    left: 17%;
+    margin-top: 15px;
+    /* top: 79%;
+    left: 17%; */
 }
 
 .para_mob {
-    position: absolute;
+    /* position: absolute; */
     color: var(--tertiary);
     font-size: 0.75rem;
     /* left: 10%; */
-    top: 100%;
-    text-align: center;
-}
-
-.final {
-    margin-left: 20%;
-}
-
-.final_icon {
-    margin-bottom: 100px;
-}
-
-.final_service {
-    top: 63%;
-    left: 17%;
-}
-
-.final_para {
-    top: 80%;
-    left: 0;
+    /* top: 100%; */
 }
 
 .tile_3_mob {
@@ -960,7 +969,7 @@ p {
 /* Tile 4 desktop */
 
 .container3 {
-    height: 100vh;
+    /* height: 100vh; */
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     grid-template-rows: repeat(12, 1fr);
@@ -1114,10 +1123,6 @@ p {
 
 /* Tile 5 desktop */
 
-.tile_5_desk {
-    height: 100vh;
-}
-
 .delivery {
     text-align: center;
     margin-top: 5%;
@@ -1182,10 +1187,6 @@ p {
 
 /* Tile 5 mobile */
 
-.tile_5_mob {
-    height: 95vh;
-}
-
 .delivery_mob {
     text-align: center;
     margin-top: 10%;
@@ -1245,279 +1246,6 @@ p {
     display: none;
 }
 
-/* footer  */
-
-/* .footer-mob {
-    display: none;
-  }
-  .power {
-    width: 100%;
-  } 
-  .foot2 {
-    position: absolute;
-    bottom: 24px;
-    height: 30%;
-    width: 100%;
-    background-color: var(--secondary);
-  }
-  .foot-img {
-    position: relative;
-    top: 1.5rem;
-    height: 100px;
-    width: 100px;
-  }
-  .name-foot {
-    position: absolute;
-    left: 7.7rem;
-    top: 1.8rem;
-    font-weight: 620;
-    font-size: 2rem;
-    color: white;
-  }
-  .txt {
-    position: absolute;
-    color: white;
-    left: 3.6rem;
-    top: 5.5rem;
-    font-size: 12px;
-  }
-  .get {
-    position: absolute;
-    color: white;
-    left: 3.6rem;
-    top: 11rem;
-    font-size: 12px;
-  }
-  .join {
-    color: var(--primary);
-  }
-  .cont {
-    position: absolute;
-    right: 4rem;
-    top: 1.5rem;
-    font-size: small;
-    color: white;
-  }
-  .addr {
-    position: absolute;
-    right: 20rem;
-    top: 1.5rem;
-    font-size: small;
-    color: white;
-  }
-  .lin {
-    position: absolute;
-    right: 32.3rem;
-    top: 1.5rem;
-    font-size: small;
-    color: white;
-  }
-  .foot-links1 {
-    position: absolute;
-    right: 32.4rem;
-    top: 3.2rem;
-    font-size: small;
-    color: white;
-  }
-  .foot-links2 {
-    position: absolute;
-    right: 32.1rem;
-    top: 5rem;
-    font-size: small;
-    color: white;
-  }
-  .foot-links3 {
-    position: absolute;
-    right: 31.6rem;
-    top: 7rem;
-    font-size: small;
-    color: white;
-  }
-  .foot-links4 {
-    position: absolute;
-    right: 30.2rem;
-    top: 9rem;
-    font-size: small;
-    color: white;
-  }
-  .foot-links5 {
-    position: absolute;
-    right: 32rem;
-    top: 11.2rem;
-    font-size: small;
-    color: white;
-  }
-  .footlin {
-    text-decoration: none;
-  }
-  .footlin:hover {
-    color: var(--primary);
-  }
-  .address {
-    position: absolute;
-    right: 14.2rem;
-    top: 3.2rem;
-    font-size: small;
-    color: white;
-  }
-  .refer {
-    position: absolute;
-    right: 13.2rem;
-    top: 7rem;
-    font-size: small;
-    color: var(--primary);
-    font-weight: 650;
-  }
-  .number {
-    position: absolute;
-    right: 3.9rem;
-    top: 3rem;
-    font-size: small;
-    color: white;
-  }
-  .floww {
-    position: absolute;
-    width: auto;
-    height: 10px;
-    left: auto;
-    top: 30%;
-    margin-left: 8px;
-  }
-  /* footer mobile */
-
-/* .power-mob {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-  }
-  .foot2-mob {
-    position: absolute;
-    bottom: 24px;
-    height: 30%;
-    width: 100%;
-    background-color: var(--secondary);
-  }
-  .foot-img-mob {
-    position: relative;
-    top: 1.5rem;
-    left: 1rem;
-    width: 25px;
-    height: 25px;
-  }
-  .name-foot-mob {
-    position: absolute;
-    left: 2.8rem;
-    top: 1.8rem;
-    font-weight: 620;
-    font-size: 10px;
-    color: white;
-  }
-  .txt-mob {
-    position: absolute;
-    color: white;
-    left: 1.3rem;
-    top: 4.6rem;
-    font-size: 8px;
-  }
-  .get-mob {
-    position: absolute;
-    color: white;
-    left: 1.3rem;
-    top: 10rem;
-    font-size: 8px;
-  }
-  .join-mob {
-    color: var(--primary);
-  }
-  .cont-mob {
-    position: absolute;
-    right: 4rem;
-    top: 9rem;
-    font-size: 8px;
-    color: white;
-  }
-  .addr-mob {
-    position: absolute;
-    right: 5.5rem;
-    top: 1.5rem;
-    font-size: 8px;
-    color: white;
-  }
-  .lin-mob {
-    position: absolute;
-    right: 13rem;
-    top: 1.5rem;
-    font-size: 8px;
-    color: white;
-  }
-  .foot-links1-mob {
-    position: absolute;
-    right: 13rem;
-    top: 3.2rem;
-    font-size: 8px;
-    color: white;
-  }
-  .foot-links2-mob {
-    position: absolute;
-    right: 12.9rem;
-    top: 5rem;
-    font-size: 8px;
-    color: white;
-  }
-  .foot-links3-mob {
-    position: absolute;
-    right: 12.6rem;
-    top: 7rem;
-    font-size: 8px;
-    color: white;
-  }
-  .foot-links4-mob {
-    position: absolute;
-    right: 11.7rem;
-    top: 9rem;
-    font-size: 8px;
-    color: white;
-  }
-  .foot-links5-mob {
-    position: absolute;
-    right: 12.9rem;
-    top: 11.2rem;
-    font-size: 8px;
-    color: white;
-  }
-  .footlin-mob {
-    text-decoration: none;
-  }
-  .address-mob {
-    position: absolute;
-    right: 2rem;
-    top: 3.2rem;
-    font-size: 8px;
-    color: white;
-  }
-  .refer-mob {
-    position: absolute;
-    right: 1.4rem;
-    top: 7rem;
-    font-size: 8px;
-    color: var(--primary);
-    font-weight: 650;
-  }
-  .number-mob {
-    position: absolute;
-    right: 4rem;
-    top: 10.5rem;
-    font-size: 8px;
-    color: white;
-  }
-  .floww-mob {
-    position: absolute;
-    margin-left: 8px;
-    width: auto;
-    height: 10px;
-    left: auto;
-    top: 30%;
-  } */
 
 /* footer */
 
@@ -1530,7 +1258,7 @@ p {
 
 .container_f2 {
     background-color: black;
-    height: 4vh;
+    height: 5vh;
 }
 
 .foot_img {
@@ -1627,6 +1355,7 @@ p {
     left: 75%;
     font-size: 12px;
     color: white;
+    width: 100px;
 }
 
 .refer_foot {
@@ -1654,17 +1383,21 @@ p {
 }
 
 .floww_foot {
-    position: absolute;
-    height: 10px;
+    /* position: absolute; */
+    height: 2vh;
     width: auto;
-    left: 53%;
-    margin-top: 8px;
+    /* left: 100%; */
+    margin-top: 10px;
     margin-left: 2px;
 }
 
 .power_foot {
     text-align: center;
     color: white;
+    width: fit-content;
+    margin: auto;
+    position: relative;
+    padding: 3px;
 }
 
 /* footer mobile */

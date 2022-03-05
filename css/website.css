@@ -18,9 +18,10 @@
     background-color: #a8bbbf;
 }
 
-/* html {
-    overflow: hidden;
-} */
+body {
+    margin-top: -10px;
+    margin-bottom: -30px;
+}
 
 .hide {
     display: none !important;

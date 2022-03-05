@@ -265,7 +265,7 @@ const logoUrls = [
     { 'logo0': 'https://gofloww.co/img/logo/profile/placeholder.jpg' },
 ]
 
-const globalApiUrl = "http://localhost:8000" //"https://backend.gofloww.co"  //"http://localhost:8000"
+const globalApiUrl = "https://backend.gofloww.co"  //"http://localhost:8000"
 
 const apiUrlList = [{
     'url': 'http://localhost:8000/api-token-auth/',

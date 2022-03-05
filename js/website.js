@@ -39,6 +39,10 @@ close1.addEventListener('click', function () {
 
 // Page Details Variables
 
+const vendor_contact_no_global = '';
+
+const logo_url = document.querySelector(".logo")
+const logo_url_footer = document.querySelector(".foot_img")
 const cpy_name = document.querySelector(".name")
 const ctt_no = document.querySelector(".number_foot")
 const start_rate = document.querySelector(".price")
@@ -59,6 +63,8 @@ const per_km_chrge_rental = document.querySelector(".per_km_charge_rental")
 const addr = document.querySelector(".address_foot")
 
 
+const logo_url_mob = document.querySelector(".logo-mob")
+const logo_url_footer_mob = document.querySelector(".foot_img_mob")
 const cpy_name_mob = document.querySelector(".name-mob")
 const ctt_no_mob = document.querySelector(".number_foot_mob")
 const start_rate_mob = document.querySelector(".cost_mob")
@@ -86,6 +92,14 @@ function VendorNotFound() {
 }
 
 
+function ContactMeButton() {
+    if(vendor_contact_no_global=='None') {
+        window.open("https://backend.gofloww.co/login/", "_blank");
+    } else {
+        window.open('tel:'+vendor_contact_no_global);
+    };
+}
+
 
 function AssignVariables(testvariable) {
 
@@ -94,8 +108,10 @@ function AssignVariables(testvariable) {
     document.documentElement.style.setProperty('--tertiary', testvariable.tertiary_color);
 
     // desktop
+    logo_url.src = testvariable.logo_url
+    logo_url_footer.src = testvariable.logo_url
     cpy_name.innerHTML = testvariable.company_name
-    ctt_no.innerHTML = testvariable.contact_no
+
     start_rate.innerHTML = testvariable.delivery_starting_from
     for (let j = 0; j < testvariable.popular_tags.length; j++) {
         let popular_temp = testvariable.popular_tags[j]
@@ -138,8 +154,10 @@ function AssignVariables(testvariable) {
 
 
     // mobile
+    logo_url_mob.src = testvariable.logo_url
+    logo_url_footer_mob.src = testvariable.logo_url
     cpy_name_mob.innerHTML = testvariable.company_name
-    ctt_no_mob.innerHTML = testvariable.contact_no
+
     start_rate_mob.innerHTML = testvariable.delivery_starting_from
 
     for (let j = 0; j < testvariable.popular_tags.length; j++) {
@@ -164,7 +182,7 @@ function AssignVariables(testvariable) {
         service_temp_mob.innerHTML =
             `
         <div class="icon_outline_mob">
-            <i class="fa fa-2x icon_1_mob ${serviceTags[serviceIndex].iconClass}"></i>s
+            <i class="fa fa-2x icon_1_mob ${serviceTags[serviceIndex].iconClass}"></i>
         </div>
         <h2 class="service_title_mob">${serviceTags[serviceIndex].name}</h2>
         <div class="para_mob">${serviceTags[serviceIndex].description}</div>
@@ -201,6 +219,15 @@ function CallApi() {
                 if (responseData.status == 'failure') {
                     VendorNotFound();
                 } else {
+                    vendor_contact_no_global = responseData.variable.contact_no;
+
+                    if(vendor_contact_no_global == 'None'){
+                        ctt_no.innerHTML=`<a href="https://backend.gofloww.co/login/" target="_blank">Login to Contact</a>`;
+                        ctt_no_mob.innerHTML=`<a href="https://backend.gofloww.co/login/" target="_blank">Login to Contact</a>`;
+                    } else {
+                        ctt_no.innerHTML = vendor_contact_no_global;
+                        ctt_no_mob.innerHTML = vendor_contact_no_global;
+                    }
                     AssignVariables(responseData.variable);
                 }
             })
