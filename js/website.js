@@ -93,10 +93,10 @@ function VendorNotFound() {
 
 
 function ContactMeButton() {
-    if(vendor_contact_no_global=='None') {
+    if (vendor_contact_no_global == 'None') {
         window.open("https://backend.gofloww.co/login/", "_blank");
     } else {
-        window.open('tel:'+vendor_contact_no_global);
+        window.open('tel:' + vendor_contact_no_global);
     };
 }
 
@@ -107,12 +107,20 @@ function AssignVariables(testvariable) {
     document.documentElement.style.setProperty('--secondary', testvariable.secondary_color);
     document.documentElement.style.setProperty('--tertiary', testvariable.tertiary_color);
 
+    if (testvariable.delivery_starting_from == 'N/A') {
+        start_rate.innerHTML = 'Rental Only';
+        start_rate_mob.innerHTML = 'Rental Only';
+    } else {
+        start_rate.innerHTML = '₹ ' + testvariable.delivery_starting_from;
+        start_rate_mob.innerHTML = '₹ ' + testvariable.delivery_starting_from;
+    }
+
     // desktop
     logo_url.src = testvariable.logo_url
     logo_url_footer.src = testvariable.logo_url
     cpy_name.innerHTML = testvariable.company_name
 
-    start_rate.innerHTML = testvariable.delivery_starting_from
+
     for (let j = 0; j < testvariable.popular_tags.length; j++) {
         let popular_temp = testvariable.popular_tags[j]
         let popular_temp2 = document.createElement("button")
@@ -157,8 +165,6 @@ function AssignVariables(testvariable) {
     logo_url_mob.src = testvariable.logo_url
     logo_url_footer_mob.src = testvariable.logo_url
     cpy_name_mob.innerHTML = testvariable.company_name
-
-    start_rate_mob.innerHTML = testvariable.delivery_starting_from
 
     for (let j = 0; j < testvariable.popular_tags.length; j++) {
         let popular_temp_mob = testvariable.popular_tags[j]
@@ -207,7 +213,7 @@ function CallApi() {
         VendorNotFound();
     } else {
 
-        axios.get(globalApiUrl+'/api/v1/website/get-delivery-vendor-details/', {
+        axios.get(globalApiUrl + '/api/v1/website/get-delivery-vendor-details/', {
                 params: {
                     vendorId: queryVendorId,
                 }
@@ -221,9 +227,9 @@ function CallApi() {
                 } else {
                     vendor_contact_no_global = responseData.variable.contact_no;
 
-                    if(vendor_contact_no_global == 'None'){
-                        ctt_no.innerHTML=`<a href="https://backend.gofloww.co/login/" target="_blank">Login to Contact</a>`;
-                        ctt_no_mob.innerHTML=`<a href="https://backend.gofloww.co/login/" target="_blank">Login to Contact</a>`;
+                    if (vendor_contact_no_global == 'None') {
+                        ctt_no.innerHTML = `<a href="https://backend.gofloww.co/login/" target="_blank">Login to Contact</a>`;
+                        ctt_no_mob.innerHTML = `<a href="https://backend.gofloww.co/login/" target="_blank">Login to Contact</a>`;
                     } else {
                         ctt_no.innerHTML = vendor_contact_no_global;
                         ctt_no_mob.innerHTML = vendor_contact_no_global;

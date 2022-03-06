@@ -2,9 +2,9 @@ var vendorListConst = [{
     'id': 'VEN00001',
     'name': 'JS Transport asjfkjnsdkfjnbskjdfnkjsdnfgjknskj',
     'startPrice': 'N/A',
-    'rating': '4.1',
+    'rating': '2.1',
     'contactNo': '+91 9999955555',
-    'vendorCode': 'VEN10000',
+    'vendorCode': 'sdgsdfgfdg',
     'year': '1941',
     'location': 'Juhu, Mumbai, sdbfmnjsdbfsdbfmnjsdbfsdbfmnjsdbfsdbfmnjsdbfsdbfmnjsdbfsdbfmnjsdbfsdbfmnjsdbfsdbfmnjsdbfsdbfmnjsdbfsdbfmnjsdbfsdbfmnjsdbfsdbfmnjsdbfsdbfmnjsdbfsdbfmnjsdbfsdbfmnjsdbfsdbfmnjsdbf',
     'size': '30-50',
@@ -15,9 +15,22 @@ var vendorListConst = [{
     'id': 'VEN00001',
     'name': 'JS Transport',
     'startPrice': '57',
-    'rating': '4.1',
+    'rating': '3.1',
     'contactNo': '+91 9999955555',
-    'vendorCode': 'VEN10000',
+    'vendorCode': 'gdfgbdfdf',
+    'year': '1941',
+    'location': 'Juhu, Mumbai',
+    'size': '30-50',
+    'fleetType': 'riders',
+    'services': ['otp', 'cold_chain', 'same_day', 'intercity'],
+    'badges': ['100y_old'],
+}, {
+    'id': 'VEN00001',
+    'name': 'JS Transport',
+    'startPrice': '57',
+    'rating': '2.1',
+    'contactNo': '+91 9999955555',
+    'vendorCode': 'dfgdfgdgdf',
     'year': '1941',
     'location': 'Juhu, Mumbai',
     'size': '30-50',
@@ -30,7 +43,7 @@ var vendorListConst = [{
     'startPrice': '57',
     'rating': '4.1',
     'contactNo': '+91 9999955555',
-    'vendorCode': 'VEN10000',
+    'vendorCode': 'dfgdfgdfg',
     'year': '1941',
     'location': 'Juhu, Mumbai',
     'size': '30-50',
@@ -43,20 +56,7 @@ var vendorListConst = [{
     'startPrice': '57',
     'rating': '4.1',
     'contactNo': '+91 9999955555',
-    'vendorCode': 'VEN10000',
-    'year': '1941',
-    'location': 'Juhu, Mumbai',
-    'size': '30-50',
-    'fleetType': 'riders',
-    'services': ['otp', 'cold_chain', 'same_day', 'intercity'],
-    'badges': ['100y_old'],
-}, {
-    'id': 'VEN00001',
-    'name': 'JS Transport',
-    'startPrice': '57',
-    'rating': '4.1',
-    'contactNo': '+91 9999955555',
-    'vendorCode': 'VEN10000',
+    'vendorCode': 'dfgdfgdfgdf',
     'year': '1941',
     'location': 'Juhu, Mumbai',
     'size': '30-50',
@@ -131,7 +131,7 @@ Vue.component('vendor-card-component', {
 
                         <div class="column">
                             <div class="card-element-container rating-container">
-                                <span><i class="fa fa-star"></i> {{vendordata.rating}}/5</span>
+                                <span :class="{'has-text-danger': parseFloat(vendordata.rating)<=2.7}"><i class="fa fa-star"></i> {{vendordata.rating}}/5</span>
                             </div>
                             <div class="card-element-container vendor-number-container">
                                 <a :href="'tel:'+vendordata.contactNo" v-if="userauth">{{vendordata.contactNo}}</a>
@@ -212,7 +212,7 @@ Vue.component('vendor-card-component', {
 
                 <div class="mobile-view-toggle card-container">
                     <div class="card-main-container">
-                        <p><span class="vendor-name-container text-width-limiter">{{vendordata.name}}</span>    <span class="rating-container"><i class="fa fa-star"></i> {{vendordata.rating}}/5</span></p>
+                        <p><span class="vendor-name-container text-width-limiter">{{vendordata.name}}</span>    <span class="rating-container" :class="{'has-text-danger': parseFloat(vendordata.rating)<=2.7}"><i class="fa fa-star"></i> {{vendordata.rating}}/5</span></p>
                         
                         <p class="starting-from-box">
                             <span class="tag is-warning" v-if="vendordata.startPrice!='N/A'">starting ₹{{vendordata.startPrice}}</span>
@@ -378,11 +378,11 @@ var app1 = new Vue({
             this.searchLoading = true
 
             axios.get(globalApiUrl + '/api/v1/search/get-3pl-list/', {
-                params: {
-                    location: this.location, // Sending empty if no location selected 
-                    tagSelected: this.tagSelected, // Sending empty if no tag selected
-                }
-            })
+                    params: {
+                        location: this.location, // Sending empty if no location selected 
+                        tagSelected: this.tagSelected, // Sending empty if no tag selected
+                    }
+                })
                 .then(function (response) {
                     let responseData = JSON.parse(response.data);
                     console.log(responseData);
@@ -464,9 +464,9 @@ var app1 = new Vue({
             if (this.emailForm.email.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/) && this.emailForm.companyName != '') {
 
                 axios.post(globalApiUrl + '/api/v1/auth/submit-user-email/', {
-                    email: this.emailForm.email,
-                    companyName: this.emailForm.companyName,
-                })
+                        email: this.emailForm.email,
+                        companyName: this.emailForm.companyName,
+                    })
                     .then(function (response) {
                         let responseData = JSON.parse(response.data);
                         console.log(responseData.status);
@@ -511,7 +511,7 @@ var app1 = new Vue({
                 this.orderForm.vendorName = vendorname;
                 this.formType = 'order';
                 this.contentOverlay = true;
-            
+
             } else {
                 this.LoginFunction();
             }
@@ -566,15 +566,15 @@ var app1 = new Vue({
                     window.alert("Please add atleast 1 order, or choose rental.");
                 } else {
                     axios.post(globalApiUrl + '/api/v1/search/request-deliveries/', {
-                        vendorCode: this.orderForm.vendorCode,
-                        productDescription: this.orderForm.productType,
-                        companyName: this.orderForm.companyName,
-                        deliveryDate: this.orderForm.deliveryDate,
-                        orderType: this.orderForm.orderType,
-                        rentalPlan: this.orderForm.rentalPlan,
-                        orderList: this.orderForm.orderList,
-                        serviceList: this.orderForm.serviceList,
-                    })
+                            vendorCode: this.orderForm.vendorCode,
+                            productDescription: this.orderForm.productType,
+                            companyName: this.orderForm.companyName,
+                            deliveryDate: this.orderForm.deliveryDate,
+                            orderType: this.orderForm.orderType,
+                            rentalPlan: this.orderForm.rentalPlan,
+                            orderList: this.orderForm.orderList,
+                            serviceList: this.orderForm.serviceList,
+                        })
                         .then(function (response) {
                             let responseData = JSON.parse(response.data);
                             console.log(responseData.status);
@@ -600,11 +600,11 @@ var app1 = new Vue({
         },
         GetCostEstimate: function () {
             axios.post(globalApiUrl + '/api/v1/search/get-cost-estimate/', {
-                vendorCode: this.orderForm.vendorCode,
-                orderType: this.orderForm.orderType,
-                rentalPlan: this.orderForm.rentalPlan,
-                orderList: this.orderForm.orderList,
-            })
+                    vendorCode: this.orderForm.vendorCode,
+                    orderType: this.orderForm.orderType,
+                    rentalPlan: this.orderForm.rentalPlan,
+                    orderList: this.orderForm.orderList,
+                })
                 .then(function (response) {
                     let responseData = JSON.parse(response.data);
                     console.log(responseData);
@@ -642,8 +642,30 @@ var app1 = new Vue({
         },
         CheckQueryParam: function () {
             queryValueReturn = GetQueryParams('location');
+            vendorFormValueReturn = GetQueryParams('vendor-id');
             if (queryValueReturn != 'None') {
                 this.location = queryValueReturn;
+            }
+
+            if (vendorFormValueReturn != 'None') {
+
+                axios.get(globalApiUrl + '/api/v1/search/get-vendor-code/', {
+                        params: {
+                            vendorId: vendorFormValueReturn,
+                        }
+                    })
+                    .then(function (response) {
+                        let responseData = JSON.parse(response.data);
+                        console.log(responseData);
+
+                        app1.RequestDelivery(responseData.vendorCode, responseData.vendorName);
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                        app1.userAuth = false;
+                        window.alert('Auth check failed. Please login again');
+                        document.getElementById("page-load-overlay").classList.add("hide");
+                    });
             }
         }
     },
