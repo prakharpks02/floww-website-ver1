@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <!-- SEO Tags -->
+    <meta name="title" content="floww Search - Find Your Delivery Partner"/>
+    <meta name="description" content="floww Search is the easiest way to find the best delivery companies as per your needs. Choose from the pool of verified delivery companies and seamlessly integrate them with your system using standardized APIs"/>
+    <meta name="keywords" content="floww Delivery, Delivery api, Delivery app api, API delivery platform, Delivery solutions api, Delivery api documentation, Delivery api integration, Ecommerce api free"/>
+
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-JK6MTWL5ZZ"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-JK6MTWL5ZZ');
+    </script> -->
+
+
+    <link rel="shortcut icon" href="img/logo/floww-logo-favicon.ico" type="image/x-icon">
+    <link rel="icon" href="img/logo/floww-logo-favicon.ico" type="image/x-icon">
+
+    <link rel="stylesheet" type="text/css" href="css/my-orders.css">
+
+    <!-- Importing Major 3rd Party File links -->
+
+    <link rel="stylesheet" type="text/css" href="css/fontawesome.css">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+
+    <link rel="stylesheet" type="text/css" href="css/bulma.css">
+    <!--   Calling Bulma from local file   -->
+
+    <script type="text/javascript" src="js/vue.js"></script>
+    <!--   Calling Vue from local file   -->
+    <script type="text/javascript" src="js/axios.min.js"></script>
+    <!--   Calling Axios from local file   -->
+
+    <title>floww Search - My Orders</title>
+</head>
+
+<body>
+
+    <div id="main-page-id" class="columns is-centered page-container">
+
+        <div class="column is-three-quarters">
+            <div class="box agent-list-container">
+                <table class="table is-hoverable is-fullwidth has-text-centered">
+                    <thead>
+                        <tr>
+                            <th>Current Status</th>
+                            <th>Drop Address</th>
+                            <th>Drop Contact No</th>
+                            <th>Bill No</th>
+                            <th>Delivery Vendor</th>
+                            <th> </th>
+                        </tr>
+                    </thead>
+    
+                    <tbody>
+                        <tr is="order-row-component" v-for="order in orderList" :orderdata="order"
+                            @details-button="ViewOrder(order.orderId, order.taskId)"></tr>
+                    </tbody>
+    
+                </table>
+            </div>
+            <div class="has-text-right agent-list-container">
+                <button class="button is-primary" onclick="window.alert('Coming Soon!')">
+                    <span class="icon is-small">
+                        <i class="fa fa-plus"></i>
+                    </span>
+                    <span>Add Order</span>
+                </button>
+            </div>
+        </div>
+    
+        <div class="column">
+            <div class="agent-detail-container">
+                <div class="box agent-detail-box-container">
+                    <p>Pickup</p>
+                    <p>[[orderDetail.pickup]]</p>
+                    <p>[[orderDetail.pickupNo]]</p>
+                    <p>Drop</p>
+                    <p>[[orderDetail.drop]]</p>
+                    <p>[[orderDetail.dropNo]]</p>
+                    <hr>
+                    <div class="agent-detail-text-container has-text-centered">
+                        <p>Weight - [[orderDetail.weight]] kg</p>
+                        <p>Instruction - [[orderDetail.instructions]]</p>
+                        <hr>
+                        <p>Delivery By - [[orderDetail.deliveryVendor]]</p>
+                    </div>
+                    <br>
+                    <div class="columns has-text-centered">
+                        <div class="column is-half">
+                            <button class="button is-static">Order Placed on : [[orderDetail.placedOn]]</button>
+                        </div>
+                        <div class="column">
+                            <button class="button is-warning is-light" @click="DownloadBill(orderDetail.taskId)">Download Bill</button>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="columns is-centered">
+                        <div class="column has-text-centered">
+                            <button class="button is-link is-light">Freeze</button>
+                        </div>
+                        <div class="column has-text-centered">
+                            <button class="button is-primary is-light">Send Key</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+    </div>
+
+
+    <!-- All JS files start here -->
+
+    <script>
+        function getCookie(name) {
+            let cookieValue = null;
+
+            if (document.cookie && document.cookie !== '')
+            {
+                const cookies = document.cookie.split(';');
+                for (let i = 0; i < cookies.length; i++)
+                {
+                    const cookie = cookies[i].trim();
+
+                    // Does this cookie string begin with the name we want?
+                    if (cookie.substring(0, name.length + 1) === (name + '='))
+                    {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+
+                        break;
+                    }
+                }
+            }
+
+            return cookieValue;
+        }
+
+        let tokenVal = getCookie('floww-token');
+
+        // if (tokenVal) {
+        //     let authTokenStr = "Token " + tokenVal;
+        //     axios.defaults.headers.common['Authorization'] = authTokenStr;
+        // } else {
+        //     window.alert("You are not Logged in");
+        //     window.open("https://backend.gofloww.co/login/search", "_blank");
+        // }
+
+    </script>
+
+    <!-- <script
+        src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyAVcyVFjXhbFtR3dqbfoFWtHx0doqT7leE"></script> -->
+    <!-- Google Address Autocomplete Places -->
+
+    <script src="js/countryCode.js"></script>
+    <!-- Country Code JS file -->
+
+    <script src="js/flowwVariables.js"></script>
+    <!-- Floww custom Dictionaries JS file -->
+
+    <script src="js/my-orders.js"></script>
+
+</body>
+
+</html>

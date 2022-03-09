@@ -1,0 +1,71 @@
+.page-container {
+	height: 100%;
+}
+
+.agent-list-container {
+    width: 90%;
+    margin: auto;
+    height: 82%;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.agent-detail-container {
+    width: 100%;
+    margin: auto;
+    padding-right: 20px;
+}
+
+.agent-detail-box-container {
+    height: 40%;
+}
+
+.edit-button-container {
+
+}
+
+.agent-detail-text-container {
+    margin: auto;
+}
+
+/* Overlay Style */
+
+.hide {
+	display: none;
+}
+
+.overlay {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: rgba(0, 0, 0, 0.8);
+	z-index: 2;
+}
+
+.overlay-cross-container {
+	position: fixed;
+	top: 0;
+	right: 0;
+	margin-top: 3%;
+	margin-right: 3%;
+	cursor: pointer;
+}
+
+.overlay-box-container {
+	position: absolute;
+	padding-top: 40px;
+	padding-bottom: 40px;
+	top: 50%;
+	left: 50%;
+	margin-right: -50%;
+	transform: translate(-50%, -50%)
+}
+
+.form-field-container {
+	margin-left: 20px;
+	margin-right: 20px;
+}
