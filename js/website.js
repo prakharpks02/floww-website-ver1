@@ -67,7 +67,7 @@ const addr = document.querySelector(".address_foot")
 const logo_url_mob = document.querySelector(".logo-mob")
 const logo_url_footer_mob = document.querySelector(".foot_img_mob")
 const cpy_name_mob = document.querySelector(".name-mob")
-const cpy_name_mob_footer = document.querySelector(".name_foot_mob")
+const cpy_name_footer_mob = document.querySelector(".name_foot_mob")
 const ctt_no_mob = document.querySelector(".number_foot_mob")
 const start_rate_mob = document.querySelector(".cost_mob")
 const btns_popular_mob = document.querySelector(".btns_mob")
@@ -218,7 +218,7 @@ function AssignVariables(testvariable) {
 
 function CallApi() {
     if (queryVendorId == 'None') {
-        //VendorNotFound();
+        VendorNotFound();
     } else {
 
         axios.get(globalApiUrl + '/api/v1/website/get-delivery-vendor-details/', {
