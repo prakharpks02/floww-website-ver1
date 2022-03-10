@@ -44,6 +44,7 @@ var vendor_contact_no_global = '';
 const logo_url = document.querySelector(".logo")
 const logo_url_footer = document.querySelector(".foot_img")
 const cpy_name = document.querySelector(".name")
+const cpy_name_footer = document.querySelector(".name_foot")
 const ctt_no = document.querySelector(".number_foot")
 const start_rate = document.querySelector(".price")
 const headline_1 = document.querySelector(".h1")
@@ -66,6 +67,7 @@ const addr = document.querySelector(".address_foot")
 const logo_url_mob = document.querySelector(".logo-mob")
 const logo_url_footer_mob = document.querySelector(".foot_img_mob")
 const cpy_name_mob = document.querySelector(".name-mob")
+const cpy_name_mob_footer = document.querySelector(".name_foot_mob")
 const ctt_no_mob = document.querySelector(".number_foot_mob")
 const start_rate_mob = document.querySelector(".cost_mob")
 const btns_popular_mob = document.querySelector(".btns_mob")
@@ -100,6 +102,10 @@ function ContactMeButton() {
     };
 }
 
+function OrderNowButton() {
+    window.open('https://gofloww.co/search?vendor-id='+queryVendorId, '_blank');
+}
+
 
 function AssignVariables(testvariable) {
 
@@ -119,6 +125,7 @@ function AssignVariables(testvariable) {
     logo_url.src = testvariable.logo_url
     logo_url_footer.src = testvariable.logo_url
     cpy_name.innerHTML = testvariable.company_name
+    cpy_name_footer.innerHTML = testvariable.company_name
 
 
     for (let j = 0; j < testvariable.popular_tags.length; j++) {
@@ -165,6 +172,7 @@ function AssignVariables(testvariable) {
     logo_url_mob.src = testvariable.logo_url
     logo_url_footer_mob.src = testvariable.logo_url
     cpy_name_mob.innerHTML = testvariable.company_name
+    cpy_name_footer_mob.innerHTML = testvariable.company_name
 
     for (let j = 0; j < testvariable.popular_tags.length; j++) {
         let popular_temp_mob = testvariable.popular_tags[j]
@@ -210,7 +218,7 @@ function AssignVariables(testvariable) {
 
 function CallApi() {
     if (queryVendorId == 'None') {
-        VendorNotFound();
+        //VendorNotFound();
     } else {
 
         axios.get(globalApiUrl + '/api/v1/website/get-delivery-vendor-details/', {

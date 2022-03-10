@@ -51,20 +51,29 @@
 
 
         <img class="loader" src="img/website/new-preloader.gif" alt="loader">
+
+
         <section class="section header is-desktop">
             <div class="nav bg-light">
-                <img src="img/website/TMoS-Logo-Round.png" class="logo option" alt="Tmos_logo" />
-                <h3 class="name"></h3>
-                <i class="fas fa-check-circle fa-1x verified"></i>
-                <a href="#" class="option2 link">Home</a>
-                <a href="#" class="option3 link">Details</a>
-                <a href="#" class="option4 link">Services</a>
-                <a href="#" class="option5 link">Integrations</a>
-                <a href="#" class="option6 link">Pricing</a>
 
-                <button type="button" class="btn-default" onclick="ContactMeButton()">
-                    <i class="fas fa-phone-alt"></i>&ensp;Contact me
-                </button>
+                <div class="left-container-nav">
+                    <img src="img/website/TMoS-Logo-Round.png" class="logo option" alt="Tmos_logo" />
+                    <h3 class="name"></h3>
+                    <i class="fas fa-check-circle fa-1x verified"></i>
+                </div>
+                
+                <div class="right-container-nav">
+                    <a href="#home-section-id" class="option2 link">Home</a>
+                    <a href="#detail-section-id" class="option3 link">Details</a>
+                    <a href="#services-section-id" class="option4 link">Services</a>
+                    <a href="#integration-section-id" class="option5 link">Integrations</a>
+                    <a href="#pricing-section-id" class="option6 link">Pricing</a>
+
+                    <button type="button" class="btn-default" onclick="ContactMeButton()">
+                        <i class="fas fa-phone-alt"></i>&ensp;Contact me
+                    </button>
+                </div>
+                
             </div>
         </section>
 
@@ -75,16 +84,16 @@
                 <i class="fas fa-check-circle fa-1x verified-mob"></i>
                 <button class="nav-toggle " type="button"><i class="fa fa-bars fa-2x"></i></button>
                 <div class="option-list-mob">
-                    <a href="#"><i class="fas fa-times fa-2x "></i></a>
-                    <a href="#" class="option1-mob link-mob">Home</a>
-                    <a href="#" class="option2-mob link-mob">Details</a>
-                    <a href="#" class="option3-mob link-mob">Services</a>
-                    <a href="#" class="option4-mob link-mob">Integrations</a>
-                    <a href="#" class="option5-mob link-mob">Pricing</a>
+                    <a><i class="fas fa-times fa-2x "></i></a>
+                    <a href="#home-section-id-mob" class="option1-mob link-mob">Home</a>
+                    <a href="#detail-section-id-mob" class="option2-mob link-mob">Details</a>
+                    <a href="#services-section-id-mob" class="option3-mob link-mob">Services</a>
+                    <a href="#integration-section-id-mob" class="option4-mob link-mob">Integrations</a>
+                    <a href="#pricing-section-id-mob" class="option5-mob link-mob">Pricing</a>
                 </div>
         </section>
 
-        <section class="section tile_1_desk">
+        <section class="section tile_1_desk" id="home-section-id">
 
             <div class="container">
                 <img class="curve_bg" src="img/website/curve-background-small.png" alt="bg_curve">
@@ -97,12 +106,13 @@
                 <div class="h4">Delivery Starting From <span class="rupee"></span><span class="price"></span><span
                         class="star">*</span></div>
                 <div class="btn_order">
-                    <button type="button" class="order_btn"><i class="fas fa-paper-plane"></i> &nbsp; Order Now</button>
+                    <button type="button" class="order_btn" onclick="OrderNowButton()"><i
+                            class="fas fa-paper-plane"></i> &nbsp; Order Now</button>
                 </div>
 
         </section>
 
-        <section class="section tile_1_mob">
+        <section class="section tile_1_mob" id="home-section-id-mob">
             <div class="container_mob">
                 <img class="curve_bg_mob" src="img/website/mobile-curve-background-small.png" alt="bg_curve">
                 <div class="h1_mob">Your Delivery Partner </div>
@@ -116,7 +126,8 @@
                 <!-- <div class="btn_order_mob">
             <button type="button" class="order_btn_mob"><i class="fas fa-paper-plane"></i> &nbsp; Order Now</button>
         </div> -->
-                <button type="button" class="order_btn_mob"><i class="fas fa-paper-plane"></i> &nbsp; Order Now</button>
+                <button type="button" class="order_btn_mob" onclick="OrderNowButton()"><i
+                        class="fas fa-paper-plane"></i> &nbsp; Order Now</button>
                 <button type="button" class="cont_btn_mob">
                     <i class="fas fa-phone-alt"></i>&ensp;Contact me
                 </button>
@@ -124,7 +135,7 @@
             </div>
         </section>
 
-        <section class="section tile_2_desk">
+        <section class="section tile_2_desk" id="detail-section-id">
             <div class="container_2">
                 <div class="db_withbox">
                     <img src="img/website/DB-with-box-small.png" style="width: 100%; height: 75%;" alt="">
@@ -174,7 +185,7 @@
             </div>
         </section>
 
-        <section class="section tile_2_mob">
+        <section class="section tile_2_mob" id="detail-section-id-mob">
             <div class="container_2_mob">
                 <div class="db_withbox_mob"><img class="db_withbox_img" src="img/website/DB-with-box-small.png" alt="">
                 </div>
@@ -221,7 +232,7 @@
             </div>
         </section>
 
-        <section class="section tile_3_desk">
+        <section class="section tile_3_desk" id="services-section-id">
             <div class="container2">
                 <div class="title_services">
                     <h3>Services</h3>
@@ -236,7 +247,7 @@
             </div>
         </section>
 
-        <section class="section tile_3_mob">
+        <section class="section tile_3_mob" id="services-section-id-mob">
             <div class="title_services_mob">Services</div>
             <div class="underline_mob"></div>
             <div class="container2_mob">
@@ -244,7 +255,7 @@
             </div>
         </section>
 
-        <section class="section tile_4_desk">
+        <section class="section tile_4_desk" id="integration-section-id">
             <div class="container3">
                 <div class="title_4">
                     <h2>3 Step Integration</h2>
@@ -289,7 +300,7 @@
 
         </section>
 
-        <section class="section tile_4_mob">
+        <section class="section tile_4_mob" id="integration-section-id-mob">
             <div class="container3_mob">
                 <div class="title_4_mob">3 Step Integration </div>
                 <div class="underline__4_mob"></div>
@@ -318,7 +329,7 @@
 
         </section>
 
-        <section class="section tile_5_desk">
+        <section class="section tile_5_desk" id="pricing-section-id">
             <h2 class="delivery">Delivery Rate Chart</h2>
             <div class="underline5"></div>
             <div class="container4">
@@ -330,17 +341,17 @@
 
                     <h4 class="table_elements row_elements" style="margin-top: 3%;">Base Charge <span
                             class="brackets">(within 1km and upto 1 kg 1kg)</span> <span class="right_elements"
-                            style="position: absolute; right: 9%;">₹</span> <span class="right_elements base_charge_per"
-                            style="position: absolute; right: 7%;"></span> </h4>
+                            style="position: absolute; right: 12%;">₹</span> <span
+                            class="right_elements base_charge_per" style="position: absolute; right: 7%;"></span> </h4>
                     <h4 class="table_elements row_elements" style="margin-top: 4px;">Per km charge<span
                             class="brackets">(After exceeding km limit)</span>
-                        <span class="right_elements" style="position: absolute; right: 8%;">+₹</span> <span
+                        <span class="right_elements" style="position: absolute; right: 12%;">₹</span> <span
                             class="right_elements per_km_charge_order" style="position: absolute; right: 7%;"></span>
                     </h4>
                     <h4 class="table_elements row_elements" style="margin-top: 4px;">Per kg charge<span
                             class="brackets">
                             (After exceeding weight limit)</span><span class="right_elements"
-                            style="position: absolute; right: 8%;">+₹</span><span
+                            style="position: absolute; right: 12%;">₹</span><span
                             class="right_elements per_kg_charge_order" style="position: absolute; right: 7%;"></span>
                     </h4>
                     <div class="hor_line" style="margin-top: 2%;"></div>
@@ -351,17 +362,17 @@
                     <h4 class="table_elements row_elements" style="margin-top: 3%;">Base Charge <span
                             class="brackets">(40km
                             and 4hr)</span> <span class="right_elements"
-                            style="position: absolute; right: 10%;">₹</span><span
+                            style="position: absolute; right: 12%;">₹</span><span
                             class="right_elements base_charge_rental" style="position: absolute; right: 7%;"></span>
                     </h4>
                     <h4 class="table_elements row_elements" style="margin-top: 4px;">Per Hr Charge <span
                             class="brackets">(After exceeding weight and time limit)</span><span class="right_elements"
-                            style="position: absolute; right: 9%;">₹</span> <span
+                            style="position: absolute; right: 12%;">₹</span> <span
                             class="right_elements per_hr_charge_rental" style="position: absolute; right: 7%;"></span>
                     </h4>
                     <h4 class="table_elements row_elements" style="margin-top: 4px;">Per Km Charge <span
                             class="brackets">(After exceeding distance limit)</span><span class="right_elements"
-                            style="position: absolute; right: 9%;">₹</span> <span
+                            style="position: absolute; right: 12%;">₹</span> <span
                             class="right_elements per_km_charge_rental" style="position: absolute; right: 7%;"></span>
                     </h4>
                 </div>
@@ -371,7 +382,7 @@
         </section>
 
 
-        <section class="section tile_5_mob">
+        <section class="section tile_5_mob" id="pricing-section-id-mob">
             <h2 class="delivery_mob">Delivery Rate Chart</h2>
             <div class="underline5_mob"></div>
             <div class="container4_mob">
@@ -381,7 +392,7 @@
                     <div class="hor_line_mob"></div>
 
                     <h4 class="table_elements_mob row_elements_mob" style="margin-top: 3%;">Base Charge <span
-                            class="right_elements_mob" style="position: absolute; right: 12%;">₹</span><span
+                            class="right_elements_mob" style="position: absolute; right: 14%;">₹</span><span
                             class="right_elements_mob base_charge_per_mob"
                             style="position: absolute; right: 7%;"></span>
                         <br> <span class="brackets_mob">(within 1km and upto 1 kg 1kg)</span>
@@ -389,7 +400,7 @@
 
 
                     <h4 class="table_elements_mob row_elements_mob" style="margin-top: 4px;">Per km charge <span
-                            class="right_elements_mob" style="position: absolute; right: 10%;">₹</span><span
+                            class="right_elements_mob" style="position: absolute; right: 14%;">₹</span><span
                             class="right_elements_mob per_km_charge_order_mob"
                             style="position: absolute; right: 7%;"></span><br><span class="brackets_mob">(After
                             exceeding km
@@ -398,7 +409,7 @@
 
 
                     <h4 class="table_elements_mob row_elements_mob" style="margin-top: 4px;">Per kg charge <span
-                            class="right_elements_mob" style="position: absolute; right: 10%;">₹</span><span
+                            class="right_elements_mob" style="position: absolute; right: 14%;">₹</span><span
                             class="right_elements_mob per_kg_charge_order_mob"
                             style="position: absolute; right: 7%;"></span><br><span class="brackets_mob"> (After
                             exceeding
@@ -411,7 +422,7 @@
                     <div class="hor_line_mob" style="margin-top: 2%;"></div>
 
                     <h4 class="table_elements_mob row_elements_mob" style="margin-top: 4px;">Base Charge <span
-                            class="right_elements_mob" style="position: absolute; right: 14%;">₹</span><span
+                            class="right_elements_mob" style="position: absolute; right: 14%;">₹ </span><span
                             class="right_elements_mob base_charge_rental_mob"
                             style="position: absolute; right: 7%;"></span><br><span class="brackets_mob">(40km and
                             4hr)</span></h4>
@@ -419,7 +430,7 @@
 
 
                     <h4 class="table_elements_mob row_elements_mob" style="margin-top: 4px;">Per hr Charge <span
-                            class="right_elements_mob" style="position: absolute; right: 12%;">₹</span><span
+                            class="right_elements_mob" style="position: absolute; right: 14%;">₹ </span><span
                             class="right_elements_mob per_hr_charge_rental_mob"
                             style="position: absolute; right: 7%;"></span><br><span class="brackets_mob">(After
                             exceeding
@@ -428,7 +439,7 @@
 
 
                     <h4 class="table_elements_mob row_elements_mob" style="margin-top: 4px;">Per km charge <span
-                            class="right_elements_mob" style="position: absolute; right: 12%;">₹</span><span
+                            class="right_elements_mob" style="position: absolute; right: 14%;">₹ </span><span
                             class="right_elements_mob per_km_charge_rental_mob"
                             style="position: absolute; right: 7%;"></span><br><span class="brackets_mob">(After
                             exceeding
@@ -446,23 +457,26 @@
                 <h5 class="detail_foot"> <br> Lorem Ipsum Has Been The Dummy Text Ever <br> Since Lorem Ipsum Has Been
                     The
                     Dummy Text <br> Ever Since</h5>
-                <h5 class="get_foot">Get Your Own Personalised Website <a href="#" class="join_foot">Join Floww Now!</a>
+                <h5 class="get_foot">Get Your Own Personalised Website <a href="https://gofloww.co/3pl-register-form"
+                        target="_blank" class="join_foot">Join Floww Now!</a>
                 </h5>
                 <strong class="links_foot">LINKS</strong>
-                <a href="#" class="all_links_foot">Home</a> <br>
-                <a href="#" class="all_links_foot link-2">Details</a> <br>
-                <a href="#" class="all_links_foot link-3">Services</a><br>
-                <a href="#" class="all_links_foot link-4">Integrations</a><br>
-                <a href="#" class="all_links_foot link-5">Pricing</a>
+                <a href="#home-section-id" class="all_links_foot">Home</a> <br>
+                <a href="#detail-section-id" class="all_links_foot link-2">Details</a> <br>
+                <a href="#services-section-id" class="all_links_foot link-3">Services</a><br>
+                <a href="#integration-section-id" class="all_links_foot link-4">Integrations</a><br>
+                <a href="#pricing-section-id" class="all_links_foot link-5">Pricing</a>
                 <strong class="addr_foot">ADDRESS</strong>
                 <div class="address_foot"></div>
-                <a class="refer_foot" href="#">Refer Your Friends And Earn</a>
+                <a class="refer_foot" onclick="window.alert('Coming Soon!')">Refer Your Friends And Earn</a>
                 <strong class="cont_foot">CONTACT NO.</strong>
                 <h4 class="number_foot"></h4>
             </div>
             <div class="container_f2">
-                <div class="power_foot">Powered By <a href="https://gofloww.co"><img src="img/logo/floww-logo-full-blue-resize.png"
-                            class="floww_foot" alt="floww_logo"></a>
+                <div class="power_foot">Powered By
+                    <a href="https://gofloww.co" target="_blank">
+                        <img src="img/logo/floww-logo-full-blue-resize.png" class="floww_foot" alt="floww_logo">
+                    </a>
                 </div>
             </div>
         </section>
@@ -473,24 +487,28 @@
                 <h2 class="name_foot_mob">TMoS</h2>
                 <h3 class="detail_foot_mob"> <br> Lorem Ipsum Has Been The <br>
                     Dummy Text Ever Since Lorem <br> Ipsum Has Been The Dummy <br> Text Ever Since</h3>
-                <div class="get_foot_mob">Get Your Own Personalised <br> Website <a href="#" class="join_foot_mob">Join
-                        Floww Now!</a></div>
+                <div class="get_foot_mob">Get Your Own Personalised <br> Website <a
+                        href="https://gofloww.co/3pl-register-form" target="_blank" class="join_foot_mob">Join Floww
+                        Now!</a></div>
                 <strong class="links_foot_mob">LINKS</strong>
-                <a href="#" class="all_links_foot_mob">Home</a> <br>
-                <a href="#" class="all_links_foot_mob link-2_mob">Details</a> <br>
-                <a href="#" class="all_links_foot_mob link-3_mob">Services</a><br>
-                <a href="#" class="all_links_foot_mob link-4_mob">Integrations</a><br>
-                <a href="#" class="all_links_foot_mob link-5_mob">Pricing</a>
+                <a href="#home-section-id-mob" class="all_links_foot_mob">Home</a> <br>
+                <a href="#detail-section-id-mob" class="all_links_foot_mob link-2_mob">Details</a> <br>
+                <a href="#services-section-id-mob" class="all_links_foot_mob link-3_mob">Services</a><br>
+                <a href="#integration-section-id-mob" class="all_links_foot_mob link-4_mob">Integrations</a><br>
+                <a href="#pricing-section-id-mob" class="all_links_foot_mob link-5_mob">Pricing</a>
                 <strong class="addr_foot_mob">ADDRESS</strong>
                 <div class="address_foot_mob">Marol Pipe Line, Andheri E, <br>
                     Mumbai - 400059.</div>
-                <a class="refer_foot_mob" href="#">Refer Your Friends And Earn</a>
+                <a class="refer_foot_mob" onclick="window.alert('Coming Soon!')">Refer Your Friends And Earn</a>
                 <strong class="cont_foot_mob">CONTACT NO.</strong>
                 <h4 class="number_foot_mob"></h4>
             </div>
             <div class="container_f2_mob">
-                <div class="power_foot_mob">Powered By <img src="img/logo/floww-logo-full-blue-resize.png"
-                        class="floww_foot_mob" alt="floww_logo"></div>
+                <div class="power_foot_mob">Powered By
+                    <a href="https://gofloww.co" target="_blank">
+                        <img src="img/logo/floww-logo-full-blue-resize.png" class="floww_foot_mob" alt="floww_logo">
+                    </a>
+                </div>
             </div>
         </section>
 

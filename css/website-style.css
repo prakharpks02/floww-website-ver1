@@ -37,6 +37,20 @@
     position: relative;
 }
 
+.left-container-nav {
+    float: left;
+    width: 25%;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.right-container-nav {
+    float: right;
+    width: 75%;
+    display: flex;
+    justify-content: flex-end;
+}
+
 .logo {
     position: absolute;
     left: 60px;
@@ -1303,6 +1317,10 @@ p {
     color: var(--primary);
 }
 
+.join_foot:hover {
+    color: var(--tertiary);
+}
+
 .links_foot {
     color: white;
     position: absolute;
@@ -1361,10 +1379,15 @@ p {
 
 .refer_foot {
     position: absolute;
+    cursor: pointer;
     top: 50%;
     left: 75%;
     font-size: 12px;
     color: var(--primary);
+}
+
+.refer_foot:hover {
+    color: var(--tertiary);
 }
 
 .cont_foot {
@@ -1456,6 +1479,10 @@ p {
     color: var(--primary);
 }
 
+.join_foot_mob:hover {
+    color: var(--tertiary);
+}
+
 .links_foot_mob {
     color: white;
     position: absolute;
@@ -1515,10 +1542,15 @@ p {
 
 .refer_foot_mob {
     position: absolute;
+    cursor: pointer;
     top: 40%;
     left: 75%;
     font-size: 7px;
     color: var(--primary);
+}
+
+.refer_foot_mob:hover {
+    color: var(--tertiary);
 }
 
 .cont_foot_mob {
