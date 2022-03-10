@@ -70,7 +70,7 @@
                 <div class="header-content-container profile-dropdown-container" v-if="userAuth">
                     <span class="button is-rounded profile-dropbtn">{{userContactNo}} <i class="down-arrow"></i></span>
                     <div class="profile-dropdown-content has-text-centered">
-                        <a class="" onclick="window.alert('This page is coming soon!')">My Orders</a>
+                        <a class="" href="/my-orders" target="_blank">My Orders</a>
                         <a class="" @click="GetApiKey">Get API Key</a>
                         <a class="" @click="LogoutButton">Logout</a>
                     </div>
