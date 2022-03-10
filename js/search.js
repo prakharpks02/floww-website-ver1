@@ -448,7 +448,7 @@ var app1 = new Vue({
                 .catch(function (error) {
                     console.error(error);
                     if (error.response) {
-                        if (error.response.status === 403) {
+                        if (error.response.status === 403 || error.response.status === 401) {
                             window.open("https://backend.gofloww.co/login/", '_blank');
                         } else {
                             window.alert('Server Error, Please Try Again!');
