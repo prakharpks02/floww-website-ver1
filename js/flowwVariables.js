@@ -152,53 +152,53 @@ const filterTags = [
 const serviceTags = [{
     'name': 'Same Day Delivery',
     'id': 'same_day',
-    'iconClass': 'fa-bell',
-    'description': 'N/A',
+    'iconClass': 'fa-truck-bolt',
+    'description': 'Delivery on same day as the day task is requested',
 }, {
     'name': 'OTP Verification',
     'id': 'otp',
-    'iconClass': 'fa-bell',
-    'description': 'N/A',
+    'iconClass': 'fa-lock',
+    'description': 'OTP verification at delivery',
 }, {
     'name': 'Cold Chain',
     'id': 'cold_chain',
-    'iconClass': 'fa-bell',
-    'description': 'N/A',
+    'iconClass': 'fa-temperature-snow',
+    'description': 'Cold Chain Delivery facility available',
 }, {
     'name': 'Intercity',
     'id': 'intercity',
-    'iconClass': 'fa-bell',
-    'description': 'N/A',
+    'iconClass': 'fa-truck-container',
+    'description': 'Intercity Delivery (Delivery between different cities)',
 }, {
     'name': '30 Min Delivery',
     'id': '30min',
-    'iconClass': 'fa-bell',
-    'description': 'N/A',
+    'iconClass': 'fa-gauge-max',
+    'description': 'Delivery under 30 min from the time the task is requested',
 }, {
     'name': 'Tracking',
     'id': 'track',
-    'iconClass': 'fa-bell',
-    'description': 'N/A',
+    'iconClass': 'fa-map-location-dot',
+    'description': 'Real time status of the order is updated by the vendor',
 }, {
     'name': 'Sanitized Fleet',
     'id': 'sanitize',
-    'iconClass': 'fa-bell',
-    'description': 'N/A',
+    'iconClass': 'fa-shield-plus',
+    'description': 'The delivery fleet is properly sanitized and ultra safe for doorstep deliveries',
 }, {
     'name': 'Bulk Delivery',
     'id': 'bulk_del',
-    'iconClass': 'fa-bell',
-    'description': 'N/A',
+    'iconClass': 'fa-weight-hanging',
+    'description': 'Delivery of Heavy goods (more than 25 kg) available',
 }, {
     'name': 'Courier',
     'id': 'courier',
-    'iconClass': 'fa-bell',
-    'description': 'N/A',
+    'iconClass': 'fa-boxes-stacked',
+    'description': 'Cheap delivery across India for small products',
 }, {
     'name': 'Cash on Delivery',
     'id': 'cod',
-    'iconClass': 'fa-bell',
-    'description': 'N/A',
+    'iconClass': 'fa-sack-dollar',
+    'description': 'Cash on delivery available by the vendor',
 }]
 
 const rentalPlans = [{
