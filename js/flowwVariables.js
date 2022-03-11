@@ -152,7 +152,7 @@ const filterTags = [
 const serviceTags = [{
     'name': 'Same Day Delivery',
     'id': 'same_day',
-    'iconClass': 'fa-truck-bolt',
+    'iconClass': 'fa-shipping-fast',
     'description': 'Delivery on same day as the day task is requested',
 }, {
     'name': 'OTP Verification',
@@ -162,7 +162,7 @@ const serviceTags = [{
 }, {
     'name': 'Cold Chain',
     'id': 'cold_chain',
-    'iconClass': 'fa-temperature-snow',
+    'iconClass': 'fa-temperature-frigid',
     'description': 'Cold Chain Delivery facility available',
 }, {
     'name': 'Intercity',
@@ -172,17 +172,17 @@ const serviceTags = [{
 }, {
     'name': '30 Min Delivery',
     'id': '30min',
-    'iconClass': 'fa-gauge-max',
+    'iconClass': 'fa-fast-forward',
     'description': 'Delivery under 30 min from the time the task is requested',
 }, {
     'name': 'Tracking',
     'id': 'track',
-    'iconClass': 'fa-map-location-dot',
+    'iconClass': 'fa-map-marked-alt',
     'description': 'Real time status of the order is updated by the vendor',
 }, {
     'name': 'Sanitized Fleet',
     'id': 'sanitize',
-    'iconClass': 'fa-shield-plus',
+    'iconClass': 'fa-user-shield',
     'description': 'The delivery fleet is properly sanitized and ultra safe for doorstep deliveries',
 }, {
     'name': 'Bulk Delivery',
@@ -192,12 +192,12 @@ const serviceTags = [{
 }, {
     'name': 'Courier',
     'id': 'courier',
-    'iconClass': 'fa-boxes-stacked',
+    'iconClass': 'fa-boxes',
     'description': 'Cheap delivery across India for small products',
 }, {
     'name': 'Cash on Delivery',
     'id': 'cod',
-    'iconClass': 'fa-sack-dollar',
+    'iconClass': 'fa-hand-holding-usd',
     'description': 'Cash on delivery available by the vendor',
 }]
 
@@ -216,6 +216,12 @@ const fleetTypesVar = [{
     'name': 'Truck',
     'id': 'truck',
 }]
+
+const fleetImageVar = {
+    'bike':'https://gofloww.co/img/website/DB-on-scooter-small.png',
+    'tempo':'https://gofloww.co/img/website/tempo-delivery-boy.png',
+    'bike':'https://gofloww.co/img/website/DB-on-scooter-small.png',
+}
 
 const fleetSizeVar = [{
     'name': '1',

@@ -45,6 +45,7 @@ const logo_url = document.querySelector(".logo")
 const logo_url_footer = document.querySelector(".foot_img")
 const cpy_name = document.querySelector(".name")
 const cpy_name_footer = document.querySelector(".name_foot")
+const cpy_fleet_image = document.querySelector(".scooter")
 const ctt_no = document.querySelector(".number_foot")
 const start_rate = document.querySelector(".price")
 const headline_1 = document.querySelector(".h1")
@@ -68,6 +69,7 @@ const logo_url_mob = document.querySelector(".logo-mob")
 const logo_url_footer_mob = document.querySelector(".foot_img_mob")
 const cpy_name_mob = document.querySelector(".name-mob")
 const cpy_name_footer_mob = document.querySelector(".name_foot_mob")
+const cpy_fleet_image_mob = document.querySelector(".scooter_mob")
 const ctt_no_mob = document.querySelector(".number_foot_mob")
 const start_rate_mob = document.querySelector(".cost_mob")
 const btns_popular_mob = document.querySelector(".btns_mob")
@@ -127,6 +129,8 @@ function AssignVariables(testvariable) {
     cpy_name.innerHTML = testvariable.company_name
     cpy_name_footer.innerHTML = testvariable.company_name
 
+    cpy_fleet_image.src = fleetImageVar[testvariable.fleet_type]
+
 
     for (let j = 0; j < testvariable.popular_tags.length; j++) {
         let popular_temp = testvariable.popular_tags[j]
@@ -173,6 +177,8 @@ function AssignVariables(testvariable) {
     logo_url_footer_mob.src = testvariable.logo_url
     cpy_name_mob.innerHTML = testvariable.company_name
     cpy_name_footer_mob.innerHTML = testvariable.company_name
+
+    cpy_fleet_image_mob.src = fleetImageVar[testvariable.fleet_type]
 
     for (let j = 0; j < testvariable.popular_tags.length; j++) {
         let popular_temp_mob = testvariable.popular_tags[j]
@@ -221,7 +227,7 @@ function CallApi() {
         VendorNotFound();
     } else {
 
-        axios.get('http://127.0.0.1:8000/api/v1/website/get-delivery-vendor-details/', {
+        axios.get(globalApiUrl + '/api/v1/website/get-delivery-vendor-details/', {
                 params: {
                     vendorId: queryVendorId,
                 }
@@ -236,8 +242,8 @@ function CallApi() {
                     vendor_contact_no_global = responseData.variable.contact_no;
 
                     if (vendor_contact_no_global == 'None') {
-                        ctt_no.innerHTML = `<a href="https://backend.gofloww.co/login/" target="_blank">Login to Contact</a>`;
-                        ctt_no_mob.innerHTML = `<a href="https://backend.gofloww.co/login/" target="_blank">Login to Contact</a>`;
+                        ctt_no.innerHTML = `<a href="https://backend.gofloww.co/login/" class="refer_foot" target="_blank">Login to Contact</a>`;
+                        ctt_no_mob.innerHTML = `<a href="https://backend.gofloww.co/login/" class="refer_foot_mob_2" target="_blank">Login to Contact</a>`;
                     } else {
                         ctt_no.innerHTML = vendor_contact_no_global;
                         ctt_no_mob.innerHTML = vendor_contact_no_global;

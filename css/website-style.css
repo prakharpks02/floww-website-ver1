@@ -33,30 +33,38 @@
 }
 
 .nav {
-    min-height: 11vh;
+    height: 80px;
     position: relative;
 }
 
 .left-container-nav {
     float: left;
-    width: 25%;
+    width: 35%;
     display: flex;
     justify-content: flex-start;
+    align-content: center;
+    height: 100%;
+    position: absolute;
+    transform: translateY(-50%);
+    top: 50%;
 }
 
 .right-container-nav {
     float: right;
-    width: 75%;
+    width: 65%;
     display: flex;
     justify-content: flex-end;
+    height: 100%;
+    padding-top: 20px;
 }
 
 .logo {
-    position: absolute;
+    /* position: absolute;
     left: 60px;
-    top: 20px;
+    top: 20px; */
     width: 50px;
     height: 50px;
+    margin: 10px;
     text-shadow: var(--shadow);
     border-radius: 158px 158px 158px 158px;
     -webkit-border-radius: 158px 158px 158px 158px;
@@ -67,62 +75,95 @@
 }
 
 .name {
-    position: absolute;
-    width: 250px;
+    /* position: absolute;
     left: 120px;
-    top: 25%;
+    top: 25%; */
+    /* width: 250px; */
     color: var(--secondary);
     font-weight: 700;
     font-size: 1.7rem;
+    margin-top: 15px;
 }
 
 .verified {
-    position: absolute;
+    /* position: absolute;
     left: 320px;
-    top: 12px;
+    top: 12px; */
+    margin-left: 5px;
+    margin-top: 15px;
     color: var(--primary);
 }
 
 a.option2 {
-    position: absolute;
+    /* position: absolute;
     left: 36%;
-    top: 23px;
+    top: 23px; */
+    /* margin: 5%;
+    margin-top: 20px; */
+    width: 11%;
+    margin-left: 2%;
+    margin-right: 2%;
+    text-align: center;
     text-decoration: none;
     color: var(--primary);
     text-shadow: 1px 2px 7px #03ffff54;
 }
 
 a.option3 {
-    position: absolute;
+    /* position: absolute;
     left: 45%;
-    top: 23px;
+    top: 23px; */
+    /* margin: 5%;
+    margin-top: 20px; */
+    width: 11%;
+    margin-left: 2%;
+    margin-right: 2%;
+    text-align: center;
     text-decoration: none;
     color: var(--primary);
     text-shadow: 1px 2px 7px #03ffff54;
 }
 
 a.option4 {
-    position: absolute;
+    /* position: absolute;
     left: 54%;
-    top: 23px;
+    top: 23px; */
+    /* margin: 5%;
+    margin-top: 20px; */
+    width: 12%;
+    margin-left: 2%;
+    margin-right: 2%;
+    text-align: center;
     text-decoration: none;
     color: var(--primary);
     text-shadow: 1px 2px 7px #03ffff54;
 }
 
 a.option5 {
-    position: absolute;
+    /* position: absolute;
     left: 64%;
-    top: 23px;
+    top: 23px; */
+    /* margin: 5%;
+    margin-top: 20px; */
+    width: 17%;
+    margin-left: 2%;
+    margin-right: 2%;
+    text-align: center;
     text-decoration: none;
     color: var(--primary);
     text-shadow: 1px 2px 7px #03ffff54;
 }
 
 a.option6 {
-    position: absolute;
+    /* position: absolute;
     left: 75%;
-    top: 23px;
+    top: 23px; */
+    /* margin: 5%;
+    margin-top: 20px; */
+    width: 11%;
+    margin-left: 2%;
+    margin-right: 2%;
+    text-align: center;
     text-decoration: none;
     color: var(--primary);
     text-shadow: 1px 2px 7px #03ffff54;
@@ -174,17 +215,24 @@ a:hover {
     letter-spacing: 1px;
     line-height: 15px;
     border: 4px solid var(--secondary);
-    padding: 10px;
-    border-radius: 40px;
+    /* padding: 10px; */
+    border-radius: 10px;
     background: transparent;
     background-color: var(--secondary);
     transition: all 0.3s ease 0s;
     color: white;
     font-weight: 650;
-    position: absolute;
+    font-size: 1.1rem;
+    /* position: absolute;
     right: 10px;
-    top: 20%;
-    width: 13%;
+    top: 20%; */
+    /* width: 20%;
+    margin: 10px;
+    margin-top: 17px; */
+    width: 18%;
+    text-align: center;
+    margin-top: -5px;
+    height: 50px;
 }
 
 .btn-default:hover {
@@ -207,12 +255,25 @@ a:hover {
     position: relative;
 }
 
-.logo-mob {
+.left-container-nav-mob {
+    float: left;
+    width: 80%;
+    display: flex;
+    justify-content: flex-start;
+    align-content: center;
+    height: 100%;
     position: absolute;
+    transform: translateY(-50%);
+    top: 50%;
+}
+
+.logo-mob {
+    /* position: absolute;
+    left: 2%;
+    top: 12%; */
     height: 50px;
     width: 50px;
-    left: 2%;
-    top: 12%;
+    margin: 10px;
     text-shadow: var(--shadow);
     border-radius: 158px 158px 158px 158px;
     -webkit-border-radius: 158px 158px 158px 158px;
@@ -223,18 +284,20 @@ a:hover {
 }
 
 .name-mob {
-    position: absolute;
-    width: fit-content;
+    /* position: absolute;
     left: 5rem;
-    top: 20px;
+    top: 20px; */
     color: var(--secondary);
     font-weight: 700;
+    margin-top: 15px;
 }
 
 .verified-mob {
-    position: absolute;
+    /* position: absolute;
     left: 16rem;
-    top: 13px;
+    top: 13px; */
+    margin-left: 5px;
+    margin-top: 15px;
     color: var(--primary);
 }
 
@@ -312,6 +375,7 @@ a:hover {
     top: 0;
     z-index: 5;
     background-color: white;
+    margin-bottom: 0px;
 }
 
 /* Tile 1 desktop */
@@ -384,10 +448,11 @@ a:hover {
 .features {
     border: none;
     margin: 0 6px;
-    font-size: 0.7rem;
+    font-size: 0.8rem;
     font-weight: 600;
     border-radius: 100px;
-    padding: 0 7px;
+    padding: 1px 7px;
+    height: 25px;
     border: solid 0.1rem #e1e5e7;
     color: var(--secondary);
     background-color: white;
@@ -435,6 +500,7 @@ a:hover {
     width: 14.5%;
     border-radius: 7px;
     font-size: 1.25rem;
+    height: 45px;
     background-color: var(--secondary);
     z-index: 2;
 }
@@ -558,6 +624,7 @@ button {
     height: 50%;
     font-size: 1rem;
     color: white;
+    z-index: 2;
 }
 
 .cont_btn_mob {
@@ -630,11 +697,12 @@ button {
 
 .detail {
     position: absolute;
-    left: 16%;
+    left: 80px;
     top: 42%;
     color: var(--secondary);
-    font-size: 1.3rem;
+    font-size: 1.5rem;
     font-weight: bolder;
+    margin-top: 20px;
 }
 
 p {
@@ -644,7 +712,7 @@ p {
 
 .detail_more {
     color: var(--tertiary);
-    font-size: 0.7rem;
+    font-size: 0.9rem;
     text-transform: capitalize;
 }
 
@@ -738,11 +806,12 @@ p {
 
 .detail2_mob {
     position: absolute;
-    left: 30%;
+    left: 105px;
     top: 42%;
     color: var(--secondary);
-    font-size: 1rem;
+    font-size: 1.1rem;
     font-weight: bolder;
+    margin-top: 15px;
 }
 
 p {
@@ -851,6 +920,7 @@ p {
     /* align-self: flex-start; */
     position: relative;
     text-align: center;
+    padding: 10px;
 }
 
 .icon_outline {
@@ -892,7 +962,7 @@ p {
     line-height: 20px;
 
     text-transform: capitalize;
-    font-size: 0.75rem;
+    font-size: 0.95rem;
     color: var(--tertiary);
 }
 
@@ -1019,6 +1089,7 @@ p {
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 33%;
 }
 
 .square_box {
@@ -1064,6 +1135,7 @@ p {
     text-transform: capitalize;
     color: var(--tertiary);
     text-align: center;
+    width: 80%;
 }
 
 /* Tile 4 mob */
@@ -1110,11 +1182,11 @@ p {
     justify-self: end;
     position: absolute;
     top: 65%;
-    left: 15%;
+    left: 5%;
     border: none;
     background-color: var(--primary);
     border-radius: 20px;
-    width: 75%;
+    width: 90%;
 }
 
 .main_text_mob {
@@ -1130,6 +1202,7 @@ p {
     text-align: center;
     font-size: 0.75rem;
     color: var(--tertiary);
+    width: 90%;
 }
 
 .tile_4_mob {
@@ -1273,7 +1346,7 @@ p {
 
 .container_f2 {
     background-color: black;
-    height: 5vh;
+    height: 50px;
 }
 
 .foot_img {
@@ -1298,17 +1371,17 @@ p {
     display: inline;
     color: white;
     font-weight: 100;
-    font-size: 12px;
+    font-size: 0.9rem;
     left: 5%;
     top: 5%;
 }
 
 .get_foot {
     position: relative;
-    display: inline;
+    /* display: inline; */
     font-weight: 100;
-    font-size: 12px;
-    left: 22px;
+    font-size: 1.1rem;
+    left: 5%;
     top: 25%;
     color: white;
 }
@@ -1334,7 +1407,7 @@ p {
     left: 60%;
     top: 20%;
     text-decoration: none;
-    font-size: 12px;
+    font-size: 0.9rem;
 }
 
 .all_links_foot:hover {
@@ -1361,28 +1434,34 @@ p {
     top: 80%;
 }
 
-.addr_foot {
+.address_foot_container {
     position: absolute;
     top: 6%;
     left: 75%;
+}
+
+.addr_foot {
+    /* position: absolute;
+    top: 6%;
+    left: 75%; */
     color: white;
 }
 
 .address_foot {
-    position: absolute;
+    /* position: absolute;
     top: 20%;
-    left: 75%;
-    font-size: 12px;
+    left: 75%; */
+    font-size: 0.7rem;
     color: white;
     width: 100px;
 }
 
 .refer_foot {
-    position: absolute;
-    cursor: pointer;
+    /* position: absolute;
     top: 50%;
-    left: 75%;
-    font-size: 12px;
+    left: 75%; */
+    cursor: pointer;
+    font-size: 0.9rem;
     color: var(--primary);
 }
 
@@ -1407,12 +1486,12 @@ p {
 }
 
 .floww_foot {
-    /* position: absolute; */
-    height: 2vh;
-    width: auto;
+    position: absolute;
+    top: 13px;
+    width: 70px;
     /* left: 100%; */
-    margin-top: 10px;
-    margin-left: 2px;
+    /* margin-top: 20px; */
+    margin-left: 5px;
 }
 
 .power_foot {
@@ -1422,6 +1501,7 @@ p {
     margin: auto;
     position: relative;
     padding: 3px;
+    padding-top: 10px;
 }
 
 /* footer mobile */
@@ -1550,6 +1630,16 @@ p {
 }
 
 .refer_foot_mob:hover {
+    color: var(--tertiary);
+}
+
+.refer_foot_mob_2 {
+    cursor: pointer;
+    font-size: 0.7rem;
+    color: var(--primary);
+}
+
+.refer_foot_mob_2:hover {
     color: var(--tertiary);
 }
 
