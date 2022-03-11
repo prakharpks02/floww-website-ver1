@@ -221,7 +221,7 @@ function CallApi() {
         //VendorNotFound();
     } else {
 
-        axios.get(globalApiUrl + '/api/v1/website/get-delivery-vendor-details/', {
+        axios.get('http://127.0.0.1:8000/api/v1/website/get-delivery-vendor-details/', {
                 params: {
                     vendorId: queryVendorId,
                 }
