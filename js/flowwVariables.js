@@ -167,7 +167,7 @@ const serviceTags = [{
 }, {
     'name': 'Intercity',
     'id': 'intercity',
-    'iconClass': 'fa-truck-container',
+    'iconClass': 'fa-truck',
     'description': 'Intercity Delivery (Delivery between different cities)',
 }, {
     'name': '30 Min Delivery',

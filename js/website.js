@@ -123,6 +123,25 @@ function AssignVariables(testvariable) {
         start_rate_mob.innerHTML = '₹ ' + testvariable.delivery_starting_from;
     }
 
+    if(testvariable.base_charge_rental=='N/A'){
+        testvariable.base_charge_rental = '-';
+    }
+    if(testvariable.per_hr_charge_rental=='N/A'){
+        testvariable.per_hr_charge_rental = '-';
+    }
+    if(testvariable.per_km_charge_rental=='N/A'){
+        testvariable.per_km_charge_rental = '-';
+    }
+    if(testvariable.base_charge_per_order=='N/A'){
+        testvariable.base_charge_per_order = '-';
+    }
+    if(testvariable.per_kg_charge_order=='N/A'){
+        testvariable.per_kg_charge_order = '-';
+    }
+    if(testvariable.per_kg_charge_order=='N/A'){
+        testvariable.per_kg_charge_order = '-';
+    }
+
     // desktop
     logo_url.src = testvariable.logo_url
     logo_url_footer.src = testvariable.logo_url
@@ -248,6 +267,7 @@ function CallApi() {
                         ctt_no.innerHTML = vendor_contact_no_global;
                         ctt_no_mob.innerHTML = vendor_contact_no_global;
                     }
+
                     AssignVariables(responseData.variable);
                 }
             })
