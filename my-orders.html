@@ -162,13 +162,13 @@
 
         let tokenVal = getCookie('floww-token');
 
-        // if (tokenVal) {
-        //     let authTokenStr = "Token " + tokenVal;
-        //     axios.defaults.headers.common['Authorization'] = authTokenStr;
-        // } else {
-        //     window.alert("You are not Logged in");
-        //     window.open("https://backend.gofloww.co/login/search", "_blank");
-        // }
+        if (tokenVal) {
+            let authTokenStr = "Token " + tokenVal;
+            axios.defaults.headers.common['Authorization'] = authTokenStr;
+        } else {
+            window.alert("You are not Logged in");
+            window.open("https://backend.gofloww.co/login/search", "_blank");
+        }
 
     </script>
 
