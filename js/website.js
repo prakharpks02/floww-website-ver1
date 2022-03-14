@@ -46,6 +46,7 @@ const logo_url_footer = document.querySelector(".foot_img")
 const cpy_name = document.querySelector(".name")
 const cpy_name_footer = document.querySelector(".name_foot")
 const cpy_fleet_image = document.querySelector(".scooter")
+const cpy_detail_image = document.querySelector(".db_withbox_img")
 const ctt_no = document.querySelector(".number_foot")
 const start_rate = document.querySelector(".price")
 const headline_1 = document.querySelector(".h1")
@@ -70,6 +71,7 @@ const logo_url_footer_mob = document.querySelector(".foot_img_mob")
 const cpy_name_mob = document.querySelector(".name-mob")
 const cpy_name_footer_mob = document.querySelector(".name_foot_mob")
 const cpy_fleet_image_mob = document.querySelector(".scooter_mob")
+const cpy_detail_image_mob = document.querySelector(".db_withbox_img_mob")
 const ctt_no_mob = document.querySelector(".number_foot_mob")
 const start_rate_mob = document.querySelector(".cost_mob")
 const btns_popular_mob = document.querySelector(".btns_mob")
@@ -149,6 +151,7 @@ function AssignVariables(testvariable) {
     cpy_name_footer.innerHTML = testvariable.company_name
 
     cpy_fleet_image.src = fleetImageVar[testvariable.fleet_type]
+    cpy_detail_image.src = detailImageVar[testvariable.fleet_type]
 
 
     for (let j = 0; j < testvariable.popular_tags.length; j++) {
@@ -198,6 +201,7 @@ function AssignVariables(testvariable) {
     cpy_name_footer_mob.innerHTML = testvariable.company_name
 
     cpy_fleet_image_mob.src = fleetImageVar[testvariable.fleet_type]
+    cpy_detail_image_mob.src = detailImageVar[testvariable.fleet_type]
 
     for (let j = 0; j < testvariable.popular_tags.length; j++) {
         let popular_temp_mob = testvariable.popular_tags[j]

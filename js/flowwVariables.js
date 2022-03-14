@@ -193,7 +193,7 @@ const serviceTags = [{
     'name': 'Courier',
     'id': 'courier',
     'iconClass': 'fa-boxes',
-    'description': 'Cheap delivery across India for small products',
+    'description': 'Delivery across India for small products within multiple days',
 }, {
     'name': 'Cash on Delivery',
     'id': 'cod',
@@ -220,7 +220,13 @@ const fleetTypesVar = [{
 const fleetImageVar = {
     'bike':'https://gofloww.co/img/website/DB-on-scooter-small.png',
     'tempo':'https://gofloww.co/img/website/tempo-delivery-boy.png',
-    'bike':'https://gofloww.co/img/website/DB-on-scooter-small.png',
+    'truck':'https://gofloww.co/img/website/tempo-delivery-boy.png',
+}
+
+const detailImageVar = {
+    'bike':'https://gofloww.co/img/website/DB-with-box-small.png',
+    'tempo':'https://gofloww.co/img/website/tempo-with-box-small.png',
+    'truck':'https://gofloww.co/img/website/tempo-with-box-small.png',
 }
 
 const fleetSizeVar = [{
