@@ -541,12 +541,12 @@ button {
 }
 
 .scooter_mob {
-    width: 325px;
+    /* width: 325px; */
     height: 275px;
     grid-column: 1 / -1;
     grid-row: 3 / span 3;
     justify-self: center;
-    margin-right: 20%;
+    /* margin-right: 20%; */
 }
 
 .h1_mob {
@@ -555,7 +555,7 @@ button {
     justify-self: center;
     font-size: 1.2rem;
     font-weight: 600;
-    color: var(--secondary);
+    color: var(--tertiary);
     margin-right: 10%;
     z-index: 2;
 }
@@ -1538,7 +1538,9 @@ p {
 
 .name_foot_mob {
     position: relative;
-    display: inline;
+    display: inline-grid;
+    display: -ms-inline-grid;
+    width: 150px;
     left: 6%;
     top: 3%;
     font-size: 1rem;

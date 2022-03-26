@@ -150,7 +150,7 @@ const filterTags = [
 ]
 
 const serviceTags = [{
-    'name': 'Same Day Delivery',
+    'name': 'Same Day',
     'id': 'same_day',
     'iconClass': 'fa-shipping-fast',
     'description': 'Delivery on same day as the day task is requested',
