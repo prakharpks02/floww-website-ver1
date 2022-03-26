@@ -415,7 +415,6 @@ a:hover {
 }
 
 .scooter {
-    width: 875px;
     height: 700px;
     position: absolute;
     grid-row: 2 / span 5;
@@ -425,7 +424,7 @@ a:hover {
 }
 
 .h2 {
-    width: 50%;
+    width: 600px;
 
     grid-column: 2 / -1;
     grid-row: 4 / span 3;
@@ -499,7 +498,7 @@ a:hover {
 .order_btn {
     color: white;
     border: none;
-    width: 14.5%;
+    width: 200px;
     border-radius: 7px;
     font-size: 1.25rem;
     height: 45px;
@@ -667,6 +666,15 @@ button {
     grid-column: 1 / 2;
     grid-row: 1 / -1;
     margin-left: 10%;
+    position: relative;
+}
+
+.db_withbox_img {
+    /* height: 100%; */
+    width: 100%;
+    transform: translateY(-50%);
+    top: 50%;
+    position: absolute;
 }
 
 .details {
@@ -771,7 +779,7 @@ p {
     justify-self: center;
 }
 
-.db_withbox_img {
+.db_withbox_img_mob {
     height: 100%;
     width: 300px;
 }

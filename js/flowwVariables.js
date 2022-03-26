@@ -225,8 +225,8 @@ const fleetImageVar = {
 
 const detailImageVar = {
     'bike':'https://gofloww.co/img/website/DB-with-box-small.png',
-    'tempo':'https://gofloww.co/img/website/tempo-with-box-small.png',
-    'truck':'https://gofloww.co/img/website/tempo-with-box-small.png',
+    'tempo':'https://gofloww.co/img/website/Tempo-with-box-small.png',
+    'truck':'https://gofloww.co/img/website/Tempo-with-box-small.png',
 }
 
 const fleetSizeVar = [{
