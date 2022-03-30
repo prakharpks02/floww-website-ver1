@@ -607,7 +607,7 @@ html {
 }
 
 
-@media screen and (max-width: 870px), (max-height: 650px) {
+@media screen and (max-width: 870px), (max-height: 700px) {
 
     .desktop-view-toggle {
         display: none !important;
@@ -628,7 +628,7 @@ html {
 
     .order-form-container {
         width: 330px;
-        height: 450px;
+        height: 550px;
     }
     
     .search-bar-container {
