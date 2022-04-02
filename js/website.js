@@ -185,12 +185,13 @@ function AssignVariables(testvariable) {
         service_container.appendChild(service_temp);
     }
 
-    base_chrge.innerHTML = testvariable.base_charge_per_order
-    per_km_chrge.innerHTML = testvariable.per_kg_charge_order
-    per_kg_chrge.innerHTML = testvariable.per_kg_charge_order
-    base_chrge_rental.innerHTML = testvariable.base_charge_rental
-    per_hr_chrge_rental.innerHTML = testvariable.per_hr_charge_rental
-    per_km_chrge_rental.innerHTML = testvariable.per_km_charge_rental
+    base_chrge.innerHTML = "₹ "+testvariable.base_charge_per_order
+    per_km_chrge.innerHTML = "₹ "+testvariable.per_kg_charge_order
+    per_kg_chrge.innerHTML = "₹ "+testvariable.per_kg_charge_order
+    base_chrge_rental.innerHTML = "₹ "+testvariable.base_charge_rental
+    per_hr_chrge_rental.innerHTML = "₹ "+testvariable.per_hr_charge_rental
+    per_km_chrge_rental.innerHTML = "₹ "+testvariable.per_km_charge_rental
+    
     addr.innerHTML = testvariable.address
 
 
@@ -233,12 +234,12 @@ function AssignVariables(testvariable) {
         service_container_mob.appendChild(service_temp_mob);
     }
 
-    base_chrge_mob.innerHTML = testvariable.base_charge_per_order
-    per_km_chrge_mob.innerHTML = testvariable.per_kg_charge_order
-    per_kg_chrge_mob.innerHTML = testvariable.per_kg_charge_order
-    base_chrge_rental_mob.innerHTML = testvariable.base_charge_rental
-    per_hr_chrge_rental_mob.innerHTML = testvariable.per_hr_charge_rental
-    per_km_chrge_rental_mob.innerHTML = testvariable.per_km_charge_rental
+    base_chrge_mob.innerHTML = "₹ "+testvariable.base_charge_per_order
+    per_km_chrge_mob.innerHTML = "₹ "+testvariable.per_kg_charge_order
+    per_kg_chrge_mob.innerHTML = "₹ "+testvariable.per_kg_charge_order
+    base_chrge_rental_mob.innerHTML = "₹ "+testvariable.base_charge_rental
+    per_hr_chrge_rental_mob.innerHTML = "₹ "+testvariable.per_hr_charge_rental
+    per_km_chrge_rental_mob.innerHTML = "₹ "+testvariable.per_km_charge_rental
 
 
 }

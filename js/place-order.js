@@ -1,3 +1,10 @@
+// --------------------------------------- Major Functions
+
+function VendorNotFound() {
+    document.getElementById('no-vendor-found-id').classList.remove('hide');
+    document.getElementById('website-page-id').classList.add('hide');
+}
+
 // ------------------------------------------------------------ Vue Starts
 
 
@@ -13,8 +20,6 @@ var app1 = new Vue({
         'serviceTags': serviceTags,
         'rentalPlans': rentalPlans,
         'productTags': productTags,
-
-        'userAuth': false,
 
         'searchLoading': false,
 
@@ -59,6 +64,10 @@ var app1 = new Vue({
             } else {
                 this.orderFormMobile.formStatus = 'advance';
             };
+        },
+        RequestDelivery: function (vendorcode, vendorname) {
+            this.orderForm.vendorCode = vendorcode;
+            this.orderForm.vendorName = vendorname;
         },
         AddOrder: function () {
 
@@ -179,9 +188,7 @@ var app1 = new Vue({
                     })
                     .catch(function (error) {
                         console.log(error);
-                        app1.userAuth = false;
-                        window.alert('Auth check failed. Please login again');
-                        document.getElementById("page-load-overlay").classList.add("hide");
+                        VendorNotFound();
                     });
             }
         }
@@ -194,12 +201,14 @@ var app1 = new Vue({
             .then(function (response) {
                 let responseData = JSON.parse(response.data);
                 console.log(responseData);
-                app1.userAuth = responseData.authVal;
-                app1.orderForm.ContactNo = responseData.contactNo;
+                if(responseData.authVal) {
+                    app1.orderForm.ContactNo = responseData.contactNo;
+                } else {
+                    app1.orderForm.ContactNo = '';
+                }
             })
             .catch(function (error) {
                 console.log(error);
-                app1.userAuth = false;               
             });
     },
 })
