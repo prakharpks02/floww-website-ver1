@@ -107,7 +107,7 @@ function ContactMeButton() {
 }
 
 function OrderNowButton() {
-    window.open('https://gofloww.co/search?vendor-id='+queryVendorId, '_blank');
+    window.open('https://gofloww.co/place-order?vendor-id='+queryVendorId, '_blank');
 }
 
 

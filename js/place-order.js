@@ -184,12 +184,18 @@ var app1 = new Vue({
                         let responseData = JSON.parse(response.data);
                         console.log(responseData);
 
-                        app1.RequestDelivery(responseData.vendorCode, responseData.vendorName);
+                        if(Object.keys(responseData).length == 0) {
+                            VendorNotFound();
+                        } else {
+                            app1.RequestDelivery(responseData.vendorCode, responseData.vendorName);
+                        }
                     })
                     .catch(function (error) {
                         console.log(error);
                         VendorNotFound();
                     });
+            } else {
+                VendorNotFound();
             }
         }
     },
