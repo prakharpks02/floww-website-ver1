@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO Tags -->
+    <meta name="title" content="floww Search - Find Your Delivery Partner" />
+    <meta name="description"
+        content="floww Search is the easiest way to find the best delivery companies as per your needs. Choose from the pool of verified delivery companies and seamlessly integrate them with your system using standardized APIs" />
+    <meta name="keywords"
+        content="floww Delivery, Delivery api, Delivery app api, API delivery platform, Delivery solutions api, Delivery api documentation, Delivery api integration, Ecommerce api free" />
+
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JK6MTWL5ZZ"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-JK6MTWL5ZZ');
+    </script>
+
+
+    <link rel="shortcut icon" href="img/logo/floww-logo-favicon.ico" type="image/x-icon">
+    <link rel="icon" href="img/logo/floww-logo-favicon.ico" type="image/x-icon">
+
+    <link rel='stylesheet' href='theme-css/fontawsome-5-all.min.css' type='text/css' media='all' />
+    <!-- Calling FontAwesome 5 form local file -->
+
+    <link rel="stylesheet" href="css/delivery-vendor-onboard.css">
+    <title>Floww Delivery Vendor Onboard</title>
+</head>
+
+<body>
+    <section class="container">
+        <section class="bgmI">
+            <img src="img/delivery-vendor-image.jpg" alt="floww Delivery Vendors">
+        </section>
+        <section class="formArea">
+            <div class="formHead">
+                <span class="leftText">3PL/Delivery Executive Form</span>
+                <button class="rightText"><a href="#">how to fill form?</a></button>
+            </div>
+            <div class="formBody">
+                <form action="" onsubmit="event.preventDefault(); SubmitHandler1(event)" id="form1" >
+                    <div class="basicInfo">
+                        <div class="Header">&#183; BASIC INFORMATION</div>
+                        <div class="basicInfoBox">
+                            <label for="Binfoname">i)<i class="far fa-user fa-sm"></i>Your
+                                Name<span class="star">*</span></label>
+                            <input type="text" id="BinfoName" class="basicInfoInput" placeholder="Enter Your Name Here"
+                                required>
+                        </div>
+                        <div class="basicInfoBox">
+                            <label for="BinfoCompanyName">ii)<i class="far fa-building fa-sm"></i>Your Company name<span class="star">*</span></label>
+                            <div class="basicInfoInputBox">
+                                <input type="text" id="BinfoCompanyName" class="basicInfoInput2" placeholder="Enter Your Company name Here" required>
+                                <div class="basicInfoInput3">
+                                    <select id="CompanyType" required>
+                                        <option value="" selected ></option>
+                                        <option value="Delivery" class="SelectOption">Delivery</option>
+                                        <option class="SelectOption" value="Transports">Transports</option>
+                                        <option class="SelectOption" value="Logistics">Logistics</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="basicInfoBox">
+                            <label for="BinfoContact">iii)<i class="fas fa-phone-alt fa-sm"></i>Contact Number<span class="star">*</span></label>
+                            <input maxlength="10" type="telr" id="BinfoContact" class="basicInfoInput" placeholder="Enter Your Contact Number Here" required oninput="if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
+                        </div>
+                        <div class="basicInfoBox">
+                            <label for="BinfoYear">iv)<i class="far fa-calendar-check fa-sm"></i>Founded Year<span class="star">*</span></label>
+                            <input maxlength="4" type="number" id="BinfoYear" class="basicInfoInput" placeholder="Enter Founded Year Here" required oninput="if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
+                        </div>
+                        <div class="basicInfoBox">
+                            <label for="BinfoAddress">v)<i class="fas fa-location-arrow fa-sm"></i>Address<span class="star">*</span></label>
+                            <input type="text" id="BinfoAddress" class="basicInfoInput" placeholder="Enter Address Here" required>
+                        </div>
+                        <div class="basicInfoBox">
+                            <label for="BinfoDocNum">vi)<i class="fas fa-address-card fa-sm"></i>Document Type<span class="star">*</span></label>
+                            <div class="basicInfoInputBox2">
+                                <select class="basicInfoInput4" id="DocType" required>
+                                    <option value="" selected disabled> </option>
+                                    <option value="aadhar">Aadhar Card</option>
+                                    <option value="pan">PAN Card</option>
+                                </select>
+                                <input type="text" id="BinfoDocNum" class="basicInfoInput5" placeholder="Enter Document Number Here" required>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="OperationDetails">
+                        <div class="Header">&#183; OPERATION DETAILS</div>
+                        <div class="basicInfoBox">
+                            <div >i)<i class="far fa-clock fa-sm"></i>Delivery Type<span class="star">*</span><span class="miniText">Loream ipsum is the best dummy text available</span></div>
+                            <div class="main">
+                                <div class="CheckBox">
+                                    <input value="hyperlocal" class="CheckBoxInput" type="radio" name="deliveryType" id="deliveryType1" required>
+                                </div>
+                                <label class="checkBoxTest" for="deliveryType1"> Hyperlocal Delivery </label>
+                            </div>
+                            <div class="main">
+                                <div class="CheckBox">
+                                    <input value="courier" class="CheckBoxInput" type="radio" name="deliveryType" id="deliveryType2" required>
+                                </div>
+                                <label class="checkBoxTest" for="deliveryType2"> Courier Delivery </label>
+                            </div>
+                        </div>
+                        <div class="basicInfoBox">
+                            <div >ii)<i class="fas fa-truck fa-sm"></i>Fleet Type<span class="star">*</span><span class="miniText">Commonly used vehicle for your deliveries</span></div>
+                            <div class="basicInfoInput3 FullWidth">
+                                <select id="fleetType" required>
+                                </select>
+                            </div>
+                        </div>   
+                        <div class="basicInfoBox">
+                            <div >iii)<i class="fas fa-network-wired fa-sm"></i>Fleet Size<span class="star">*</span><span class="miniText">Number of vehicles in your fleet</span></div>
+                            <div class="basicInfoInput3 FullWidth">
+                                <select id="fleetSize" required>
+                                </select>
+                            </div>
+                            <div class="basicInfoBox">
+                                <div >iv)<i class="fa fa-certificate fa-sm"></i>Services<span class="star">*</span><span class="miniText">Number of vehicles in your fleet</span></div>
+                                <div class="mainOuter">
+                                </div>
+                            </div>
+                        </div>   
+                        <div class="basicInfoBox">
+                            <label for="Pincode">v)<i class="fas fa-map-marker-alt fa-sm"></i>Preferred Pincode<span class="star">*</span><span class="miniText">Your base Pincode, where you would like to deliver</span></label>
+                            <input maxlength="6" type="number" id="PinCode" class="basicInfoInput" placeholder="Enter Preferred Pincode Here" required oninput="if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
+                        </div>   
+                    </div>
+                    <div class="BtnClass">
+                        <button type="submit" class="NextBtn">NEXT</button>
+                    </div>
+                </form>
+
+                <form action="" onsubmit="event.preventDefault(); SubmitHandler3(event)" id="form2" class="visi">
+                    <div class="basicInfo">
+                        <div class="Header">&#183; SETUP YOUR DELIVERY CHARGE</div>
+                        <div class="SubHeading">Per Order Charge</div>
+                        <div class="basicInfoBox">
+                            <label for="baseCharge">i) Base Charge<span class="star">*</span><span class="miniText">Base charge per delivery upto 1 kg of load</span></label>
+                            <input  type="number" id="baseCharge" class="basicInfoInput" placeholder="Enter Base Charge Here" required >
+                            <div class="miniText3">Recommended Base Charge</div>
+                        </div>
+                        <div class="basicInfoBox">
+                            <label for="perKmCharge">ii) Per Km Charge<span class="star">*</span><span class="miniText">additional charge After 1 km</span></label>
+                            <input  type="number" id="perKmCharge" class="basicInfoInput" placeholder="Enter Per Km Charge Here" required >
+                            <div class="miniText3">Recommended Per Km Charge</div>
+                        </div>
+                        <div class="basicInfoBox">
+                            <label for="perKgCharge">iii) Per Kg Charge<span class="star">*</span><span class="miniText">additional charge After 1 kg</span></label>
+                            <input  type="number" id="perKgCharge" class="basicInfoInput" placeholder="Enter Per Kg Charge Here" required>
+                            <div class="miniText3">Recommended Per Kg Charge</div>
+                        </div>
+                        <div class="SubHeading">Rental Charge</div>
+                        <div class="basicInfoBox">
+                            <label for="RentalbaseCharge">i) Rental Base Charge<span class="star">*</span><span class="miniText">Upto 50 km and 4 hour</span></label>
+                            <input  type="number" id="RentalbaseCharge" class="basicInfoInput" placeholder="Enter Rental Base Charge Here" required >
+                            <div class="miniText3">Recommended Rental Charge</div>
+                        </div>
+                        <div class="basicInfoBox">
+                            <label for="RentalperHrCharge">ii) Rental Per Hr Charge<span class="star">*</span><span class="miniText">additional charge After 4 hours</span></label>
+                            <input  type="number" id="RentalperHrCharge" class="basicInfoInput" placeholder="Enter Rental Per Hr Charge Here" required >
+                            <div class="miniText3">Recommended Rental Per Hr Charge</div>
+                        </div>
+                        <div class="basicInfoBox">
+                            <label for="RentalperKmCharge">iii) Rental Per Km Charge<span class="star">*</span><span class="miniText">additional charge After 50 kms</span></label>
+                            <input  type="number" id="RentalperKmCharge" class="basicInfoInput" placeholder="Enter Rental Per Km Charge Here" required>
+                            <div class="miniText3">Recommended Rental Per Km Charge</div>
+                        </div>
+                        <hr>
+                        <div class="Header"> ADVANCED DETAILS <span id="advBar">&#8744;</span></div>
+                        <div class="advDetails">
+                        <div class="basicInfoBox">
+                            <div >i) Your Logo<span class="star">*</span><span class="miniText">Loream ipsum is the best dummy text available</span></div>
+                            <div class="basicInfoInput3 FullWidth">
+                                <select id="YourLogo" >
+                                    <option value="" selected disabled>Select YourLogo</option>
+                                    <option value="logo0">Default Logo</option>
+                                    <option value="logo1">Secondary Logo</option>
+                                </select>
+                            </div>
+                        </div>  
+                        <div class="basicInfoBox">
+                            <div >ii) Headline Text<span class="star">*</span><span class="miniText">Loream ipsum is the best dummy text available</span></div>
+                            <div class="basicInfoInput3 FullWidth">
+                                <select id="headlineText" >
+                                    <option value="" selected disabled>Select Your Headline Text</option>
+                                    <option value="text0" >Default Text</option>
+                                    <option value="text1" >Secondary Text</option>
+                                </select>
+                            </div>
+                        </div>  
+                        <div class="basicInfoBox">
+                            <div >iii) Intro Description<span class="star">*</span><span class="miniText">Loream ipsum is the best dummy text available</span></div>
+                            <div class="basicInfoInput3 FullWidth">
+                                <select id="Intro" >
+                                    <option value="" selected disabled>Enter Intro Description</option>
+                                    <option value="text0" >Default Text</option>
+                                    <option value="text1" >Secondary Text</option>
+                                </select>
+                            </div>
+                        </div>  
+                        <div class="basicInfoBox">
+                            <div >iv) Color Theme<span class="star">*</span><span class="miniText">Loream ipsum is the best dummy text available</span></div>
+                            <div class="basicInfoInput3 FullWidth">
+                                <select id="colorTheme" >
+                                    <option value="" selected disabled>Select Set Of Colours</option>
+                                    <option value="palette0">Default Theme</option>
+                                    <option value="palette1">Secondary Theme</option>
+                                    <option value="palette2">Tertiary Theme</option>
+                                </select>
+                            </div>
+                        </div>  
+                        <div class="basicInfoBox">
+                            <div >v) Preferred Language<span class="star">*</span><span class="miniText">Loream ipsum is the best dummy text available</span></div>
+                            <div class="basicInfoInput3 FullWidth">
+                                <select id="preferredLanguage" >
+                                    <option value="" selected disabled>Select Your Preferred Language</option>
+                                    <option value="en">English</option>
+                                    <option value="hn">Hindi</option>
+                                </select>
+                            </div>
+                        </div>  
+                    </div>
+                    </div>
+                    <div class="BtnClass">
+                        <button type="button" class="NextBtn2" onclick="event.preventDefault(); SubmitHandler2(event)">BACK</button>
+                        <button type="submit" class="NextBtn">SUBMIT</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </section>
+    <script src="js/flowwVariables.js"></script>
+    <script src="js/delivery-vendor-onboard.js"></script>
+</body>
+
+</html>
