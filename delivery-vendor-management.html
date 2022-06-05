@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <!-- SEO Tags -->
+    <meta name="title" content="floww - Manage all your orders from single place"/>
+    <meta name="description" content="floww Search is the easiest way to find the best delivery companies as per your needs. Choose from the pool of verified delivery companies and seamlessly integrate them with your system using standardized APIs"/>
+    <meta name="keywords" content="floww Delivery, Delivery api, Delivery app api, API delivery platform, Delivery solutions api, Delivery api documentation, Delivery api integration, Ecommerce api free"/>
+
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-JK6MTWL5ZZ"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-JK6MTWL5ZZ');
+    </script> -->
+
+
+    <link rel="shortcut icon" href="img/logo/floww-logo-favicon.ico" type="image/x-icon">
+    <link rel="icon" href="img/logo/floww-logo-favicon.ico" type="image/x-icon">
+
+    <link rel="stylesheet" type="text/css" href="css/delivery-vendor-management.css">
+
+    <!-- Importing Major 3rd Party File links -->
+
+    <link rel="stylesheet" type="text/css" href="css/fontawesome.css">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+
+    <link rel="stylesheet" type="text/css" href="css/bulma.css">
+    <!--   Calling Bulma from local file   -->
+
+    <script type="text/javascript" src="js/vue.js"></script>
+    <!--   Calling Vue from local file   -->
+    <script type="text/javascript" src="js/axios.min.js"></script>
+    <!--   Calling Axios from local file   -->
+
+    <title>floww - My Orders</title>
+</head>
+
+<body>
+
+    <div class="full-page-container" id="main-page-id">
+        <div class="header-container">
+            <div class="header-logo-container">
+                <a href="https://gofloww.co">
+                    <img src="img/logo/floww-logo-full-blue-resize.png"
+                        alt="floww Logo, India's 1st Delivery API Ecosystem">
+                </a>
+            </div>
+
+        </div>
+
+        <div class="box task-detail-container" v-if="viewOrderStatus">
+
+            <div class="overlay-cross-container">
+                <span class="icon">
+                    <i class="fa fa-times fa-2x" v-on:click="viewOrderStatus=false"></i>
+                </span>
+            </div>
+
+            <p class="page-label-container">Order Placed on</p>
+            <p class="page-value-container">{{orderDetail.taskTimestamp}}</p>
+
+            <p class="page-label-container">Company Name</p>
+            <p class="page-value-container">{{orderDetail.companyName}}</p>
+
+            <p class="page-label-container">Pickup</p>
+            <p class="page-value-container">{{orderDetail.pickAddress}}</p>
+            <p class="page-value-container">{{orderDetail.pickContact}}</p>
+
+            <p class="page-label-container">Drop</p>
+            <p class="page-value-container">{{orderDetail.dropAddress}}</p>
+            <p class="page-value-container">{{orderDetail.dropContact}}</p>
+            
+
+            <p class="page-label-container">Weight</p>
+            <p class="page-value-container">{{orderDetail.pickupNo}}</p>
+            <p class="page-label-container">Instruction</p>
+            <p class="page-value-container">{{orderDetail.instruction}}</p>
+
+            <div class="level is-mobile">
+                <div class="level-item">
+                    <button class="button" v-on:click="DownloadBill">Download Receipt</button>
+                </div>
+                <div class="level-item">
+                    <button class="button" v-on:click="OrderDelivered">Order Delivered</button>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="box order-list-container">
+
+            <order-row-component v-for="(order,index) in orderList" :orderdata="order"
+                @view-order="ViewOrder(order.orderId, index)"></order-row-component>
+
+        </div>
+    </div>
+
+
+    <!-- All JS files start here -->
+
+    <script>
+        function GetQueryParams(paramName) {
+            const urlSearchParams = new URLSearchParams(window.location.search);
+            returnValue = '';
+            if (urlSearchParams.has(paramName))
+            {
+                returnValue = urlSearchParams.get(paramName);
+            } else
+            {
+                returnValue = 'None';
+            }
+            return returnValue;
+        }
+
+        const queryVendorId = GetQueryParams('vendor-id');
+        console.log(queryVendorId);
+
+    </script>
+
+    <script src="js/flowwVariables.js"></script>
+    <!-- Floww custom Dictionaries JS file -->
+
+    <script src="js/delivery-vendor-management.js"></script>
+
+</body>
+
+</html>
