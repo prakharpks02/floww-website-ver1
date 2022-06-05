@@ -146,7 +146,7 @@ const SubmitHandler1 = (e)=>{
         FormDetails.address = address;
         FormDetails.documentType = documentType;
         FormDetails.documentNo = documentNo;
-        FormDetails.deliveryType = deliveryType;
+        FormDetails.deliveryType = "perOrder";//deliveryType;
         FormDetails.serviceTag = ServiceTag;
         FormDetails.fleetType = fleetType;
         FormDetails.fleetSize = fleetSize;
