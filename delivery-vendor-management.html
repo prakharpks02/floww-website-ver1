@@ -67,31 +67,31 @@
             </div>
 
             <p class="page-label-container">Order Placed on</p>
-            <p class="page-value-container">{{orderDetail.taskTimestamp}}</p>
+            <p class="page-value-container">{{orderDetail.placedTimestamp}}</p>
 
             <p class="page-label-container">Company Name</p>
-            <p class="page-value-container">{{orderDetail.companyName}}</p>
+            <p class="page-value-container">{{orderDetail.placedBy}}</p>
 
             <p class="page-label-container">Pickup</p>
-            <p class="page-value-container">{{orderDetail.pickAddress}}</p>
-            <p class="page-value-container">{{orderDetail.pickContact}}</p>
+            <p class="page-value-container">{{orderDetail.pickupAddress}}</p>
+            <p class="page-value-container">{{orderDetail.pickupContactNo}}</p>
 
             <p class="page-label-container">Drop</p>
             <p class="page-value-container">{{orderDetail.dropAddress}}</p>
-            <p class="page-value-container">{{orderDetail.dropContact}}</p>
+            <p class="page-value-container">{{orderDetail.dropContactNo}}</p>
             
 
             <p class="page-label-container">Weight</p>
-            <p class="page-value-container">{{orderDetail.pickupNo}}</p>
+            <p class="page-value-container">{{orderDetail.weight}}</p>
             <p class="page-label-container">Instruction</p>
-            <p class="page-value-container">{{orderDetail.instruction}}</p>
+            <p class="page-value-container">{{orderDetail.instructions}}</p>
 
             <div class="level is-mobile">
                 <div class="level-item">
-                    <button class="button" v-on:click="DownloadBill">Download Receipt</button>
+                    <button class="button" v-on:click="DownloadBill(orderDetail.taskId)">Download Receipt</button>
                 </div>
                 <div class="level-item">
-                    <button class="button" v-on:click="OrderDelivered">Order Delivered</button>
+                    <button class="button" v-on:click="OrderDelivered(orderDetail.orderId)">Order Delivered</button>
                 </div>
             </div>
 
