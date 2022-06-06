@@ -85,7 +85,7 @@ Vue.component('order-row-component', {
                         <p class="">[[orderdata.pickupContactNo]]</p>
                     </div>
                     <div class="column has-text-right">
-                        <span class="tag">[[orderdata.status]]</span>
+                        <span class="tag">[[orderdata.status.status]]</span>
                         <button class="button is-small"  @click="$emit('view-order')">View Order</button>
                     </div>
 				</div>
@@ -121,8 +121,8 @@ var app1 = new Vue({
                 .then(function (response) {
                     let responseData = JSON.parse(response.data);
                     console.log(responseData);
-                    app1.orderDetail.status = "delivered";
-                    app1.orderList[app1.currentIndex].status = "delivered";
+                    app1.orderDetail.status.status = "delivered";
+                    app1.orderList[app1.currentIndex].status.status = "delivered";
                 })
                 .catch(function (error) {
                     console.log(error);
