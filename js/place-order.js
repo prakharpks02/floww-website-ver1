@@ -2,7 +2,7 @@
 
 function VendorNotFound() {
     document.getElementById('no-vendor-found-id').classList.remove('hide');
-    document.getElementById('website-page-id').classList.add('hide');
+    document.getElementById('search-page-id').classList.add('hide');
 }
 
 // ------------------------------------------------------------ Vue Starts
@@ -201,7 +201,7 @@ var app1 = new Vue({
     },
     async mounted() {
 
-        await this.CheckQueryParam();
+        //await this.CheckQueryParam();
 
         axios.get(globalApiUrl + '/api/v1/auth/check-user-token-auth/')
             .then(function (response) {

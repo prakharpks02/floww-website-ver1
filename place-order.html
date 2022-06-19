@@ -236,6 +236,8 @@
                     </div>
 
                     <div class="control add-button-per-order-form">
+                        <input type="file" id="excelUpload" name="excelUpload"
+                            accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel">
                         <button class="button is-info" v-on:click="SubmitOrderForm">Submit</button>
                         <button class="button is-warning" v-on:click="GetCostEstimate">Cost Estimate</button>
                     </div>
@@ -282,7 +284,7 @@
                                 <input class="input" type="date" v-on:change="ChangeDeliveryDate($event)">
                             </div>
                         </div>
-                        
+
                         <div class="field">
                             <label class="label">Request Services</label>
                             <div class="field has-addons">
@@ -454,16 +456,13 @@
         function getCookie(name) {
             let cookieValue = null;
 
-            if (document.cookie && document.cookie !== '')
-            {
+            if (document.cookie && document.cookie !== '') {
                 const cookies = document.cookie.split(';');
-                for (let i = 0; i < cookies.length; i++)
-                {
+                for (let i = 0; i < cookies.length; i++) {
                     const cookie = cookies[i].trim();
 
                     // Does this cookie string begin with the name we want?
-                    if (cookie.substring(0, name.length + 1) === (name + '='))
-                    {
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
                         cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
 
                         break;
@@ -477,11 +476,9 @@
         function GetQueryParams(paramName) {
             const urlSearchParams = new URLSearchParams(window.location.search);
             returnValue = '';
-            if (urlSearchParams.has(paramName))
-            {
+            if (urlSearchParams.has(paramName)) {
                 returnValue = urlSearchParams.get(paramName);
-            } else
-            {
+            } else {
                 returnValue = 'None';
             }
             return returnValue;
@@ -489,8 +486,7 @@
 
         let tokenVal = getCookie('floww-token');
 
-        if (tokenVal)
-        {
+        if (tokenVal) {
             let authTokenStr = "Token " + tokenVal;
             axios.defaults.headers.common['Authorization'] = authTokenStr;
         }
