@@ -6,7 +6,7 @@ var orderList = [{
     'pickContact': '9910530300',
     'weight': '20',
     'instruction': 'Leave near watchman',
-    'status': 'delivered',
+    'status': [{'status':'requested'},{'status':'requested'}],
 }, {
     'orderId': 'ORD0000005',
     'dropAddress': 'Andheri East, Mumbai',
@@ -15,7 +15,7 @@ var orderList = [{
     'pickContact': '9910530300',
     'weight': '20',
     'instruction': 'Leave near watchman',
-    'status': 'delivered',
+    'status': [{'status':'requested'},{'status':'delivered'}],
 }, {
     'orderId': 'ORD0000005',
     'dropAddress': 'Andheri East, Mumbai',
@@ -24,7 +24,7 @@ var orderList = [{
     'pickContact': '9910530300',
     'weight': '20',
     'instruction': 'Leave near watchman',
-    'status': 'delivered',
+    'status': [{'status':'requested'},{'status':'delivered'}],
 }, {
     'orderId': 'ORD0000005',
     'dropAddress': 'Andheri East, Mumbai',
@@ -33,7 +33,7 @@ var orderList = [{
     'pickContact': '9910530300',
     'weight': '20',
     'instruction': 'Leave near watchman',
-    'status': 'delivered',
+    'status': [{'status':'requested'},{'status':'delivered'}],
 }, {
     'orderId': 'ORD0000005',
     'dropAddress': 'Andheri East, Mumbai',
@@ -42,7 +42,7 @@ var orderList = [{
     'pickContact': '9910530300',
     'weight': '20',
     'instruction': 'Leave near watchman',
-    'status': 'delivered',
+    'status': [{'status':'requested'},{'status':'delivered'}],
 }, {
     'orderId': 'ORD0000005',
     'dropAddress': 'Andheri East, Mumbai',
@@ -51,7 +51,7 @@ var orderList = [{
     'pickContact': '9910530300',
     'weight': '20',
     'instruction': 'Leave near watchman',
-    'status': 'delivered',
+    'status': [{'status':'requested'},{'status':'delivered'}],
 }, {
     'orderId': 'ORD0000005',
     'dropAddress': 'Andheri East, Mumbai',
@@ -60,16 +60,7 @@ var orderList = [{
     'pickContact': '9910530300',
     'weight': '20',
     'instruction': 'Leave near watchman',
-    'status': 'delivered',
-}, {
-    'orderId': 'ORD0000005',
-    'dropAddress': 'Andheri East, Mumbai',
-    'dropContact': '9910530300',
-    'pickAddress': 'Andheri East, Mumbai',
-    'pickContact': '9910530300',
-    'weight': '20',
-    'instruction': 'Leave near watchman',
-    'status': 'delivered',
+    'status': [{'status':'requested'},{'status':'delivered'}],
 },
 ];
 
@@ -85,7 +76,7 @@ Vue.component('order-row-component', {
                         <p class="">[[orderdata.pickupContactNo]]</p>
                     </div>
                     <div class="column has-text-right">
-                        <span class="tag">[[orderdata.status[0].status]]</span>
+                        <span class="tag">[[orderdata.status[orderdata.status.length-1].status]]</span>
                         <button class="button is-small"  @click="$emit('view-order')">View Order</button>
                     </div>
 				</div>
@@ -121,8 +112,8 @@ var app1 = new Vue({
                 .then(function (response) {
                     let responseData = JSON.parse(response.data);
                     console.log(responseData);
-                    app1.orderDetail.status[0].status = "delivered";
-                    app1.orderList[app1.currentIndex].status[0].status = "delivered";
+                    app1.orderDetail.status[app1.orderDetail.status.length-1].status = "delivered";
+                    app1.orderList[app1.currentIndex].status[app1.orderDetail.status.length-1].status = "delivered";
                 })
                 .catch(function (error) {
                     console.log(error);
