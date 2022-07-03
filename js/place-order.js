@@ -201,7 +201,7 @@ var app1 = new Vue({
     },
     async mounted() {
 
-        //await this.CheckQueryParam();
+        await this.CheckQueryParam();
 
         axios.get(globalApiUrl + '/api/v1/auth/check-user-token-auth/')
             .then(function (response) {
